@@ -65,7 +65,10 @@ namespace EntityFramework.Guardian.Core.Hooking
             ObjectAccessEntry objectAccessEntry;
             if (context.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
             {
-                var protectionContext = new RetrieveProtectionContext();
+                var protectionContext = new RetrieveProtectionContext()
+                {
+                    Entry = objectAccessEntry
+                };
                 _kernel.RetrieveProtector.Protect(protectionContext);
             }
         }

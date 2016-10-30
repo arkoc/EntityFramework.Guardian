@@ -10,7 +10,7 @@ namespace EntityFramework.Guardian.Core.Protection
 {
     public class DefaultModifyProtector : IModifyProtector
     {
-        private GuardianKernel _kernel;
+        private readonly GuardianKernel _kernel;
 
         public DefaultModifyProtector(GuardianKernel kernel)
         {

@@ -61,10 +61,7 @@ namespace EntityFramework.Guardian.Core.Extensions
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .FirstOrDefault(x => string.Compare(x.Name, propName, StringComparison.OrdinalIgnoreCase) == 0);
 
-            if (prop != null)
-            {
-                prop.SetValue(obj, null, null);
-            }
+            prop?.SetValue(obj, null, null);
         }
     }
 }

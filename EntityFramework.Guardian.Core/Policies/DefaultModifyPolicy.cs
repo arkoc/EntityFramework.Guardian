@@ -16,13 +16,13 @@ namespace EntityFramework.Guardian.Core.Policies
             var generalPermissions = permissions.GetGeneralPermission(context.EntityTypeName, context.AccessType);
 
             var rowLevelPermissions = permissions.GetRowLevelPermission(
-                context.EntityTypeName, 
-                context.EntityRowKey, 
+                context.EntityTypeName,
+                context.EntityRowKey,
                 context.AccessType);
 
             var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
 
-            if(generalPermissions.Any() || rowLevelPermissions.Any())
+            if (generalPermissions.Any() || rowLevelPermissions.Any())
             {
                 success = true;
                 return success;
@@ -32,7 +32,7 @@ namespace EntityFramework.Guardian.Core.Policies
             {
                 var restrictionExist = columnLevelRestrictions.Any(x => x.PropertyName == propName);
 
-                if(restrictionExist)
+                if (restrictionExist)
                 {
                     success = false;
                     // If Restriction exist it means that our policy faild

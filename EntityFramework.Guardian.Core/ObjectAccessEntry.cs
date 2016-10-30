@@ -3,7 +3,7 @@ using EntityFramework.Guardian.Core.Models;
 using System;
 using System.Data.Entity.Core.Objects;
 
-namespace EntityFramework.Guardian
+namespace EntityFramework.Guardian.Core
 {
     public class ObjectAccessEntry
     {

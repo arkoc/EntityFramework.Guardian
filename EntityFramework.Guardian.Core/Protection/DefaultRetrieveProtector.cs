@@ -10,7 +10,7 @@ namespace EntityFramework.Guardian.Core.Protection
 {
     public class DefaultRetrieveProtector : IRetrieveProtector
     {
-        private GuardianKernel _kernel;
+        private readonly GuardianKernel _kernel;
 
         public DefaultRetrieveProtector(GuardianKernel kernel)
         {
