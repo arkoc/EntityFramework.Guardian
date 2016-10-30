@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DefaultIdKeyProviderTests.cs" />
+    <Compile Include="DefaultModifyPolicyTests.cs" />
+    <Compile Include="DefaultRetrievePolicyTests.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />
     <Compile Include="Models\Model3.cs" />

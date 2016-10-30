@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntityFramework.Guardian.Core
 {
@@ -43,14 +41,14 @@ namespace EntityFramework.Guardian.Core
         public List<IRowPermission> RowLevel { get; private set; } = new List<IRowPermission>();
         public List<IColumnRestriction> ColumnLevel { get; private set; } = new List<IColumnRestriction>();
 
-        public List<IPermission> GetGeneralPermission(string entityTypeName, AccessTypes accessType)
+        public List<IPermission> GetGeneralPermissions(string entityTypeName, AccessTypes accessType)
         {
             return General
                 .Where(x => x.EntityTypeName == entityTypeName && x.AccessType == accessType)
                 .ToList();
         }
 
-        public List<IRowPermission> GetRowLevelPermission(string entityTypeName, string key, AccessTypes accessType)
+        public List<IRowPermission> GetRowLevelPermissions(string entityTypeName, string key, AccessTypes accessType)
         {
             return RowLevel
                 .Where(x => x.EntityTypeName == entityTypeName && x.AccessType == accessType && x.RowIdentifier == key)

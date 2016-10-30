@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace EntityFramework.Guardian.Core.Policies
 {
@@ -10,22 +6,22 @@ namespace EntityFramework.Guardian.Core.Policies
     {
         public bool Check(ModifyPolicyContext context, GuardianKernel kernel)
         {
-            var success = false;
+            var isSuccess = true;
             var permissions = kernel.Permissions;
 
-            var generalPermissions = permissions.GetGeneralPermission(context.EntityTypeName, context.AccessType);
+            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, context.AccessType);
 
-            var rowLevelPermissions = permissions.GetRowLevelPermission(
+            var rowLevelPermissions = permissions.GetRowLevelPermissions(
                 context.EntityTypeName,
                 context.EntityRowKey,
                 context.AccessType);
 
             var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
 
-            if (generalPermissions.Any() || rowLevelPermissions.Any())
+            if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {
-                success = true;
-                return success;
+                isSuccess = false;
+                return isSuccess;
             }
 
             foreach (var propName in context.ModifiedProperties)
@@ -34,13 +30,13 @@ namespace EntityFramework.Guardian.Core.Policies
 
                 if (restrictionExist)
                 {
-                    success = false;
+                    isSuccess = false;
                     // If Restriction exist it means that our policy faild
                     break;
                 }
             }
 
-            return success;
+            return isSuccess;
         }
     }
 }

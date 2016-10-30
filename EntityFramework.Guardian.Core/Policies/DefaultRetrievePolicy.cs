@@ -1,9 +1,5 @@
 ﻿using EntityFramework.Guardian.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntityFramework.Guardian.Core.Policies
 {
@@ -15,9 +11,9 @@ namespace EntityFramework.Guardian.Core.Policies
             context.Entity.ProtectionResult = ProtectionResults.Allow;
             var permissions = kernel.Permissions;
 
-            var generalPermissions = permissions.GetGeneralPermission(context.EntityTypeName, context.AccessType);
+            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, context.AccessType);
 
-            var rowLevelPermissions = permissions.GetRowLevelPermission(
+            var rowLevelPermissions = permissions.GetRowLevelPermissions(
                 context.EntityTypeName,
                 context.EntityRowKey,
                 context.AccessType);

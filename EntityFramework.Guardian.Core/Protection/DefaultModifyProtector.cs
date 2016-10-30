@@ -1,10 +1,6 @@
 ﻿using EntityFramework.Guardian.Core.Exceptions;
 using EntityFramework.Guardian.Core.Policies;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntityFramework.Guardian.Core.Protection
 {
@@ -24,7 +20,7 @@ namespace EntityFramework.Guardian.Core.Protection
 
         public void Protect(ModifyProtectionContext context)
         {
-            foreach(var policy in _kernel.ModifyProtectionPolicies)
+            foreach (var policy in _kernel.ModifyProtectionPolicies)
             {
                 var policyContext = new ModifyPolicyContext()
                 {
@@ -37,7 +33,7 @@ namespace EntityFramework.Guardian.Core.Protection
 
                 var allow = policy.Check(policyContext, _kernel);
 
-                if(allow == false)
+                if (allow == false)
                 {
                     // If one of policies fail, we don't want to apply another ones
                     throw new AccessDeniedException();

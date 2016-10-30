@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EntityFramework.Guardian.Core.Protection
+﻿namespace EntityFramework.Guardian.Core.Protection
 {
     public class RetrieveProtectionContext
     {
