@@ -1,9 +1,9 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EntityFramework.Guardian.Core
+namespace EntityFramework.Guardian
 {
     public class GuardianPermissions
     {

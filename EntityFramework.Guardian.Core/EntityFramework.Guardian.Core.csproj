@@ -7,8 +7,8 @@
     <ProjectGuid>{44B106F0-DEB2-4121-8AF7-45B499B784F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFramework.Guardian.Core</RootNamespace>
-    <AssemblyName>EntityFramework.Guardian.Core</AssemblyName>
+    <RootNamespace>EntityFramework.Guardian</RootNamespace>
+    <AssemblyName>EntityFramework.Guardian</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

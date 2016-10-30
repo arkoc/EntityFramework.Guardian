@@ -1,6 +1,6 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 
-namespace EntityFramework.Guardian.Core.Policies
+namespace EntityFramework.Guardian.Policies
 {
     public class RetrievePolicyContext
     {

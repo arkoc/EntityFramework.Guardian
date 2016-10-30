@@ -1,7 +1,7 @@
-﻿using EntityFramework.Guardian.Core.Hooking;
+﻿using EntityFramework.Guardian.Hooking;
 using System.Data.Entity;
 
-namespace EntityFramework.Guardian.Core.Configuration
+namespace EntityFramework.Guardian.Configuration
 {
     public static class DbContextExtensions
     {

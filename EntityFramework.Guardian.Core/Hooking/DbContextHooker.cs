@@ -1,11 +1,11 @@
-﻿using EntityFramework.Guardian.Core.Extensions;
-using EntityFramework.Guardian.Core.Protection;
+﻿using EntityFramework.Guardian.Extensions;
+using EntityFramework.Guardian.Protection;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 
-namespace EntityFramework.Guardian.Core.Hooking
+namespace EntityFramework.Guardian.Hooking
 {
     internal class DbContextHooker
     {

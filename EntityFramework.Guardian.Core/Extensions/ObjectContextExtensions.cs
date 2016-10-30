@@ -1,10 +1,10 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 
-namespace EntityFramework.Guardian.Core.Extensions
+namespace EntityFramework.Guardian.Extensions
 {
     internal static class ObjectContextExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace EntityFramework.Guardian.Core.Policies
+namespace EntityFramework.Guardian.Policies
 {
     public class DefaultModifyPolicy : IModifyProtectionPolicy
     {

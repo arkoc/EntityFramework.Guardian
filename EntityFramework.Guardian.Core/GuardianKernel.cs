@@ -1,9 +1,9 @@
-﻿using EntityFramework.Guardian.Core.Configuration;
-using EntityFramework.Guardian.Core.Policies;
-using EntityFramework.Guardian.Core.Protection;
+﻿using EntityFramework.Guardian.Configuration;
+using EntityFramework.Guardian.Policies;
+using EntityFramework.Guardian.Protection;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.Core
+namespace EntityFramework.Guardian
 {
     public class GuardianKernel
     {

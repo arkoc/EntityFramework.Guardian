@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntityFramework.Guardian.Core.Exceptions
+namespace EntityFramework.Guardian.Exceptions
 {
     public class AccessDeniedException : Exception
     {

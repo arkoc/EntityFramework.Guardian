@@ -1,9 +1,9 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System;
 using System.Linq;
 using System.Reflection;
 
-namespace EntityFramework.Guardian.Core.Extensions
+namespace EntityFramework.Guardian.Extensions
 {
     public static class ProtectionExtensions
     {

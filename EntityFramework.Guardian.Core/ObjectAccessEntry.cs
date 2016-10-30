@@ -1,9 +1,9 @@
-﻿using EntityFramework.Guardian.Core.Extensions;
-using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Extensions;
+using EntityFramework.Guardian.Models;
 using System;
 using System.Data.Entity.Core.Objects;
 
-namespace EntityFramework.Guardian.Core
+namespace EntityFramework.Guardian
 {
     public class ObjectAccessEntry
     {

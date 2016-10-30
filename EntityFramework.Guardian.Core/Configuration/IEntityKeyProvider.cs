@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Core.Configuration
+﻿namespace EntityFramework.Guardian.Configuration
 {
     public interface IEntityKeyProvider
     {

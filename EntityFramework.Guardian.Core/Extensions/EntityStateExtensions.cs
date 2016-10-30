@@ -1,7 +1,7 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System.Data.Entity;
 
-namespace EntityFramework.Guardian.Core.Extensions
+namespace EntityFramework.Guardian.Extensions
 {
     internal static class EntityStateExtensions
     {

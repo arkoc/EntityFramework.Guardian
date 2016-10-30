@@ -1,8 +1,8 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EntityFramework.Guardian.Core.Policies
+namespace EntityFramework.Guardian.Policies
 {
     public class DefaultRetrievePolicy : IRetrieveProtectionPolicy
     {

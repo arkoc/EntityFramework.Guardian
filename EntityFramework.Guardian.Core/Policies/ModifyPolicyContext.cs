@@ -1,7 +1,7 @@
-﻿using EntityFramework.Guardian.Core.Models;
+﻿using EntityFramework.Guardian.Models;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.Core.Policies
+namespace EntityFramework.Guardian.Policies
 {
     public class ModifyPolicyContext
     {

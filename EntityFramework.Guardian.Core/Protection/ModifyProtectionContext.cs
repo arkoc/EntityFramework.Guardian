@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.Core.Protection
+namespace EntityFramework.Guardian.Protection
 {
     public class ModifyProtectionContext
     {

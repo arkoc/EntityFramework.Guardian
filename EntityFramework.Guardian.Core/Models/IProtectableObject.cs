@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityFramework.Guardian.Core.Models
+namespace EntityFramework.Guardian.Models
 {
     public interface IProtectableObject
     {

@@ -1,7 +1,7 @@
-﻿using EntityFramework.Guardian.Core.Policies;
+﻿using EntityFramework.Guardian.Policies;
 using System;
 
-namespace EntityFramework.Guardian.Core.Protection
+namespace EntityFramework.Guardian.Protection
 {
     public class DefaultRetrieveProtector : IRetrieveProtector
     {

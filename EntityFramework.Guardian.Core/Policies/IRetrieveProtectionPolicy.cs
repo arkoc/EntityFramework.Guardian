@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Core.Policies
+﻿namespace EntityFramework.Guardian.Policies
 {
     public interface IRetrieveProtectionPolicy
     {

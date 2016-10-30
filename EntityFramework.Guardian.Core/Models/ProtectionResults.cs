@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Core.Models
+﻿namespace EntityFramework.Guardian.Models
 {
     public enum ProtectionResults
     {

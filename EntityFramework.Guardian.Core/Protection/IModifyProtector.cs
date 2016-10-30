@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Core.Protection
+﻿namespace EntityFramework.Guardian.Protection
 {
     public interface IModifyProtector
     {
