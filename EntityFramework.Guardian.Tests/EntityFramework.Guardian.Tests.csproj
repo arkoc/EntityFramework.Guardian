@@ -56,6 +56,9 @@
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />
     <Compile Include="Models\Model3.cs" />
+    <Compile Include="Models\TestColumnRestriction.cs" />
+    <Compile Include="Models\TestPermission.cs" />
+    <Compile Include="Models\TestRowPermission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

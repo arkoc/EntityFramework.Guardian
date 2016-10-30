@@ -71,7 +71,7 @@
     <Compile Include="Protection\IModifyProtector.cs" />
     <Compile Include="Protection\IRetrieveProtector.cs" />
     <Compile Include="Models\AccessTypes.cs" />
-    <Compile Include="Models\IColumnPermission.cs" />
+    <Compile Include="Models\IColumnRestriction.cs" />
     <Compile Include="Models\IProtectableObject.cs" />
     <Compile Include="Models\IRowPermission.cs" />
     <Compile Include="Models\ProtectionResults.cs" />

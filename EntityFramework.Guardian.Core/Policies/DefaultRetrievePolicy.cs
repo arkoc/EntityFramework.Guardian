@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Guardian.Core.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EntityFramework.Guardian.Core.Policies
@@ -8,17 +9,20 @@ namespace EntityFramework.Guardian.Core.Policies
         public bool Check(RetrievePolicyContext context, GuardianKernel kernel)
         {
             var isSuccess = true;
+
+            context.Entity.ProtectedProperties = new List<string>();
             context.Entity.ProtectionResult = ProtectionResults.Allow;
+
             var permissions = kernel.Permissions;
 
-            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, context.AccessType);
+            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, AccessTypes.Get);
 
             var rowLevelPermissions = permissions.GetRowLevelPermissions(
                 context.EntityTypeName,
                 context.EntityRowKey,
-                context.AccessType);
+                AccessTypes.Get);
 
-            var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
+            var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, AccessTypes.Get);
 
             if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {
