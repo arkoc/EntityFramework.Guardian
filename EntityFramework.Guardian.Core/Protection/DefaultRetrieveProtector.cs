@@ -23,7 +23,6 @@ namespace EntityFramework.Guardian.Core.Protection
             {
                 var policyContext = new RetrievePolicyContext()
                 {
-                    AccessType = context.Entry.AccessType,
                     Entity = context.Entry.Entity,
                     EntityRowKey = _kernel.EntityKeyProvider.GetKey(context.Entry.Entity),
                     EntityTypeName = context.Entry.Entity.GetType().Name,

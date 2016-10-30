@@ -8,10 +8,10 @@ namespace EntityFramework.Guardian.Core.Extensions
 {
     internal static class ObjectContextExtensions
     {
-        public static IEnumerable<string> GetModifiedProperties(this ObjectContext context, object entity)
+        public static List<string> GetModifiedProperties(this ObjectContext context, object entity)
         {
             var myObjectState = context.ObjectStateManager.GetObjectStateEntry(entity);
-            var modifiedProperties = myObjectState.GetModifiedProperties();
+            var modifiedProperties = myObjectState.GetModifiedProperties().ToList();
 
             return modifiedProperties;
         }

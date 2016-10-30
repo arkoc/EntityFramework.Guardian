@@ -5,6 +5,6 @@ namespace EntityFramework.Guardian.Core.Protection
     public class ModifyProtectionContext
     {
         public ObjectAccessEntry Entry { get; set; }
-        public IEnumerable<string> ModifiedProperties { get; set; } = new List<string>();
+        public List<string> ModifiedProperties { get; set; } = new List<string>();
     }
 }

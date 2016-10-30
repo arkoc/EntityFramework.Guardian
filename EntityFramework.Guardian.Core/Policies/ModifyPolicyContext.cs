@@ -9,6 +9,6 @@ namespace EntityFramework.Guardian.Core.Policies
         public string EntityRowKey { get; set; }
         public AccessTypes AccessType { get; set; }
         public IProtectableObject Entity { get; set; }
-        public IEnumerable<string> ModifiedProperties { get; set; }
+        public List<string> ModifiedProperties { get; set; } = new List<string>();
     }
 }
