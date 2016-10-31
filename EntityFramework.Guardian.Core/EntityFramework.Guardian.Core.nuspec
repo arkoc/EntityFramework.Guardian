@@ -11,6 +11,6 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>Copyright (c) 2016 Aram Kocharyan</copyright>
-    <tags>EntityFramework Database Security</tags>
+    <tags>EntityFramework Database Security RowLevel ColumnLevel</tags>
   </metadata>
 </package>

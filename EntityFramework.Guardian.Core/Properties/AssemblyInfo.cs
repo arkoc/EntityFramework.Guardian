@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EntityFramework.Guardian")]
-[assembly: AssemblyDescription("EntityFramework Plugin For Implementing Database Security")]
+[assembly: AssemblyDescription("EntityFramework plugin for implementing database security including row-Level and column-level permissions.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Aram Kocharyan")]
 [assembly: AssemblyProduct("EntityFramework.Guardian")]
@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.0.1")]
+[assembly: AssemblyVersion("1.1.0.5")]
