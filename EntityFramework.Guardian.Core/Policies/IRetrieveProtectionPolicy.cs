@@ -2,6 +2,6 @@
 {
     public interface IRetrieveProtectionPolicy
     {
-        bool Check(RetrievePolicyContext context, GuardianKernel kernel);
+        bool Apply(RetrievePolicyContext context, GuardianKernel kernel);
     }
 }

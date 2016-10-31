@@ -2,6 +2,6 @@
 {
     public interface IModifyProtectionPolicy
     {
-        bool Check(ModifyPolicyContext context, GuardianKernel kernel);
+        bool Apply(ModifyPolicyContext context, GuardianKernel kernel);
     }
 }

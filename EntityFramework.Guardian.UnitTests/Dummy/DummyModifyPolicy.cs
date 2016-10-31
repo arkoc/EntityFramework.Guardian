@@ -5,7 +5,7 @@ namespace EntityFramework.Guardian.UnitTests.Dummy
 {
     public class DummyModifyPolicy : IModifyProtectionPolicy
     {
-        public bool Check(ModifyPolicyContext context, GuardianKernel kernel)
+        public bool Apply(ModifyPolicyContext context, GuardianKernel kernel)
         {
             return false;
         }

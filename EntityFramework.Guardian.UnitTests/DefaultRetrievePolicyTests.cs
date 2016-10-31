@@ -32,7 +32,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Check(policyContext, _kernel);
+            var result = _policy.Apply(policyContext, _kernel);
 
             Assert.Equal(false, result);
         }
@@ -57,7 +57,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Check(policyContext, _kernel);
+            var result = _policy.Apply(policyContext, _kernel);
 
             Assert.Equal(true, result);
 
@@ -85,7 +85,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Check(policyContext, _kernel);
+            var result = _policy.Apply(policyContext, _kernel);
 
             Assert.Equal(true, result);
         }
@@ -120,7 +120,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Check(policyContext, _kernel);
+            var result = _policy.Apply(policyContext, _kernel);
 
             Assert.Equal(true, result);
 

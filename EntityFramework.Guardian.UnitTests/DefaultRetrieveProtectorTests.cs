@@ -61,7 +61,7 @@ namespace EntityFramework.Guardian.UnitTests
             var protector = new DefaultRetrieveProtector(kernel);
 
             var model = new Model1() { Id = 1 };
-            _protector.Protect(new RetrieveProtectionContext()
+            protector.Protect(new RetrieveProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
             });

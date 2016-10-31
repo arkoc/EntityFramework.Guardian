@@ -77,21 +77,23 @@ namespace EntityFramework.Guardian.UnitTests
             var kernel = new GuardianKernel();
             kernel.Permissions.General.Add(new TestPermission()
             {
-                AccessType = AccessTypes.Get,
+                AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name
             });
             kernel.ModifyProtectionPolicies.Add(new DummyModifyPolicy());
 
-            var protector = new DefaultRetrieveProtector(kernel);
+            var protector = new DefaultModifyProtector(kernel);
 
             var model = new Model1() { Id = 1 };
-            _protector.Protect(new ModifyProtectionContext()
-            {
-                Entry = new DummyObjectAccessEntry(AccessTypes.Get, model),
-                ModifiedProperties = { "Property1" }
-            });
 
-            Assert.Equal(ProtectionResults.Deny, model.ProtectionResult);
+            Assert.Throws(typeof(AccessDeniedException), () =>
+            {
+                protector.Protect(new ModifyProtectionContext()
+                {
+                    Entry = new DummyObjectAccessEntry(AccessTypes.Add, model),
+                    ModifiedProperties = { "Property1" }
+                });
+            });
         }
     }
 }

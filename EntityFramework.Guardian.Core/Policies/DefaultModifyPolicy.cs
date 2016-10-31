@@ -4,7 +4,7 @@ namespace EntityFramework.Guardian.Policies
 {
     public class DefaultModifyPolicy : IModifyProtectionPolicy
     {
-        public bool Check(ModifyPolicyContext context, GuardianKernel kernel)
+        public bool Apply(ModifyPolicyContext context, GuardianKernel kernel)
         {
             var isSuccess = true;
             var permissions = kernel.Permissions;

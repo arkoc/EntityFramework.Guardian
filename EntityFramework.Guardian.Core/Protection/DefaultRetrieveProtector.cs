@@ -28,7 +28,7 @@ namespace EntityFramework.Guardian.Protection
                     EntityTypeName = context.Entry.Entity.GetType().Name,
                 };
 
-                var allow = policy.Check(policyContext, _kernel);
+                var allow = policy.Apply(policyContext, _kernel);
                 if (allow == false)
                 {
                     // If one of policies fail, we don't want to apply other ones

@@ -1,4 +1,6 @@
-﻿namespace EntityFramework.Guardian.Protection
+﻿using System.Collections.Generic;
+
+namespace EntityFramework.Guardian.Protection
 {
     public class RetrieveProtectionContext
     {

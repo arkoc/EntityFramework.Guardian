@@ -31,7 +31,7 @@ namespace EntityFramework.Guardian.Protection
                     ModifiedProperties = context.ModifiedProperties
                 };
 
-                var allow = policy.Check(policyContext, _kernel);
+                var allow = policy.Apply(policyContext, _kernel);
 
                 if (allow == false)
                 {

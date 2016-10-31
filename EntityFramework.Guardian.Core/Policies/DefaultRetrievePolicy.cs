@@ -6,7 +6,7 @@ namespace EntityFramework.Guardian.Policies
 {
     public class DefaultRetrievePolicy : IRetrieveProtectionPolicy
     {
-        public bool Check(RetrievePolicyContext context, GuardianKernel kernel)
+        public bool Apply(RetrievePolicyContext context, GuardianKernel kernel)
         {
             var isSuccess = true;
 
