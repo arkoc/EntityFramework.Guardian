@@ -80,7 +80,7 @@ namespace EntityFramework.Guardian.UnitTests
                 AccessType = AccessTypes.Get,
                 EntityTypeName = typeof(Model1).Name
             });
-            kernel.RetrieveProtectionPolicies.Add(new DummyRetrievePolicy());
+            kernel.ModifyProtectionPolicies.Add(new DummyModifyPolicy());
 
             var protector = new DefaultRetrieveProtector(kernel);
 
