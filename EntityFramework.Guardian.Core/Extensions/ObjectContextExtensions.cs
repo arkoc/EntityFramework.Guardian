@@ -16,7 +16,7 @@ namespace EntityFramework.Guardian.Extensions
             return modifiedProperties;
         }
 
-        public static IEnumerable<ObjectAccessEntry> GetModifiedEntries(this ObjectContext context)
+        public static IEnumerable<IObjectAccessEntry> GetModifiedEntries(this ObjectContext context)
         {
             var reasonableStates = EntityState.Modified | EntityState.Deleted | EntityState.Added;
 
@@ -28,7 +28,7 @@ namespace EntityFramework.Guardian.Extensions
             return entries;
         }
 
-        public static bool TryGetMaterializedEntry(this ObjectContext context, object entity, out ObjectAccessEntry entry)
+        public static bool TryGetMaterializedEntry(this ObjectContext context, object entity, out IObjectAccessEntry entry)
         {
             bool success = false;
             entry = null;

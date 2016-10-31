@@ -2,6 +2,6 @@
 {
     public class RetrieveProtectionContext
     {
-        public ObjectAccessEntry Entry { get; set; }
+        public IObjectAccessEntry Entry { get; set; }
     }
 }

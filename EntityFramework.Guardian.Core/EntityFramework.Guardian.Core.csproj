@@ -59,6 +59,7 @@
     <Compile Include="GuardianKernel.cs" />
     <Compile Include="Hooking\DbContextHooker.cs" />
     <Compile Include="GuardianPermissions.cs" />
+    <Compile Include="IObjectAccessEntry.cs" />
     <Compile Include="Models\IPermission.cs" />
     <Compile Include="Policies\DefaultModifyPolicy.cs" />
     <Compile Include="Policies\DefaultRetrievePolicy.cs" />

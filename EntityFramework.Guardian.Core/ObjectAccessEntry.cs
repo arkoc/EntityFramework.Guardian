@@ -5,7 +5,7 @@ using System.Data.Entity.Core.Objects;
 
 namespace EntityFramework.Guardian
 {
-    public class ObjectAccessEntry
+    internal class ObjectAccessEntry : IObjectAccessEntry
     {
         public IProtectableObject Entity { get; }
         public AccessTypes AccessType { get; }

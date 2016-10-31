@@ -62,7 +62,7 @@ namespace EntityFramework.Guardian.Hooking
         {
             ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
 
-            ObjectAccessEntry objectAccessEntry;
+            IObjectAccessEntry objectAccessEntry;
             if (context.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
             {
                 var protectionContext = new RetrieveProtectionContext()

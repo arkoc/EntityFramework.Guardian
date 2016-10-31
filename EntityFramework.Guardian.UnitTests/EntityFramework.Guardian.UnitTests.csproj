@@ -64,6 +64,8 @@
     <Compile Include="DefaultModifyProtectorTests.cs" />
     <Compile Include="DefaultRetrievePolicyTests.cs" />
     <Compile Include="DefaultRetrieveProtectorTests.cs" />
+    <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
+    <Compile Include="Dummy\DummyRetrievePolicy.cs" />
     <Compile Include="GuardianPermissionsTests.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />

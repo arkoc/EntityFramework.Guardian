@@ -29,7 +29,7 @@ namespace EntityFramework.Guardian.Protection
                 };
 
                 var allow = policy.Check(policyContext, _kernel);
-                if(allow == false)
+                if (allow == false)
                 {
                     // If one of policies fail, we don't want to apply other ones
                     break;
