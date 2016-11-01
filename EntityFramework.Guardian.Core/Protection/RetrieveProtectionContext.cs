@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EntityFramework.Guardian.Protection
+﻿namespace EntityFramework.Guardian.Protection
 {
     public class RetrieveProtectionContext
     {

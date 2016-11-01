@@ -47,6 +47,11 @@ namespace EntityFramework.Guardian.Hooking
 
             foreach (var entry in entries)
             {
+                if(entry == null)
+                {
+                    continue;
+                }
+
                 var protectionContext = new ModifyProtectionContext()
                 {
                     Entry = entry,

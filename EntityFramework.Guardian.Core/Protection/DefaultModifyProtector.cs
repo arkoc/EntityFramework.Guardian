@@ -31,9 +31,9 @@ namespace EntityFramework.Guardian.Protection
                     ModifiedProperties = context.ModifiedProperties
                 };
 
-                var allow = policy.Apply(policyContext, _kernel);
+                var result = policy.Check(policyContext, _kernel);
 
-                if (allow == false)
+                if (result.IsSuccess == false)
                 {
                     // If one of policies fail, we don't want to apply another ones
                     throw new AccessDeniedException();

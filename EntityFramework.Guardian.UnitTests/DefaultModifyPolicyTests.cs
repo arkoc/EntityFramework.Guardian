@@ -32,9 +32,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model, AccessTypes.Update);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(false, result);
+            Assert.Equal(false, result.IsSuccess);
         }
 
         [Fact]
@@ -57,9 +57,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model, AccessTypes.Update);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(true, result);
+            Assert.Equal(true, result.IsSuccess);
 
         }
 
@@ -85,9 +85,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model, AccessTypes.Add);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(true, result);
+            Assert.Equal(true, result.IsSuccess);
         }
 
         [Fact]
@@ -120,9 +120,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model, AccessTypes.Add);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(false, result);
+            Assert.Equal(false, result.IsSuccess);
 
         }
 

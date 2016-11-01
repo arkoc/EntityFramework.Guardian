@@ -6,12 +6,9 @@ namespace EntityFramework.Guardian.Policies
 {
     public class DefaultRetrievePolicy : IRetrieveProtectionPolicy
     {
-        public bool Apply(RetrievePolicyContext context, GuardianKernel kernel)
+        public RetrievePolicyResult Check(RetrievePolicyContext context, GuardianKernel kernel)
         {
-            var isSuccess = true;
-
-            context.Entity.ProtectedProperties = new List<string>();
-            context.Entity.ProtectionResult = ProtectionResults.Allow;
+            var resut = new RetrievePolicyResult();
 
             var permissions = kernel.Permissions;
 
@@ -26,17 +23,16 @@ namespace EntityFramework.Guardian.Policies
 
             if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {
-                context.Entity.ProtectionResult = ProtectionResults.Deny;
-                isSuccess = false;
-                return isSuccess;
+                resut.IsSuccess = false;
+                return resut;
             }
 
             foreach (var columnRestriction in columnLevelRestrictions)
             {
-                context.Entity.ProtectedProperties.Add(columnRestriction.PropertyName);
+                resut.RestrictedProperties.Add(columnRestriction.PropertyName);
             }
 
-            return isSuccess;
+            return resut;
         }
     }
 }

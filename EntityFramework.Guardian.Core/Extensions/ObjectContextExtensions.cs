@@ -36,7 +36,12 @@ namespace EntityFramework.Guardian.Extensions
             ObjectStateEntry objectStateEntry;
             if (context.ObjectStateManager.TryGetObjectStateEntry(entity, out objectStateEntry))
             {
-                if (objectStateEntry.State.HasFlag(EntityState.Unchanged))
+                if(entry == null)
+                {
+                    return success;
+                }
+
+                if ((entry is IProtectableObject) && objectStateEntry.State.HasFlag(EntityState.Unchanged))
                 {
                     success = true;
                     entry = new ObjectAccessEntry(objectStateEntry);

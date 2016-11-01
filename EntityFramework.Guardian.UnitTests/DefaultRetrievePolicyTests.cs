@@ -32,9 +32,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(false, result);
+            Assert.Equal(false, result.IsSuccess);
         }
 
         [Fact]
@@ -57,9 +57,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(true, result);
+            Assert.Equal(true, result.IsSuccess);
 
         }
 
@@ -85,9 +85,9 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(true, result);
+            Assert.Equal(true, result.IsSuccess);
         }
 
         [Fact]
@@ -120,11 +120,11 @@ namespace EntityFramework.Guardian.UnitTests
 
             var policyContext = GetPolicyContext(model);
 
-            var result = _policy.Apply(policyContext, _kernel);
+            var result = _policy.Check(policyContext, _kernel);
 
-            Assert.Equal(true, result);
+            Assert.Equal(true, result.IsSuccess);
 
-            Assert.Equal(true, model.ProtectedProperties.Contains("Property1"));
+            Assert.Equal(true, result.RestrictedProperties.Contains("Property1"));
 
         }
 

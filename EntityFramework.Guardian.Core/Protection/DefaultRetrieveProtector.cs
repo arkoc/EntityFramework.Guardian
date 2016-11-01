@@ -28,9 +28,12 @@ namespace EntityFramework.Guardian.Protection
                     EntityTypeName = context.Entry.Entity.GetType().Name,
                 };
 
-                var allow = policy.Apply(policyContext, _kernel);
-                if (allow == false)
+                var result = policy.Check(policyContext, _kernel);
+                if (result.IsSuccess == false)
                 {
+                    context.Entry.Entity.ProtectionResult = Models.ProtectionResults.Deny;
+                    context.Entry.Entity.ProtectedProperties = result.RestrictedProperties;
+
                     // If one of policies fail, we don't want to apply other ones
                     break;
                 }
