@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Models;
+﻿using EntityFramework.Guardian.Entities;
 using System;
 using System.Linq;
 using System.Reflection;

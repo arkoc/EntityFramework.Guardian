@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Models
+﻿namespace EntityFramework.Guardian.Entities
 {
     public interface IPermission
     {

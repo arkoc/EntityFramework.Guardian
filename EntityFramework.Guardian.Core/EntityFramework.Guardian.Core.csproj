@@ -60,7 +60,7 @@
     <Compile Include="Hooking\DbContextHooker.cs" />
     <Compile Include="GuardianPermissions.cs" />
     <Compile Include="IObjectAccessEntry.cs" />
-    <Compile Include="Models\IPermission.cs" />
+    <Compile Include="IProtectableObject.cs" />
     <Compile Include="Policies\DefaultModifyPolicy.cs" />
     <Compile Include="Policies\DefaultRetrievePolicy.cs" />
     <Compile Include="Policies\IModifyProtectionPolicy.cs" />
@@ -69,15 +69,11 @@
     <Compile Include="Policies\ModifyPolicyResult.cs" />
     <Compile Include="Policies\RetrievePolicyContext.cs" />
     <Compile Include="Policies\RetrievePolicyResult.cs" />
+    <Compile Include="ProtectionResults.cs" />
     <Compile Include="Protection\DefaultModifyProtector.cs" />
     <Compile Include="Protection\DefaultRetrieveProtector.cs" />
     <Compile Include="Protection\IModifyProtector.cs" />
     <Compile Include="Protection\IRetrieveProtector.cs" />
-    <Compile Include="Models\AccessTypes.cs" />
-    <Compile Include="Models\IColumnRestriction.cs" />
-    <Compile Include="Models\IProtectableObject.cs" />
-    <Compile Include="Models\IRowPermission.cs" />
-    <Compile Include="Models\ProtectionResults.cs" />
     <Compile Include="ObjectAccessEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protection\ModifyProtectionContext.cs" />
@@ -85,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityFramework.Guardian.Entities\EntityFramework.Guardian.Entities.csproj">
+      <Project>{47d3d9d0-00a4-48e0-b3e6-526c28d0f5d6}</Project>
+      <Name>EntityFramework.Guardian.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Models;
+﻿using EntityFramework.Guardian.Entities;
 using System.Data.Entity;
 
 namespace EntityFramework.Guardian.Extensions

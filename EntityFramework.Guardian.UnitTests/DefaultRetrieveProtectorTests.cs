@@ -1,7 +1,7 @@
 ﻿using EntityFramework.Guardian.Protection;
 using EntityFramework.Guardian.UnitTests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
-using EntityFramework.Guardian.Models;
+using EntityFramework.Guardian.Entities;
 using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests

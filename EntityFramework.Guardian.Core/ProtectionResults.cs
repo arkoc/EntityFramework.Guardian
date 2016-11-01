@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Models
+﻿namespace EntityFramework.Guardian
 {
     /// <summary>
     /// 

@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Models;
+﻿using EntityFramework.Guardian.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;

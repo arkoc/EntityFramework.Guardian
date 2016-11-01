@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityFramework.Guardian.Models
+namespace EntityFramework.Guardian
 {
     /// <summary>
     /// 

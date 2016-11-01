@@ -16,7 +16,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The entity key provider.
         /// </value>
-        public IEntityKeyProvider EntityKeyProvider { get; private set; }
+        public IEntityKeyProvider EntityKeyProvider { get; set; }
 
         /// <summary>
         /// Gets the modify protector.
@@ -24,7 +24,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protector.
         /// </value>
-        public IModifyProtector ModifyProtector { get; private set; }
+        public IModifyProtector ModifyProtector { get; set; }
 
         /// <summary>
         /// Gets the retrieve protector.
@@ -32,7 +32,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protector.
         /// </value>
-        public IRetrieveProtector RetrieveProtector { get; private set; }
+        public IRetrieveProtector RetrieveProtector { get; set; }
 
         /// <summary>
         /// Gets the modify protection policies.

@@ -1,9 +1,11 @@
-﻿namespace EntityFramework.Guardian.Models
+﻿using EntityFramework.Guardian.Entities;
+
+namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IColumnRestriction
+    public interface IRowPermission
     {
         /// <summary>
         /// Gets or sets the name of the entity type.
@@ -14,12 +16,12 @@
         string EntityTypeName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the property.
+        /// Gets or sets the row identifier.
         /// </summary>
         /// <value>
-        /// The name of the property.
+        /// The row identifier.
         /// </value>
-        string PropertyName { get; set; }
+        string RowIdentifier { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the access.

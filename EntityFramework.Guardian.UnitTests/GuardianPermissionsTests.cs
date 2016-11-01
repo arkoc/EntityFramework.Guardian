@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Models;
+﻿using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.UnitTests.Models;
 using System.Collections.Generic;
 using Xunit;
