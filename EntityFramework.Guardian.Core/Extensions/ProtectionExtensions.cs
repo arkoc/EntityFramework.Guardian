@@ -5,8 +5,17 @@ using System.Reflection;
 
 namespace EntityFramework.Guardian.Extensions
 {
+    /// <summary>
+    /// <see cref="IQueryable{IProtectableObject}"/> extensions
+    /// </summary>
     public static class ProtectionExtensions
     {
+        /// <summary>
+        /// Protects the specified source.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>Protected source.</returns>
         public static IQueryable<TEntity> Protect<TEntity>(this IQueryable<TEntity> source) where TEntity : class, IProtectableObject
         {
             if (source == null)
@@ -23,6 +32,12 @@ namespace EntityFramework.Guardian.Extensions
             return protectedSource.AsQueryable();
         }
 
+        /// <summary>
+        /// Protects the specified source.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="source">The source.</param>
+        /// <returns>Protected source.</returns>
         public static TEntity Protect<TEntity>(this TEntity source) where TEntity : class, IProtectableObject
         {
             if (source == null)
@@ -40,6 +55,11 @@ namespace EntityFramework.Guardian.Extensions
             return result;
         }
 
+        /// <summary>
+        /// Protects the entiry properties.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the entity.</typeparam>
+        /// <param name="entity">The entity.</param>
         private static void ProtectProperties<TEntity>(TEntity entity) where TEntity : IProtectableObject
         {
             if (entity.ProtectedProperties == null) { return; }
@@ -50,6 +70,11 @@ namespace EntityFramework.Guardian.Extensions
             }
         }
 
+        /// <summary>
+        /// Sets the default value to property.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="propName">Name of the property.</param>
         private static void SetDefaultValue(object obj, string propName)
         {
             var objType = obj.GetType();

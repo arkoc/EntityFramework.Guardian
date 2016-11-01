@@ -3,8 +3,16 @@ using System.Data.Entity;
 
 namespace EntityFramework.Guardian.Extensions
 {
+    /// <summary>
+    /// <see cref="EntityState"/> Extensions
+    /// </summary>
     internal static class EntityStateExtensions
     {
+        /// <summary>
+        /// Gets the type of the access.
+        /// </summary>
+        /// <param name="state">The state.</param>
+        /// <returns>Mapped AccessType of EntityState</returns>
         internal static AccessTypes GetAccessType(this EntityState state)
         {
             var accessType = AccessTypes.Get;

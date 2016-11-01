@@ -4,10 +4,19 @@ using System;
 
 namespace EntityFramework.Guardian.Protection
 {
+    /// <summary>
+    /// Default implementation of IModifyProtector that protects by registered policies.
+    /// </summary>
+    /// <seealso cref="EntityFramework.Guardian.Protection.IModifyProtector" />
     public class DefaultModifyProtector : IModifyProtector
     {
         private readonly GuardianKernel _kernel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultModifyProtector"/> class.
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        /// <exception cref="System.ArgumentNullException">kernel</exception>
         public DefaultModifyProtector(GuardianKernel kernel)
         {
             if (kernel == null)
@@ -18,6 +27,11 @@ namespace EntityFramework.Guardian.Protection
             _kernel = kernel;
         }
 
+        /// <summary>
+        /// Protects by the specified context.
+        /// </summary>
+        /// <param name="context">The protection context.</param>
+        /// <exception cref="EntityFramework.Guardian.Exceptions.AccessDeniedException"></exception>
         public void Protect(ModifyProtectionContext context)
         {
             foreach (var policy in _kernel.ModifyProtectionPolicies)

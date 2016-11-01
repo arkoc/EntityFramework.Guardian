@@ -2,8 +2,18 @@
 
 namespace EntityFramework.Guardian.Policies
 {
+    /// <summary>
+    /// Default implementation of <see cref="IModifyProtectionPolicy"/> that checks for built-in permissions
+    /// </summary>
+    /// <seealso cref="EntityFramework.Guardian.Policies.IModifyProtectionPolicy" />
     public class DefaultModifyPolicy : IModifyProtectionPolicy
     {
+        /// <summary>
+        /// Checks the policy by specified context and kernel.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="kernel">The kernel.</param>
+        /// <returns><see cref="ModifyPolicyResult"/> of policy checking.</returns>
         public ModifyPolicyResult Check(ModifyPolicyContext context, GuardianKernel kernel)
         {
             var result = new ModifyPolicyResult();
