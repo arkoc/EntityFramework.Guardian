@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EntityFramework.Guardian
+namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
     /// 
@@ -14,7 +13,6 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The protection result.
         /// </value>
-        [NotMapped]
         ProtectionResults ProtectionResult { get; set; }
 
         /// <summary>
@@ -23,7 +21,6 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The protected properties.
         /// </value>
-        [NotMapped]
         List<string> ProtectedProperties { get; set; }
     }
 }

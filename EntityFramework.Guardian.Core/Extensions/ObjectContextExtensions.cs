@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EntityFramework.Guardian.Entities;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;

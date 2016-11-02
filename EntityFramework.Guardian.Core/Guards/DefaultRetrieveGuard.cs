@@ -1,4 +1,5 @@
-﻿using EntityFramework.Guardian.Policies;
+﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Policies;
 using System;
 using System.Collections.Generic;
 
