@@ -35,7 +35,7 @@ namespace EntityFramework.Guardian.Guards
         /// <param name="context">The protection context.</param>
         public void Protect(RetrieveProtectionContext context)
         {
-            foreach (var policy in _kernel.RetrieveProtectionPolicies)
+            foreach (var policy in _kernel.RetrievePolicies)
             {
                 var policyContext = new RetrievePolicyContext()
                 {

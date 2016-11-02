@@ -40,7 +40,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protection policies.
         /// </value>
-        public List<IModifyPolicy> ModifyProtectionPolicies { get; private set; }
+        public List<IModifyPolicy> ModifyPolicies { get; private set; }
 
         /// <summary>
         /// Gets the retrieve protection policies.
@@ -48,7 +48,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protection policies.
         /// </value>
-        public List<IRetrievePolicy> RetrieveProtectionPolicies { get; private set; }
+        public List<IRetrievePolicy> RetrievePolicies { get; private set; }
 
         /// <summary>
         /// Gets or sets the principal.
@@ -68,11 +68,11 @@ namespace EntityFramework.Guardian
             ModifyGuard = new DefaultModifyGuard(this);
             RetrieveGuard = new DefaultRetrieveGuard(this);
 
-            ModifyProtectionPolicies = new List<IModifyPolicy>();
-            RetrieveProtectionPolicies = new List<IRetrievePolicy>();
+            ModifyPolicies = new List<IModifyPolicy>();
+            RetrievePolicies = new List<IRetrievePolicy>();
 
-            ModifyProtectionPolicies.Add(new DefaultModifyPolicy());
-            RetrieveProtectionPolicies.Add(new DefaultRetrievePolicy());
+            ModifyPolicies.Add(new DefaultModifyPolicy());
+            RetrievePolicies.Add(new DefaultRetrievePolicy());
 
             Principal = new DbPrincipal();
         }

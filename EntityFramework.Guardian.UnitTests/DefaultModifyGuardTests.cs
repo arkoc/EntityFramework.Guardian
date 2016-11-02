@@ -81,7 +81,7 @@ namespace EntityFramework.Guardian.UnitTests
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name
             });
-            kernel.ModifyProtectionPolicies.Add(new DummyModifyPolicy());
+            kernel.ModifyPolicies.Add(new DummyModifyPolicy());
 
             var guard = new DefaultModifyGuard(kernel);
 
