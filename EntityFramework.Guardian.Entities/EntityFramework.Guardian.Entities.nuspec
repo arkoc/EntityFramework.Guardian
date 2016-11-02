@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/arkoc/EntityFramework.Guardian/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/arkoc/EntityFramework.Guardian</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright (c) 2016 Aram Kocharyan</copyright>
+    <tags>EntityFramework Database Security Row-Level Column-Level</tags>
+  </metadata>
+</package>

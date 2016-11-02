@@ -1,7 +1,7 @@
 ﻿namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// ModifyPolicyResult that result from <see cref="IModifyProtectionPolicy.Check(ModifyPolicyContext, GuardianKernel)"/> method"/> 
+    /// ModifyPolicyResult that result from <see cref="IModifyPolicy.Check(ModifyPolicyContext, GuardianKernel)"/> method"/> 
     /// </summary>
     public class ModifyPolicyResult
     {

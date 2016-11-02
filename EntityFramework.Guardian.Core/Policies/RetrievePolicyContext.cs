@@ -3,7 +3,7 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Context used in <see cref="IRetrieveProtectionPolicy.Check(RetrievePolicyContext, GuardianKernel)"/>
+    /// Context used in <see cref="IRetrievePolicy.Check(RetrievePolicyContext, GuardianKernel)"/>
     /// </summary>
     public class RetrievePolicyContext
     {

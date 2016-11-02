@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Protection;
+﻿using EntityFramework.Guardian.Guards;
 using EntityFramework.Guardian.UnitTests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
@@ -6,11 +6,11 @@ using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class DefaultRetrieveProtectorTests
+    public class DefaultRetrieveGuardTests
     {
-        private DefaultRetrieveProtector _protector;
+        private DefaultRetrieveGuard _guard;
 
-        public DefaultRetrieveProtectorTests()
+        public DefaultRetrieveGuardTests()
         {
             var kernel = new GuardianKernel();
             kernel.Permissions.General.Add(new TestPermission()
@@ -19,14 +19,14 @@ namespace EntityFramework.Guardian.UnitTests
                 EntityTypeName = typeof(Model1).Name
             });
 
-            _protector = new DefaultRetrieveProtector(kernel);
+            _guard = new DefaultRetrieveGuard(kernel);
         }
 
         [Fact]
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _protector.Protect(new RetrieveProtectionContext()
+            _guard.Protect(new RetrieveProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
             });
@@ -38,7 +38,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldDeny()
         {
             var model = new Model2() { Id = "1" };
-            _protector.Protect(new RetrieveProtectionContext()
+            _guard.Protect(new RetrieveProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
             });
@@ -58,10 +58,10 @@ namespace EntityFramework.Guardian.UnitTests
             });
             kernel.RetrieveProtectionPolicies.Add(new DummyRetrievePolicy());
 
-            var protector = new DefaultRetrieveProtector(kernel);
+            var guard = new DefaultRetrieveGuard(kernel);
 
             var model = new Model1() { Id = 1 };
-            protector.Protect(new RetrieveProtectionContext()
+            guard.Protect(new RetrieveProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
             });

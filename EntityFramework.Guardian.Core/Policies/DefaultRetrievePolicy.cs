@@ -5,10 +5,10 @@ using System.Linq;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Default implementation of <see cref="IRetrieveProtectionPolicy"/> that checks for built-in permissions
+    /// Default implementation of <see cref="IRetrievePolicy"/> that checks for built-in permissions
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrieveProtectionPolicy" />
-    public class DefaultRetrievePolicy : IRetrieveProtectionPolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievePolicy" />
+    public class DefaultRetrievePolicy : IRetrievePolicy
     {
         /// <summary>
         /// Checks the policy by specified context and kernel.

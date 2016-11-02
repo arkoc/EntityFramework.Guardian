@@ -1,14 +1,15 @@
-﻿namespace EntityFramework.Guardian.Protection
+﻿namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface IRetrieveProtector
+    public interface IModifyGuard
     {
         /// <summary>
         /// Protects by the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        void Protect(RetrieveProtectionContext context);
+        void Protect(ModifyProtectionContext context);
     }
 }
+

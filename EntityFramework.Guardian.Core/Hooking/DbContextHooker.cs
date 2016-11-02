@@ -1,5 +1,5 @@
 ﻿using EntityFramework.Guardian.Extensions;
-using EntityFramework.Guardian.Protection;
+using EntityFramework.Guardian.Guards;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -76,7 +76,7 @@ namespace EntityFramework.Guardian.Hooking
                     ModifiedProperties = context.GetModifiedProperties(entry.Entity)
                 };
 
-                _kernel.ModifyProtector.Protect(protectionContext);
+                _kernel.ModifyGuard.Protect(protectionContext);
             }
 
         }
@@ -97,7 +97,7 @@ namespace EntityFramework.Guardian.Hooking
                 {
                     Entry = objectAccessEntry
                 };
-                _kernel.RetrieveProtector.Protect(protectionContext);
+                _kernel.RetrieveGuard.Protect(protectionContext);
             }
         }
     }

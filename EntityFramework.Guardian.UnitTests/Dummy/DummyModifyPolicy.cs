@@ -2,7 +2,7 @@
 
 namespace EntityFramework.Guardian.UnitTests.Dummy
 {
-    public class DummyModifyPolicy : IModifyProtectionPolicy
+    public class DummyModifyPolicy : IModifyPolicy
     {
         public ModifyPolicyResult Check(ModifyPolicyContext context, GuardianKernel kernel)
         {

@@ -2,22 +2,22 @@
 using System;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.Protection
+namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IRetrieveProtector that protects by registered policies.
+    /// Default implementation of IRetrieveGuard.
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Protection.IRetrieveProtector" />
-    public class DefaultRetrieveProtector : IRetrieveProtector
+    /// <seealso cref="EntityFramework.Guardian.Guards.IRetrieveGuard" />
+    public class DefaultRetrieveGuard : IRetrieveGuard
     {
         private readonly GuardianKernel _kernel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultRetrieveProtector"/> class.
+        /// Initializes a new instance of the <see cref="DefaultRetrieveGuard"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <exception cref="System.ArgumentNullException">kernel</exception>
-        public DefaultRetrieveProtector(GuardianKernel kernel)
+        public DefaultRetrieveGuard(GuardianKernel kernel)
         {
             if (kernel == null)
             {

@@ -1,6 +1,6 @@
 ﻿using EntityFramework.Guardian.Configuration;
 using EntityFramework.Guardian.Policies;
-using EntityFramework.Guardian.Protection;
+using EntityFramework.Guardian.Guards;
 using System.Collections.Generic;
 
 namespace EntityFramework.Guardian
@@ -24,7 +24,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protector.
         /// </value>
-        public IModifyProtector ModifyProtector { get; set; }
+        public IModifyGuard ModifyGuard { get; set; }
 
         /// <summary>
         /// Gets the retrieve protector.
@@ -32,7 +32,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protector.
         /// </value>
-        public IRetrieveProtector RetrieveProtector { get; set; }
+        public IRetrieveGuard RetrieveGuard { get; set; }
 
         /// <summary>
         /// Gets the modify protection policies.
@@ -40,7 +40,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protection policies.
         /// </value>
-        public List<IModifyProtectionPolicy> ModifyProtectionPolicies { get; private set; }
+        public List<IModifyPolicy> ModifyProtectionPolicies { get; private set; }
 
         /// <summary>
         /// Gets the retrieve protection policies.
@@ -48,7 +48,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protection policies.
         /// </value>
-        public List<IRetrieveProtectionPolicy> RetrieveProtectionPolicies { get; private set; }
+        public List<IRetrievePolicy> RetrieveProtectionPolicies { get; private set; }
 
         /// <summary>
         /// Gets or sets the permissions.
@@ -65,11 +65,11 @@ namespace EntityFramework.Guardian
         {
             EntityKeyProvider = new DefaultIdKeyProvider();
 
-            ModifyProtector = new DefaultModifyProtector(this);
-            RetrieveProtector = new DefaultRetrieveProtector(this);
+            ModifyGuard = new DefaultModifyGuard(this);
+            RetrieveGuard = new DefaultRetrieveGuard(this);
 
-            ModifyProtectionPolicies = new List<IModifyProtectionPolicy>();
-            RetrieveProtectionPolicies = new List<IRetrieveProtectionPolicy>();
+            ModifyProtectionPolicies = new List<IModifyPolicy>();
+            RetrieveProtectionPolicies = new List<IRetrievePolicy>();
 
             ModifyProtectionPolicies.Add(new DefaultModifyPolicy());
             RetrieveProtectionPolicies.Add(new DefaultRetrievePolicy());

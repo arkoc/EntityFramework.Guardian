@@ -1,16 +1,16 @@
 ﻿namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Retrieve Policy interface
+    /// Modify Policy interface
     /// </summary>
-    public interface IRetrieveProtectionPolicy
+    public interface IModifyPolicy
     {
         /// <summary>
         /// Checks the policy by specified context and kernel.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="kernel">The kernel.</param>
-        /// <returns><see cref="RetrievePolicyResult"/> of policy checking.</returns>
-        RetrievePolicyResult Check(RetrievePolicyContext context, GuardianKernel kernel);
+        /// <returns><see cref="ModifyPolicyResult"/> of policy checking.</returns>
+        ModifyPolicyResult Check(ModifyPolicyContext context, GuardianKernel kernel);
     }
 }

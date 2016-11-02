@@ -3,10 +3,10 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Default implementation of <see cref="IModifyProtectionPolicy"/> that checks for built-in permissions
+    /// Default implementation of <see cref="IModifyPolicy"/> that checks for built-in permissions
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IModifyProtectionPolicy" />
-    public class DefaultModifyPolicy : IModifyProtectionPolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IModifyPolicy" />
+    public class DefaultModifyPolicy : IModifyPolicy
     {
         /// <summary>
         /// Checks the policy by specified context and kernel.

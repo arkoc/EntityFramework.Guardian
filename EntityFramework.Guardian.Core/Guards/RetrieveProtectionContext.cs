@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.Protection
+﻿namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
     /// 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Context used in <see cref="IModifyProtectionPolicy.Check(ModifyPolicyContext, GuardianKernel)"/>
+    /// Context used in <see cref="IModifyPolicy.Check(ModifyPolicyContext, GuardianKernel)"/>
     /// </summary>
     public class ModifyPolicyContext
     {

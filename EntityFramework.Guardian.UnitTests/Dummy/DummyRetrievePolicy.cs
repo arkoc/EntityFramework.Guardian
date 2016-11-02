@@ -2,7 +2,7 @@
 
 namespace EntityFramework.Guardian.UnitTests.Dummy
 {
-    public class DummyRetrievePolicy : IRetrieveProtectionPolicy
+    public class DummyRetrievePolicy : IRetrievePolicy
     {
         public RetrievePolicyResult Check(RetrievePolicyContext context, GuardianKernel kernel)
         {

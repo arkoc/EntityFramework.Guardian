@@ -1,4 +1,4 @@
-﻿using EntityFramework.Guardian.Protection;
+﻿using EntityFramework.Guardian.Guards;
 using EntityFramework.Guardian.UnitTests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
@@ -7,11 +7,11 @@ using EntityFramework.Guardian.Exceptions;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class DefaultModifyProtectorTests
+    public class DefaultModifyGuardTests
     {
-        private DefaultModifyProtector _protector;
+        private DefaultModifyGuard _guard;
 
-        public DefaultModifyProtectorTests()
+        public DefaultModifyGuardTests()
         {
             var kernel = new GuardianKernel();
             kernel.Permissions.General.Add(new TestPermission()
@@ -27,14 +27,14 @@ namespace EntityFramework.Guardian.UnitTests
                 PropertyName = "Property1"
             });
 
-            _protector = new DefaultModifyProtector(kernel);
+            _guard = new DefaultModifyGuard(kernel);
         }
 
         [Fact]
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _protector.Protect(new ModifyProtectionContext()
+            _guard.Protect(new ModifyProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Add, model),
                 ModifiedProperties = {"Property1"}
@@ -47,7 +47,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _protector.Protect(new ModifyProtectionContext()
+                _guard.Protect(new ModifyProtectionContext()
                 {
                     Entry = new DummyObjectAccessEntry(AccessTypes.Delete, model),
                     ModifiedProperties = { "Property1" }
@@ -62,7 +62,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _protector.Protect(new ModifyProtectionContext()
+                _guard.Protect(new ModifyProtectionContext()
                 {
                     Entry = new DummyObjectAccessEntry(AccessTypes.Update, model),
                     ModifiedProperties = { "Property1" }
@@ -82,13 +82,13 @@ namespace EntityFramework.Guardian.UnitTests
             });
             kernel.ModifyProtectionPolicies.Add(new DummyModifyPolicy());
 
-            var protector = new DefaultModifyProtector(kernel);
+            var guard = new DefaultModifyGuard(kernel);
 
             var model = new Model1() { Id = 1 };
 
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                protector.Protect(new ModifyProtectionContext()
+                guard.Protect(new ModifyProtectionContext()
                 {
                     Entry = new DummyObjectAccessEntry(AccessTypes.Add, model),
                     ModifiedProperties = { "Property1" }

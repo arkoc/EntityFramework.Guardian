@@ -2,22 +2,22 @@
 using EntityFramework.Guardian.Policies;
 using System;
 
-namespace EntityFramework.Guardian.Protection
+namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IModifyProtector that protects by registered policies.
+    /// Default implementation of IModifyGuard.
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Protection.IModifyProtector" />
-    public class DefaultModifyProtector : IModifyProtector
+    /// <seealso cref="EntityFramework.Guardian.Guards.IModifyGuard" />
+    public class DefaultModifyGuard : IModifyGuard
     {
         private readonly GuardianKernel _kernel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultModifyProtector"/> class.
+        /// Initializes a new instance of the <see cref="DefaultModifyGuard"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <exception cref="System.ArgumentNullException">kernel</exception>
-        public DefaultModifyProtector(GuardianKernel kernel)
+        public DefaultModifyGuard(GuardianKernel kernel)
         {
             if (kernel == null)
             {

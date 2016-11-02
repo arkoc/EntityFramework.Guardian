@@ -61,9 +61,9 @@
   <ItemGroup>
     <Compile Include="DefaultIdKeyProviderTests.cs" />
     <Compile Include="DefaultModifyPolicyTests.cs" />
-    <Compile Include="DefaultModifyProtectorTests.cs" />
+    <Compile Include="DefaultModifyGuardTests.cs" />
     <Compile Include="DefaultRetrievePolicyTests.cs" />
-    <Compile Include="DefaultRetrieveProtectorTests.cs" />
+    <Compile Include="DefaultRetrieveGuardTests.cs" />
     <Compile Include="Dummy\DummyModifyPolicy.cs" />
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
     <Compile Include="Dummy\DummyRetrievePolicy.cs" />
