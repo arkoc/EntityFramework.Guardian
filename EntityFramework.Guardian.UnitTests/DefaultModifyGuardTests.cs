@@ -4,6 +4,7 @@ using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
 using Xunit;
 using EntityFramework.Guardian.Exceptions;
+using EntityFramework.Guardian.Extensions;
 
 namespace EntityFramework.Guardian.UnitTests
 {
@@ -14,13 +15,13 @@ namespace EntityFramework.Guardian.UnitTests
         public DefaultModifyGuardTests()
         {
             var kernel = new GuardianKernel();
-            kernel.Permissions.General.Add(new TestPermission()
+            kernel.UsePermission(new TestPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name
             });
 
-            kernel.Permissions.ColumnLevel.Add(new TestColumnRestriction()
+            kernel.UseRestriction(new TestColumnRestriction()
             {
                 AccessType = AccessTypes.Update,
                 EntityTypeName = typeof(Model1).Name,
@@ -75,7 +76,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldCallUserDefinedPolicy()
         {
             var kernel = new GuardianKernel();
-            kernel.Permissions.General.Add(new TestPermission()
+            kernel.UsePermission(new TestPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name

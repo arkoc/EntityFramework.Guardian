@@ -51,12 +51,12 @@ namespace EntityFramework.Guardian
         public List<IRetrievePolicy> RetrieveProtectionPolicies { get; private set; }
 
         /// <summary>
-        /// Gets or sets the permissions.
+        /// Gets or sets the principal.
         /// </summary>
         /// <value>
-        /// The permissions.
+        /// The principal.
         /// </value>
-        public GuardianPermissions Permissions { get; set; }
+        public IDbPrincipal Principal { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GuardianKernel"/> class.
@@ -74,7 +74,7 @@ namespace EntityFramework.Guardian
             ModifyProtectionPolicies.Add(new DefaultModifyPolicy());
             RetrieveProtectionPolicies.Add(new DefaultRetrievePolicy());
 
-            Permissions = new GuardianPermissions();
+            Principal = new DbPrincipal();
         }
     }
 }

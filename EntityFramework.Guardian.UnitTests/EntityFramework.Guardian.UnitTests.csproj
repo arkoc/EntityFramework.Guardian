@@ -67,7 +67,7 @@
     <Compile Include="Dummy\DummyModifyPolicy.cs" />
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
     <Compile Include="Dummy\DummyRetrievePolicy.cs" />
-    <Compile Include="GuardianPermissionsTests.cs" />
+    <Compile Include="DbPrincipalTests.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />
     <Compile Include="Models\Model3.cs" />

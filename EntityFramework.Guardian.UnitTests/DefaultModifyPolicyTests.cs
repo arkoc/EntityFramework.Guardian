@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.UnitTests.Models;
 using Xunit;
@@ -20,9 +21,6 @@ namespace EntityFramework.Guardian.UnitTests
         [Fact]
         public void Check_WithNoPermissions_ShouldReturnFalse()
         {
-            var permissions = new GuardianPermissions();
-            _kernel.Permissions = permissions;
-
             var model = new Model1()
             {
                 Id = 1,
@@ -47,13 +45,11 @@ namespace EntityFramework.Guardian.UnitTests
                 Property2 = "Property2"
             };
 
-            var permissions = new GuardianPermissions();
-            permissions.General.Add(new TestPermission()
+            _kernel.UsePermission(new TestPermission()
             {
                 AccessType = AccessTypes.Update,
                 EntityTypeName = model.GetType().Name
             });
-            _kernel.Permissions = permissions;
 
             var policyContext = GetPolicyContext(model, AccessTypes.Update);
 
@@ -73,15 +69,13 @@ namespace EntityFramework.Guardian.UnitTests
                 Property2 = "Property2"
             };
 
-            var permissions = new GuardianPermissions();
-            permissions.RowLevel.Add(new TestRowPermission()
+            _kernel.UsePermission(new TestRowPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = model.GetType().Name,
                 RowIdentifier = "1"
             });
 
-            _kernel.Permissions = permissions;
 
             var policyContext = GetPolicyContext(model, AccessTypes.Add);
 
@@ -100,23 +94,20 @@ namespace EntityFramework.Guardian.UnitTests
                 Property2 = "Property2"
             };
 
-            var permissions = new GuardianPermissions();
-
-            permissions.RowLevel.Add(new TestRowPermission()
+            _kernel.UsePermission(new TestRowPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = model.GetType().Name,
                 RowIdentifier = "1"
             });
 
-            permissions.ColumnLevel.Add(new TestColumnRestriction()
+            _kernel.UseRestriction(new TestColumnRestriction()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = model.GetType().Name,
                 PropertyName = "Property1"
             });
 
-            _kernel.Permissions = permissions;
 
             var policyContext = GetPolicyContext(model, AccessTypes.Add);
 

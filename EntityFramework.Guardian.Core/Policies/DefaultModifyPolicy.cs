@@ -18,16 +18,16 @@ namespace EntityFramework.Guardian.Policies
         {
             var result = new ModifyPolicyResult();
 
-            var permissions = kernel.Permissions;
+            var principal = kernel.Principal;
 
-            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, context.AccessType);
+            var generalPermissions = principal.GetGeneralPermissions(context.EntityTypeName, context.AccessType);
 
-            var rowLevelPermissions = permissions.GetRowLevelPermissions(
+            var rowLevelPermissions = principal.GetRowLevelPermissions(
                 context.EntityTypeName,
-                context.EntityRowKey,
-                context.AccessType);
+                context.AccessType,
+                context.EntityRowKey);
 
-            var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
+            var columnLevelRestrictions = principal.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
 
             if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {

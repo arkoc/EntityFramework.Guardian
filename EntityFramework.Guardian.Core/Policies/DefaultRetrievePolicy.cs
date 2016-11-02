@@ -1,5 +1,4 @@
 ﻿using EntityFramework.Guardian.Entities;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace EntityFramework.Guardian.Policies
@@ -20,16 +19,16 @@ namespace EntityFramework.Guardian.Policies
         {
             var resut = new RetrievePolicyResult();
 
-            var permissions = kernel.Permissions;
+            var principal = kernel.Principal;
 
-            var generalPermissions = permissions.GetGeneralPermissions(context.EntityTypeName, AccessTypes.Get);
+            var generalPermissions = principal.GetGeneralPermissions(context.EntityTypeName, AccessTypes.Get);
 
-            var rowLevelPermissions = permissions.GetRowLevelPermissions(
+            var rowLevelPermissions = principal.GetRowLevelPermissions(
                 context.EntityTypeName,
-                context.EntityRowKey,
-                AccessTypes.Get);
+                AccessTypes.Get,
+                context.EntityRowKey);
 
-            var columnLevelRestrictions = permissions.GetColumnLevelRestrictions(context.EntityTypeName, AccessTypes.Get);
+            var columnLevelRestrictions = principal.GetColumnLevelRestrictions(context.EntityTypeName, AccessTypes.Get);
 
             if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {

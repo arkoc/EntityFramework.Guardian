@@ -1,6 +1,4 @@
-﻿using EntityFramework.Guardian.Entities;
-
-namespace EntityFramework.Guardian.Entities
+﻿namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
     /// 

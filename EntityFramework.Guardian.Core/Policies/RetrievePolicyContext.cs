@@ -1,6 +1,4 @@
-﻿using EntityFramework.Guardian.Entities;
-
-namespace EntityFramework.Guardian.Policies
+﻿namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
     /// Context used in <see cref="IRetrievePolicy.Check(RetrievePolicyContext, GuardianKernel)"/>

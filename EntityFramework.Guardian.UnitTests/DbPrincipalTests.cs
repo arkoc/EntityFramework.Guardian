@@ -6,63 +6,63 @@ using Xunit;
 namespace EntityFramework.Guardian.UnitTests
 {
 
-    public class GuardianPermissionsTests
+    public class DbPrincipalTests
     {
-        private GuardianPermissions _permissions;
-        public GuardianPermissionsTests()
+        private DbPrincipal _princpal;
+        public DbPrincipalTests()
         {
-            _permissions = new GuardianPermissions();
-            _permissions.General.AddRange(Seed.GeneralPermissions);
-            _permissions.RowLevel.AddRange(Seed.RowPermissions);
-            _permissions.ColumnLevel.AddRange(Seed.ColumnRestrictions);
+            _princpal = new DbPrincipal();
+            _princpal.GeneralPermissions.AddRange(Seed.GeneralPermissions);
+            _princpal.RowLevelPermissions.AddRange(Seed.RowPermissions);
+            _princpal.ColumnLevelRestrictions.AddRange(Seed.ColumnRestrictions);
         }
 
         [Fact]
         public void GetGeneralPermissions_ShouldReturnEmpty()
         {
-            var result = _permissions.GetGeneralPermissions(typeof(Model2).Name, AccessTypes.Get);
+            var result = _princpal.GetGeneralPermissions(typeof(Model2).Name, AccessTypes.Get);
             Assert.Equal(0, result.Count);
         }
 
         [Fact]
         public void GetGeneralPermissions_ShouldReturnResult()
         {
-            var result = _permissions.GetGeneralPermissions(typeof(Model2).Name, AccessTypes.Delete);
+            var result = _princpal.GetGeneralPermissions(typeof(Model2).Name, AccessTypes.Delete);
             Assert.Equal(1, result.Count);
         }
 
         [Fact]
         public void GetRowPermissions_ShouldReturnEmpty1()
         {
-            var result = _permissions.GetRowLevelPermissions(typeof(Model1).Name, "2", AccessTypes.Get);
+            var result = _princpal.GetRowLevelPermissions(typeof(Model1).Name, AccessTypes.Get, "2");
             Assert.Equal(0, result.Count);
         }
 
         [Fact]
         public void GetRowPermissions_ShouldReturnEmpty2()
         {
-            var result = _permissions.GetRowLevelPermissions(typeof(Model1).Name, "1", AccessTypes.Update);
+            var result = _princpal.GetRowLevelPermissions(typeof(Model1).Name, AccessTypes.Update, "1");
             Assert.Equal(0, result.Count);
         }
 
         [Fact]
         public void GetRowPermissions_ShouldReturnResult()
         {
-            var result = _permissions.GetRowLevelPermissions(typeof(Model2).Name, "2", AccessTypes.Delete);
+            var result = _princpal.GetRowLevelPermissions(typeof(Model2).Name, AccessTypes.Delete, "2");
             Assert.Equal(1, result.Count);
         }
 
         [Fact]
         public void GetColumnRestrictions_ShouldReturnEmpty()
         {
-            var result = _permissions.GetColumnLevelRestrictions(typeof(Model1).Name, AccessTypes.Update);
+            var result = _princpal.GetColumnLevelRestrictions(typeof(Model1).Name, AccessTypes.Update);
             Assert.Equal(0, result.Count);
         }
 
         [Fact]
         public void GetColumnRestrictions_ShouldReturnResult()
         {
-            var result = _permissions.GetColumnLevelRestrictions(typeof(Model2).Name, AccessTypes.Update);
+            var result = _princpal.GetColumnLevelRestrictions(typeof(Model2).Name, AccessTypes.Update);
             Assert.Equal(1, result.Count);
         }
 
