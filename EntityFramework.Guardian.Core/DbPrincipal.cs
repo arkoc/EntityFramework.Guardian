@@ -18,13 +18,11 @@ namespace EntityFramework.Guardian
         /// </summary>
         /// <param name="generalPermissions">The general permissions.</param>
         /// <param name="rowLevelPermissions">The row level permissions.</param>
-        /// <param name="columnLevelRestrictions">The column level restrictions.</param>
         /// <exception cref="System.ArgumentNullException">
         /// </exception>
         public DbPrincipal(
             List<IPermission> generalPermissions,
-            List<IRowPermission> rowLevelPermissions,
-            List<IColumnRestriction> columnLevelRestrictions)
+            List<IRowPermission> rowLevelPermissions)
         {
 
             if (generalPermissions == null)
@@ -37,14 +35,8 @@ namespace EntityFramework.Guardian
                 throw new ArgumentNullException(nameof(rowLevelPermissions));
             }
 
-            if (columnLevelRestrictions == null)
-            {
-                throw new ArgumentNullException(nameof(columnLevelRestrictions));
-            }
-
             GeneralPermissions = generalPermissions;
             RowLevelPermissions = rowLevelPermissions;
-            ColumnLevelRestrictions = columnLevelRestrictions;
         }
 
         /// <summary>
@@ -62,14 +54,6 @@ namespace EntityFramework.Guardian
         /// The row level permissions.
         /// </value>
         public List<IRowPermission> RowLevelPermissions { get; private set; } = new List<IRowPermission>();
-
-        /// <summary>
-        /// Gets the column level restrictions.
-        /// </summary>
-        /// <value>
-        /// The column level restrictions.
-        /// </value>
-        public List<IColumnRestriction> ColumnLevelRestrictions { get; private set; } = new List<IColumnRestriction>();
 
         /// <summary>
         /// Gets the general permissions.
@@ -95,19 +79,6 @@ namespace EntityFramework.Guardian
         {
             return RowLevelPermissions
                 .Where(x => x.EntityTypeName == entityTypeName && x.AccessType == accessType && x.RowIdentifier == key)
-                .ToList();
-        }
-
-        /// <summary>
-        /// Gets the column level restrictions.
-        /// </summary>
-        /// <param name="entityTypeName">Name of the entity type.</param>
-        /// <param name="accessType">Type of the access.</param>
-        /// <returns></returns>
-        public virtual List<IColumnRestriction> GetColumnLevelRestrictions(string entityTypeName, AccessTypes accessType)
-        {
-            return ColumnLevelRestrictions
-                .Where(x => x.EntityTypeName == entityTypeName && x.AccessType == accessType)
                 .ToList();
         }
     }

@@ -45,24 +45,5 @@ namespace EntityFramework.Guardian.Extensions
 
             return kernel;
         }
-
-        /// <summary>
-        /// Uses the restriction.
-        /// </summary>
-        /// <param name="kernel">The guardian kernel.</param>
-        /// <param name="restriction">The restriction to add in DbPrincipal.</param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException">restriction</exception>
-        public static GuardianKernel UseRestriction(this GuardianKernel kernel, IColumnRestriction restriction)
-        {
-            if (restriction == null)
-            {
-                throw new ArgumentNullException(nameof(restriction));
-            }
-
-            kernel.Principal.ColumnLevelRestrictions.Add(restriction);
-
-            return kernel;
-        }
     }
 }

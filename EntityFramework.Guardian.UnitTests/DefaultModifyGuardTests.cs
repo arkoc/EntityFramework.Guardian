@@ -15,18 +15,19 @@ namespace EntityFramework.Guardian.UnitTests
         public DefaultModifyGuardTests()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePermission(new TestPermission()
+
+            var permission = new TestPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name
-            });
+            };
 
-            kernel.UseRestriction(new TestColumnRestriction()
+            permission.ColumnRestrictions.Add(new TestColumnRestriction()
             {
-                AccessType = AccessTypes.Update,
-                EntityTypeName = typeof(Model1).Name,
                 PropertyName = "Property1"
             });
+
+            kernel.UsePermission(permission);
 
             _guard = new DefaultModifyGuard(kernel);
         }
@@ -38,7 +39,7 @@ namespace EntityFramework.Guardian.UnitTests
             _guard.Protect(new ModifyProtectionContext()
             {
                 Entry = new DummyObjectAccessEntry(AccessTypes.Add, model),
-                ModifiedProperties = {"Property1"}
+                ModifiedProperties = {"Property2"}
             });
         }
 

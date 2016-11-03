@@ -14,7 +14,6 @@ namespace EntityFramework.Guardian.UnitTests
             _princpal = new DbPrincipal();
             _princpal.GeneralPermissions.AddRange(Seed.GeneralPermissions);
             _princpal.RowLevelPermissions.AddRange(Seed.RowPermissions);
-            _princpal.ColumnLevelRestrictions.AddRange(Seed.ColumnRestrictions);
         }
 
         [Fact]
@@ -49,20 +48,6 @@ namespace EntityFramework.Guardian.UnitTests
         public void GetRowPermissions_ShouldReturnResult()
         {
             var result = _princpal.GetRowLevelPermissions(typeof(Model2).Name, AccessTypes.Delete, "2");
-            Assert.Equal(1, result.Count);
-        }
-
-        [Fact]
-        public void GetColumnRestrictions_ShouldReturnEmpty()
-        {
-            var result = _princpal.GetColumnLevelRestrictions(typeof(Model1).Name, AccessTypes.Update);
-            Assert.Equal(0, result.Count);
-        }
-
-        [Fact]
-        public void GetColumnRestrictions_ShouldReturnResult()
-        {
-            var result = _princpal.GetColumnLevelRestrictions(typeof(Model2).Name, AccessTypes.Update);
             Assert.Equal(1, result.Count);
         }
 
@@ -116,33 +101,6 @@ namespace EntityFramework.Guardian.UnitTests
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model2).Name,
                     RowIdentifier = "2"
-                }
-            };
-            public static List<IColumnRestriction> ColumnRestrictions { get; set; } = new List<IColumnRestriction>()
-             {
-                new TestColumnRestriction()
-                {
-                    AccessType = AccessTypes.Get,
-                    EntityTypeName = typeof(Model1).Name,
-                    PropertyName = "Property1"
-                },
-                new TestColumnRestriction()
-                {
-                    AccessType = AccessTypes.Add,
-                    EntityTypeName = typeof(Model1).Name,
-                    PropertyName = "Property1"
-                },
-                new TestColumnRestriction()
-                {
-                    AccessType = AccessTypes.Delete,
-                    EntityTypeName = typeof(Model2).Name,
-                    PropertyName = "Property1"
-                },
-                new TestColumnRestriction()
-                {
-                    AccessType = AccessTypes.Update,
-                    EntityTypeName = typeof(Model2).Name,
-                    PropertyName = "Property1"
                 }
             };
         }

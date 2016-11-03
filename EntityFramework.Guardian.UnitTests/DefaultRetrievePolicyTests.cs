@@ -94,20 +94,19 @@ namespace EntityFramework.Guardian.UnitTests
                 Property2 = "Property2"
             };
 
-            _kernel.UsePermission(new TestRowPermission()
+            var permission = new TestRowPermission()
             {
                 AccessType = AccessTypes.Get,
                 EntityTypeName = model.GetType().Name,
                 RowIdentifier = "1"
-            });
+            };
 
-            _kernel.UseRestriction(new TestColumnRestriction()
+            permission.ColumnRestrictions.Add(new TestColumnRestriction()
             {
-                AccessType = AccessTypes.Get,
-                EntityTypeName = model.GetType().Name,
                 PropertyName = "Property1"
             });
 
+            _kernel.UsePermission(permission);
 
             var policyContext = GetPolicyContext(model);
 

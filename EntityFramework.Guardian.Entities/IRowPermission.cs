@@ -1,4 +1,7 @@
-﻿namespace EntityFramework.Guardian.Entities
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
     /// 
@@ -28,5 +31,13 @@
         /// The type of the access.
         /// </value>
         AccessTypes AccessType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the column restrictions.
+        /// </summary>
+        /// <value>
+        /// The column restrictions.
+        /// </value>
+        ICollection<IColumnRestriction> ColumnRestrictions { get; set; }
     }
 }

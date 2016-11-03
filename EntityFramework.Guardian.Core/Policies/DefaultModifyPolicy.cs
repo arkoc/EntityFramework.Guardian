@@ -27,13 +27,16 @@ namespace EntityFramework.Guardian.Policies
                 context.AccessType,
                 context.EntityRowKey);
 
-            var columnLevelRestrictions = principal.GetColumnLevelRestrictions(context.EntityTypeName, context.AccessType);
-
             if (generalPermissions.Any() == false && rowLevelPermissions.Any() == false)
             {
                 result.IsSuccess = false;
                 return result;
             }
+
+            var columnLevelRestrictionInGeneral = generalPermissions.SelectMany(x => x.ColumnRestrictions);
+            var columnLevelRestrictionInRow = rowLevelPermissions.SelectMany(x => x.ColumnRestrictions);
+
+            var columnLevelRestrictions = columnLevelRestrictionInGeneral.Concat(columnLevelRestrictionInRow);
 
             foreach (var propName in context.ModifiedProperties)
             {

@@ -22,14 +22,6 @@ namespace EntityFramework.Guardian
         List<IRowPermission> RowLevelPermissions { get; }
 
         /// <summary>
-        /// Gets the column level restrictions.
-        /// </summary>
-        /// <value>
-        /// The column level restrictions.
-        /// </value>
-        List<IColumnRestriction> ColumnLevelRestrictions { get; }
-
-        /// <summary>
         /// Gets the general permissions.
         /// </summary>
         /// <param name="entityTypeName">Name of the entity type.</param>
@@ -45,13 +37,5 @@ namespace EntityFramework.Guardian
         /// <param name="key">The db row key of entity.</param>
         /// <returns></returns>
         List<IRowPermission> GetRowLevelPermissions(string entityTypeName, AccessTypes accessType, string key);
-
-        /// <summary>
-        /// Gets the column level restrictions.
-        /// </summary>
-        /// <param name="entityTypeName">Name of the entity type.</param>
-        /// <param name="accessType">Type of the access.</param>
-        /// <returns></returns>
-        List<IColumnRestriction> GetColumnLevelRestrictions(string entityTypeName, AccessTypes accessType);
     }
 }
