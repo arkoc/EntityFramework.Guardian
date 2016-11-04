@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace EntityFramework.Guardian
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="EntityFramework.Guardian.IDbPrincipal" />
     public class DbPrincipal : IDbPrincipal
     {
         /// <summary>

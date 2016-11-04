@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Extensions;
 using System.Linq;
 
 namespace EntityFramework.Guardian.Policies
@@ -34,8 +35,8 @@ namespace EntityFramework.Guardian.Policies
                 return resut;
             }
 
-            var columnLevelRestrictionInGeneral = generalPermissions.SelectMany(x => x.ColumnRestrictions);
-            var columnLevelRestrictionInRow = rowLevelPermissions.SelectMany(x => x.ColumnRestrictions);
+            var columnLevelRestrictionInGeneral = generalPermissions.SelectColumnRestrictions();
+            var columnLevelRestrictionInRow = rowLevelPermissions.SelectColumnRestrictions();
 
             var columnLevelRestrictions = columnLevelRestrictionInGeneral.Concat(columnLevelRestrictionInRow);
 

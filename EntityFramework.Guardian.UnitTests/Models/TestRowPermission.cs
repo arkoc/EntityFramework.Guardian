@@ -4,7 +4,7 @@ using EntityFramework.Guardian.Entities;
 
 namespace EntityFramework.Guardian.UnitTests.Models
 {
-    class TestRowPermission : IRowPermission
+    class TestRowPermission : IRowPermission<TestColumnRestriction>
     {
         public AccessTypes AccessType { get; set; }
 
@@ -12,6 +12,6 @@ namespace EntityFramework.Guardian.UnitTests.Models
         public string EntityTypeName { get; set; }
 
         public string RowIdentifier { get; set; }
-        public ICollection<IColumnRestriction> ColumnRestrictions { get; set; } = new List<IColumnRestriction>();
+        public ICollection<TestColumnRestriction> ColumnRestrictions { get; set; } = new List<TestColumnRestriction>();
     }
 }

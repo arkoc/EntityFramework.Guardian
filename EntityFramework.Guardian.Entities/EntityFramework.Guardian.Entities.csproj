@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\EntityFramework.Guardian.Entities.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,8 +46,10 @@
     <Compile Include="AccessTypes.cs" />
     <Compile Include="IColumnRestriction.cs" />
     <Compile Include="IPermission.cs" />
+    <Compile Include="IPermission`1.cs" />
     <Compile Include="IProtectableObject.cs" />
     <Compile Include="IRowPermission.cs" />
+    <Compile Include="IRowPermission`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtectionResults.cs" />
   </ItemGroup>

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace EntityFramework.Guardian.UnitTests.Models
 {
-    class TestPermission : IPermission
+    class TestPermission : IPermission<TestColumnRestriction>
     {
         public AccessTypes AccessType { get; set; }
         public string EntityTypeName { get; set; }
-        public ICollection<IColumnRestriction> ColumnRestrictions { get; set; } = new List<IColumnRestriction>();
+        public ICollection<TestColumnRestriction> ColumnRestrictions { get; set; } = new List<TestColumnRestriction>();
     }
 }

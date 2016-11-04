@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace EntityFramework.Guardian
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IDbPrincipal
     {
         /// <summary>

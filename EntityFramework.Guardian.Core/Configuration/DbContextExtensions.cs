@@ -3,6 +3,9 @@ using System.Data.Entity;
 
 namespace EntityFramework.Guardian.Configuration
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DbContextExtensions
     {
         /// <summary>
