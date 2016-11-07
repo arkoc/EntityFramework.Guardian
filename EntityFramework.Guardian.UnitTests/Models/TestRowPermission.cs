@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EntityFramework.Guardian.Entities;
 
 namespace EntityFramework.Guardian.UnitTests.Models

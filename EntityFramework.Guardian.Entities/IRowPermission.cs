@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace EntityFramework.Guardian.Entities
+﻿namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
     /// 

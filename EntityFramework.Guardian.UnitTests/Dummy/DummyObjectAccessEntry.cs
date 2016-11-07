@@ -4,10 +4,10 @@ namespace EntityFramework.Guardian.UnitTests.Dummy
 {
     public class DummyObjectAccessEntry : IObjectAccessEntry
     {
-        public DummyObjectAccessEntry(AccessTypes accessType, IProtectableObject entity)
+        public DummyObjectAccessEntry(IProtectableObject entity, AccessTypes accessType)
         {
-            AccessType = accessType;
             Entity = entity;
+            AccessType = accessType;
         }
 
         public AccessTypes AccessType { get; }

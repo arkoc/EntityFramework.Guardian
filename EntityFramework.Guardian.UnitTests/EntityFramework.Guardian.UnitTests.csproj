@@ -59,10 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnsRestrictionsModifyPolicyTests.cs" />
+    <Compile Include="ColumnsRestrictionsRetrievePolicyTests.cs" />
     <Compile Include="DefaultIdKeyProviderTests.cs" />
-    <Compile Include="DefaultModifyPolicyTests.cs" />
+    <Compile Include="PermissionsExistsModifyPolicyTests.cs" />
     <Compile Include="DefaultModifyGuardTests.cs" />
-    <Compile Include="DefaultRetrievePolicyTests.cs" />
+    <Compile Include="PermissionsExistsRetrievePolicyTests.cs" />
     <Compile Include="DefaultRetrieveGuardTests.cs" />
     <Compile Include="Dummy\DummyModifyPolicy.cs" />
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />

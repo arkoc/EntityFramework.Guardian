@@ -71,8 +71,11 @@ namespace EntityFramework.Guardian
             ModifyPolicies = new List<IModifyPolicy>();
             RetrievePolicies = new List<IRetrievePolicy>();
 
-            ModifyPolicies.Add(new DefaultModifyPolicy());
-            RetrievePolicies.Add(new DefaultRetrievePolicy());
+            ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
+            ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
+
+            RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
+            RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
 
             Principal = new DbPrincipal();
         }

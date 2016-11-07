@@ -1,6 +1,8 @@
 ﻿using EntityFramework.Guardian.Exceptions;
+using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using System;
+using System.Linq;
 
 namespace EntityFramework.Guardian.Guards
 {
@@ -36,20 +38,17 @@ namespace EntityFramework.Guardian.Guards
         {
             foreach (var policy in _kernel.ModifyPolicies)
             {
-                var policyContext = new ModifyPolicyContext()
-                {
-                    AccessType = context.Entry.AccessType,
-                    Entity = context.Entry.Entity,
-                    EntityRowKey = _kernel.EntityKeyProvider.GetKey(context.Entry.Entity),
-                    EntityTypeName = context.Entry.Entity.GetType().Name,
-                    ModifiedProperties = context.ModifiedProperties
-                };
+                var policyContext = ModifyPolicyContext.For(
+                        _kernel, 
+                        context.Entry, 
+                        context.ModifiedProperties
+                    );
 
-                var result = policy.Check(policyContext, _kernel);
+                var result = policy.Check(policyContext);
 
                 if (result.IsSuccess == false)
                 {
-                    // If one of policies fail, we don't want to apply another ones
+                    // If one of policies fail, we don't need to apply another ones
                     throw new AccessDeniedException();
                 }
             }

@@ -1,7 +1,9 @@
 ﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EntityFramework.Guardian.Guards
 {
@@ -37,22 +39,17 @@ namespace EntityFramework.Guardian.Guards
         {
             foreach (var policy in _kernel.RetrievePolicies)
             {
-                var policyContext = new RetrievePolicyContext()
-                {
-                    Entity = context.Entry.Entity,
-                    EntityRowKey = _kernel.EntityKeyProvider.GetKey(context.Entry.Entity),
-                    EntityTypeName = context.Entry.Entity.GetType().Name,
-                };
-
                 context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
                 context.Entry.Entity.ProtectedProperties = new List<string>();
 
-                var result = policy.Check(policyContext, _kernel);
+                var policyContext = RetrievePolicyContext.For(_kernel, context.Entry);
+
+                var result = policy.Check(policyContext);
                 if (result.IsSuccess == false)
                 {
                     context.Entry.Entity.ProtectionResult = ProtectionResults.Deny;
                     context.Entry.Entity.ProtectedProperties = result.RestrictedProperties;
-                    // If one of policies fail, we don't want to apply other ones
+                    // If one of policies fail, we don't nned to apply other ones
                     break;
                 }
             }

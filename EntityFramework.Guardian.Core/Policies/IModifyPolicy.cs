@@ -6,11 +6,10 @@
     public interface IModifyPolicy
     {
         /// <summary>
-        /// Checks the policy by specified context and kernel.
+        /// Checks the policy by specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <param name="kernel">The kernel.</param>
         /// <returns><see cref="ModifyPolicyResult"/> of policy checking.</returns>
-        ModifyPolicyResult Check(ModifyPolicyContext context, GuardianKernel kernel);
+        ModifyPolicyResult Check(ModifyPolicyContext context);
     }
 }

@@ -29,7 +29,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model1();
             _guard.Protect(new RetrieveProtectionContext()
             {
-                Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
+                Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
 
             Assert.Equal(ProtectionResults.Allow, model.ProtectionResult);
@@ -41,7 +41,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             _guard.Protect(new RetrieveProtectionContext()
             {
-                Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
+                Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
 
             Assert.Equal(ProtectionResults.Deny, model.ProtectionResult);
@@ -65,7 +65,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model1() { Id = 1 };
             guard.Protect(new RetrieveProtectionContext()
             {
-                Entry = new DummyObjectAccessEntry(AccessTypes.Get, model)
+                Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
 
             Assert.Equal(ProtectionResults.Deny, model.ProtectionResult);
