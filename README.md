@@ -1,4 +1,12 @@
-# EntityFramework.Guardian
-EntityFramework Guardian Plugin for implementing Row-Level Column-Level Security
+EntityFramework.Guardian
+==============
 
-This plugin is now in testing/development final stage, documentation and final realease will be soon.
+EntityFramework.Guardian is a extension point for Entity Framework DbContext in order to implement Database Security by hooking database operations.
+
+## How to use
+
+### Installation
+Install [NuGet package](https://www.nuget.org/packages/EntityFramework.Guardian/) from [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console):
+```
+PM> Install-Package EntityFramework.Guardian
+```
