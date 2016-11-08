@@ -1,5 +1,4 @@
-﻿using System;
-using EntityFramework.Guardian.Policies;
+﻿using EntityFramework.Guardian.Policies;
 
 namespace EntityFramework.Guardian.UnitTests.Dummy
 {

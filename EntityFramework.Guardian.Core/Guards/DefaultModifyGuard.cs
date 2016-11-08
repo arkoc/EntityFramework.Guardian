@@ -1,8 +1,6 @@
 ﻿using EntityFramework.Guardian.Exceptions;
-using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using System;
-using System.Linq;
 
 namespace EntityFramework.Guardian.Guards
 {

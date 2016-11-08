@@ -19,7 +19,7 @@ namespace EntityFramework.Guardian.Policies
         {
             var result = new ModifyPolicyResult();
 
-            var columnLevelRestrictions = context.ColumnRestrictions;
+            var columnLevelRestrictions = context.Permissions.ColumnRestrictions;
 
             foreach (var propName in context.ModifiedProperties)
             {

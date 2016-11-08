@@ -11,6 +11,13 @@ namespace EntityFramework.Guardian.Policies
     public class ModifyPolicyContext
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ModifyPolicyContext"/> class.
+        /// </summary>
+        private ModifyPolicyContext()
+        {
+        }
+
+        /// <summary>
         /// Gets or sets the kernel.
         /// </summary>
         /// <value>
@@ -59,30 +66,12 @@ namespace EntityFramework.Guardian.Policies
         public List<string> ModifiedProperties { get; set; } = new List<string>();
 
         /// <summary>
-        /// Gets or sets the general permissions.
+        /// Gets or sets the permissions.
         /// </summary>
         /// <value>
-        /// The general permissions.
+        /// The permissions.
         /// </value>
-        public List<IPermission> GeneralPermissions { get; set; } = new List<IPermission>();
-
-        /// <summary>
-        /// Gets or sets the row level permissions.
-        /// </summary>
-        /// <value>
-        /// The row level permissions.
-        /// </value>
-        public List<IRowPermission> RowLevelPermissions { get; set; } = new List<IRowPermission>();
-
-        /// <summary>
-        /// Gets or sets the column restrictions.
-        /// </summary>
-        /// <value>
-        /// The column restrictions.
-        /// </value>
-        public List<IColumnRestriction> ColumnRestrictions { get; set; } = new List<IColumnRestriction>();
-
-
+        public Permissions Permissions { get; set; }
 
         /// <summary>
         /// Creates context for specified entity, accesstype and kernel
@@ -106,6 +95,13 @@ namespace EntityFramework.Guardian.Policies
             var columnLevelRestrictionInRow = rowLevelPermissions.SelectColumnRestrictions();
             var columnLevelRestrictions = columnLevelRestrictionInGeneral.Concat(columnLevelRestrictionInRow).ToList();
 
+            var permissions = new Permissions()
+            {
+                GeneralPermissions = generalPermissions,
+                RowLevelPermissions = rowLevelPermissions,
+                ColumnRestrictions = columnLevelRestrictions
+            };
+
             var policyContext = new ModifyPolicyContext()
             {
                 Kernel = kernel,
@@ -114,9 +110,7 @@ namespace EntityFramework.Guardian.Policies
                 EntityRowKey = entityRowKey,
                 EntityTypeName = entityTypeName,
                 ModifiedProperties = modifiedProperties,
-                GeneralPermissions = generalPermissions,
-                RowLevelPermissions = rowLevelPermissions,
-                ColumnRestrictions = columnLevelRestrictions
+                Permissions = permissions
             };
 
             return policyContext;

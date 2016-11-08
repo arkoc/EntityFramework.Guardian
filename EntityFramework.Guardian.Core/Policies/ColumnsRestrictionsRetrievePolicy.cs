@@ -17,7 +17,7 @@
         {
             var result = new RetrievePolicyResult();
 
-            var columnLevelRestrictions = context.ColumnRestrictions;
+            var columnLevelRestrictions = context.Permissions.ColumnRestrictions;
 
             foreach (var columnRestriction in columnLevelRestrictions)
             {

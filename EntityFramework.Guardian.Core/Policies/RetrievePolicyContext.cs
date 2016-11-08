@@ -1,6 +1,5 @@
 ﻿using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace EntityFramework.Guardian.Policies
@@ -10,6 +9,13 @@ namespace EntityFramework.Guardian.Policies
     /// </summary>
     public class RetrievePolicyContext
     {
+        /// <summary>
+        /// Prevents a default instance of the <see cref="RetrievePolicyContext"/> class from being created.
+        /// </summary>
+        private RetrievePolicyContext()
+        {
+        }
+
         /// <summary>
         /// Gets or sets the kernel.
         /// </summary>
@@ -43,28 +49,12 @@ namespace EntityFramework.Guardian.Policies
         public IProtectableObject Entity { get; set; }
 
         /// <summary>
-        /// Gets or sets the general permissions.
+        /// Gets or sets the permissions.
         /// </summary>
         /// <value>
-        /// The general permissions.
+        /// The permissions.
         /// </value>
-        public List<IPermission> GeneralPermissions { get; set; } = new List<IPermission>();
-
-        /// <summary>
-        /// Gets or sets the row level permissions.
-        /// </summary>
-        /// <value>
-        /// The row level permissions.
-        /// </value>
-        public List<IRowPermission> RowLevelPermissions { get; set; } = new List<IRowPermission>();
-
-        /// <summary>
-        /// Gets or sets the column restrictions.
-        /// </summary>
-        /// <value>
-        /// The column restrictions.
-        /// </value>
-        public List<IColumnRestriction> ColumnRestrictions { get; set; } = new List<IColumnRestriction>();
+        public Permissions Permissions { get; set; }
 
         /// <summary>
         /// Creates context for specified entry and kernel
@@ -87,15 +77,20 @@ namespace EntityFramework.Guardian.Policies
             var columnLevelRestrictionInRow = rowLevelPermissions.SelectColumnRestrictions();
             var columnLevelRestrictions = columnLevelRestrictionInGeneral.Concat(columnLevelRestrictionInRow).ToList();
 
+            var permissions = new Permissions()
+            {
+                GeneralPermissions = generalPermissions,
+                RowLevelPermissions = rowLevelPermissions,
+                ColumnRestrictions = columnLevelRestrictions
+            };
+
             var policyContext = new RetrievePolicyContext()
             {
                 Kernel = kernel,
                 Entity = entry.Entity,
                 EntityRowKey = entityRowKey,
                 EntityTypeName = entityTypeName,
-                GeneralPermissions = generalPermissions,
-                RowLevelPermissions = rowLevelPermissions,
-                ColumnRestrictions = columnLevelRestrictions
+                Permissions = permissions
             };
 
             return policyContext;

@@ -1,9 +1,7 @@
 ﻿using EntityFramework.Guardian.Entities;
-using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EntityFramework.Guardian.Guards
 {

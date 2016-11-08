@@ -3,7 +3,7 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// RetrievePolicyResult that result from <see cref="IRetrievePolicy.Check(RetrievePolicyContext, GuardianKernel)"/> method"/> 
+    /// RetrievePolicyResult that result from <see cref="IRetrievePolicy.Check(RetrievePolicyContext)"/> method"/> 
     /// </summary>
     public class RetrievePolicyResult
     {

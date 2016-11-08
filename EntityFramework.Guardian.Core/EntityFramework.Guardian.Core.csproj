@@ -72,6 +72,7 @@
     <Compile Include="IObjectAccessEntry.cs" />
     <Compile Include="Policies\ColumnsRestrictionsModifyPolicy.cs" />
     <Compile Include="Policies\ColumnsRestrictionsRetrievePolicy.cs" />
+    <Compile Include="Policies\Permissions.cs" />
     <Compile Include="Policies\PermissionsExistsModifyPolicy.cs" />
     <Compile Include="Policies\PermissionsExistsRetrievePolicy.cs" />
     <Compile Include="Policies\IModifyPolicy.cs" />
