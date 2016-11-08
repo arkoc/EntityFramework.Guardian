@@ -82,7 +82,7 @@ namespace EntityFramework.Guardian.Policies
         /// <returns></returns>
         public static ModifyPolicyContext For(GuardianKernel kernel, IObjectAccessEntry entry, List<string> modifiedProperties)
         {
-            var entityRowKey = kernel.EntityKeyProvider.GetKey(entry.Entity);
+            var entityRowKey = kernel.Services.EntityKeyProvider.GetKey(entry.Entity);
             var entityTypeName = entry.Entity.GetType().Name;
 
             var generalPermissions = kernel.Principal.GetGeneralPermissions(entityTypeName, entry.AccessType);

@@ -5,7 +5,7 @@ namespace EntityFramework.Guardian.Guards
     /// <summary>
     /// 
     /// </summary>
-    public class ModifyProtectionContext
+    public class ModifyGuardContext
     {
         /// <summary>
         /// Gets or sets the entry.

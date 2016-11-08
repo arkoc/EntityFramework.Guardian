@@ -1,7 +1,7 @@
 ﻿using EntityFramework.Guardian.Configuration;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.Guards;
-using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace EntityFramework.Guardian
 {
@@ -11,44 +11,28 @@ namespace EntityFramework.Guardian
     public class GuardianKernel
     {
         /// <summary>
-        /// Gets the entity key provider.
+        /// Gets or sets the services.
         /// </summary>
         /// <value>
-        /// The entity key provider.
+        /// The services.
         /// </value>
-        public IEntityKeyProvider EntityKeyProvider { get; set; }
+        public KernelServices Services { get; } = new KernelServices();
 
         /// <summary>
-        /// Gets the modify protector.
+        /// Gets or sets the guards.
         /// </summary>
         /// <value>
-        /// The modify protector.
+        /// The guards.
         /// </value>
-        public IModifyGuard ModifyGuard { get; set; }
+        public KernelGuards Guards { get; } = new KernelGuards();
 
         /// <summary>
-        /// Gets the retrieve protector.
+        /// Gets or sets the policies.
         /// </summary>
         /// <value>
-        /// The retrieve protector.
+        /// The policies.
         /// </value>
-        public IRetrieveGuard RetrieveGuard { get; set; }
-
-        /// <summary>
-        /// Gets the modify protection policies.
-        /// </summary>
-        /// <value>
-        /// The modify protection policies.
-        /// </value>
-        public List<IModifyPolicy> ModifyPolicies { get; private set; }
-
-        /// <summary>
-        /// Gets the retrieve protection policies.
-        /// </summary>
-        /// <value>
-        /// The retrieve protection policies.
-        /// </value>
-        public List<IRetrievePolicy> RetrievePolicies { get; private set; }
+        public KernelPolicies Policies { get; } = new KernelPolicies();
 
         /// <summary>
         /// Gets or sets the principal.
@@ -59,23 +43,28 @@ namespace EntityFramework.Guardian
         public IDbPrincipal Principal { get; set; }
 
         /// <summary>
+        /// Gets or sets the database context associated with this kernel.
+        /// </summary>
+        /// <value>
+        /// The database context.
+        /// </value>
+        public DbContext DbContext { get; internal set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="GuardianKernel"/> class.
         /// </summary>
         public GuardianKernel()
         {
-            EntityKeyProvider = new DefaultIdKeyProvider();
+            Services.EntityKeyProvider = new DefaultIdKeyProvider();
 
-            ModifyGuard = new DefaultModifyGuard(this);
-            RetrieveGuard = new DefaultRetrieveGuard(this);
+            Guards.ModifyGuard = new DefaultModifyGuard(this);
+            Guards.RetrieveGuard = new DefaultRetrieveGuard(this);
 
-            ModifyPolicies = new List<IModifyPolicy>();
-            RetrievePolicies = new List<IRetrievePolicy>();
+            Policies.ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
+            Policies.ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
 
-            ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
-            ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
-
-            RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
-            RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
+            Policies.RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
+            Policies.RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
 
             Principal = new DbPrincipal();
         }

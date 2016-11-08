@@ -3,7 +3,7 @@
 namespace EntityFramework.Guardian.Extensions
 {
     /// <summary>
-    /// 
+    /// <see cref="Type"/> extensions
     /// </summary>
     internal static class TypeExtensions
     {
@@ -29,7 +29,7 @@ namespace EntityFramework.Guardian.Extensions
             {
                 return true;
             }
-                
+
 
             Type baseType = givenType.BaseType;
             if (baseType == null)

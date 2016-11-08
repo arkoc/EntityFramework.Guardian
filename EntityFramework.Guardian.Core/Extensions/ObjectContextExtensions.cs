@@ -57,7 +57,7 @@ namespace EntityFramework.Guardian.Extensions
             ObjectStateEntry objectStateEntry;
             if (context.ObjectStateManager.TryGetObjectStateEntry(entity, out objectStateEntry))
             {
-                if(entry == null)
+                if (entry == null)
                 {
                     return success;
                 }

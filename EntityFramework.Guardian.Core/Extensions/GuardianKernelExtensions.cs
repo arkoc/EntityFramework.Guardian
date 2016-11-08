@@ -36,7 +36,7 @@ namespace EntityFramework.Guardian.Extensions
         /// <exception cref="ArgumentNullException">permission</exception>
         public static GuardianKernel UsePermission(this GuardianKernel kernel, IRowPermission permission)
         {
-            if(permission == null)
+            if (permission == null)
             {
                 throw new ArgumentNullException(nameof(permission));
             }

@@ -5,7 +5,7 @@ using System;
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IModifyGuard.
+    /// Default implementation of IModifyGuard which calls all registered modify policies
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Guards.IModifyGuard" />
     public class DefaultModifyGuard : IModifyGuard
@@ -32,13 +32,13 @@ namespace EntityFramework.Guardian.Guards
         /// </summary>
         /// <param name="context">The protection context.</param>
         /// <exception cref="EntityFramework.Guardian.Exceptions.AccessDeniedException"></exception>
-        public void Protect(ModifyProtectionContext context)
+        public void Protect(ModifyGuardContext context)
         {
-            foreach (var policy in _kernel.ModifyPolicies)
+            foreach (var policy in _kernel.Policies.ModifyPolicies)
             {
                 var policyContext = ModifyPolicyContext.For(
-                        _kernel, 
-                        context.Entry, 
+                        _kernel,
+                        context.Entry,
                         context.ModifiedProperties
                     );
 

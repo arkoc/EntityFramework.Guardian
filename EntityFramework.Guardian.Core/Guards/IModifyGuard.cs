@@ -1,7 +1,7 @@
 ﻿namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// 
+    /// Modify Guard Interface
     /// </summary>
     public interface IModifyGuard
     {
@@ -9,7 +9,7 @@
         /// Protects by the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        void Protect(ModifyProtectionContext context);
+        void Protect(ModifyGuardContext context);
     }
 }
 

@@ -65,18 +65,18 @@ namespace EntityFramework.Guardian.Hooking
 
             foreach (var entry in entries)
             {
-                if(entry == null)
+                if (entry == null)
                 {
                     continue;
                 }
 
-                var protectionContext = new ModifyProtectionContext()
+                var protectionContext = new ModifyGuardContext()
                 {
                     Entry = entry,
                     ModifiedProperties = context.GetModifiedProperties(entry.Entity)
                 };
 
-                _kernel.ModifyGuard.Protect(protectionContext);
+                _kernel.Guards.ModifyGuard.Protect(protectionContext);
             }
 
         }
@@ -93,11 +93,11 @@ namespace EntityFramework.Guardian.Hooking
             IObjectAccessEntry objectAccessEntry;
             if (context.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
             {
-                var protectionContext = new RetrieveProtectionContext()
+                var protectionContext = new RetrieveGuardContext()
                 {
                     Entry = objectAccessEntry
                 };
-                _kernel.RetrieveGuard.Protect(protectionContext);
+                _kernel.Guards.RetrieveGuard.Protect(protectionContext);
             }
         }
     }

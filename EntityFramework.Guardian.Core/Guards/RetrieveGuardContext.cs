@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public class RetrieveProtectionContext
+    public class RetrieveGuardContext
     {
         /// <summary>
         /// Gets or sets the entry.

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IRetrieveGuard.
+    /// Default implementation of IRetrieveGuard which calss registered retrieve policies.
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Guards.IRetrieveGuard" />
     public class DefaultRetrieveGuard : IRetrieveGuard
@@ -33,9 +33,9 @@ namespace EntityFramework.Guardian.Guards
         /// Protects by the specified context.
         /// </summary>
         /// <param name="context">The protection context.</param>
-        public void Protect(RetrieveProtectionContext context)
+        public void Protect(RetrieveGuardContext context)
         {
-            foreach (var policy in _kernel.RetrievePolicies)
+            foreach (var policy in _kernel.Policies.RetrievePolicies)
             {
                 context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
                 context.Entry.Entity.ProtectedProperties = new List<string>();

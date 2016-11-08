@@ -27,7 +27,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _guard.Protect(new RetrieveProtectionContext()
+            _guard.Protect(new RetrieveGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
@@ -39,7 +39,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldDeny()
         {
             var model = new Model2() { Id = "1" };
-            _guard.Protect(new RetrieveProtectionContext()
+            _guard.Protect(new RetrieveGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
@@ -58,12 +58,12 @@ namespace EntityFramework.Guardian.UnitTests
                 EntityTypeName = typeof(Model1).Name
             });
 
-            kernel.RetrievePolicies.Add(new DummyRetrievePolicy());
+            kernel.Policies.RetrievePolicies.Add(new DummyRetrievePolicy());
 
             var guard = new DefaultRetrieveGuard(kernel);
 
             var model = new Model1() { Id = 1 };
-            guard.Protect(new RetrieveProtectionContext()
+            guard.Protect(new RetrieveGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });

@@ -17,7 +17,7 @@ namespace EntityFramework.Guardian.Policies
         {
             var resut = new RetrievePolicyResult();
 
-            if (context.Permissions.GeneralPermissions.Any() == false 
+            if (context.Permissions.GeneralPermissions.Any() == false
                 && context.Permissions.RowLevelPermissions.Any() == false)
             {
                 resut.IsSuccess = false;

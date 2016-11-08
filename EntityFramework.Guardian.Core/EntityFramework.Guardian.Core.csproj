@@ -63,13 +63,15 @@
     <Compile Include="Extensions\GuardianKernelExtensions.cs" />
     <Compile Include="Extensions\ObjectContextExtensions.cs" />
     <Compile Include="Extensions\PermissionsExtensions.cs" />
-    <Compile Include="Extensions\PoliciesExtensions.cs" />
     <Compile Include="Extensions\ProtectionExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="GuardianKernel.cs" />
     <Compile Include="Hooking\DbContextHooker.cs" />
     <Compile Include="IDbPrincipal.cs" />
     <Compile Include="IObjectAccessEntry.cs" />
+    <Compile Include="KernelGuards.cs" />
+    <Compile Include="KernelPolicies.cs" />
+    <Compile Include="KernelServices.cs" />
     <Compile Include="Policies\ColumnsRestrictionsModifyPolicy.cs" />
     <Compile Include="Policies\ColumnsRestrictionsRetrievePolicy.cs" />
     <Compile Include="Policies\Permissions.cs" />
@@ -87,8 +89,8 @@
     <Compile Include="Guards\IRetrieveGuard.cs" />
     <Compile Include="ObjectAccessEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Guards\ModifyProtectionContext.cs" />
-    <Compile Include="Guards\RetrieveProtectionContext.cs" />
+    <Compile Include="Guards\ModifyGuardContext.cs" />
+    <Compile Include="Guards\RetrieveGuardContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

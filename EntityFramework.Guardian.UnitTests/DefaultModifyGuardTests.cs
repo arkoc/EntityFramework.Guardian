@@ -36,7 +36,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _guard.Protect(new ModifyProtectionContext()
+            _guard.Protect(new ModifyGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
                 ModifiedProperties = {"Property2"}
@@ -49,7 +49,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _guard.Protect(new ModifyProtectionContext()
+                _guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Delete),
                     ModifiedProperties = { "Property1" }
@@ -64,7 +64,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _guard.Protect(new ModifyProtectionContext()
+                _guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Update),
                     ModifiedProperties = { "Property1" }
@@ -82,7 +82,7 @@ namespace EntityFramework.Guardian.UnitTests
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name
             });
-            kernel.ModifyPolicies.Add(new DummyModifyPolicy());
+            kernel.Policies.ModifyPolicies.Add(new DummyModifyPolicy());
 
             var guard = new DefaultModifyGuard(kernel);
 
@@ -90,7 +90,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                guard.Protect(new ModifyProtectionContext()
+                guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
                     ModifiedProperties = { "Property1" }
