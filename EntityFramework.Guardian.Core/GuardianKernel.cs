@@ -16,7 +16,7 @@ namespace EntityFramework.Guardian
         /// <value>
         ///   <c>true</c> if [enable guards]; otherwise, <c>false</c>.
         /// </value>
-        public bool EnableGuards { get; set; }
+        public bool EnableGuards { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the services.
