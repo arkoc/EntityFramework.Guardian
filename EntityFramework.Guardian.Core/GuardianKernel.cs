@@ -11,6 +11,14 @@ namespace EntityFramework.Guardian
     public class GuardianKernel
     {
         /// <summary>
+        /// Gets or sets a value indicating whether [enable guards].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [enable guards]; otherwise, <c>false</c>.
+        /// </value>
+        public bool EnableGuards { get; set; }
+
+        /// <summary>
         /// Gets or sets the services.
         /// </summary>
         /// <value>

@@ -59,6 +59,12 @@ namespace EntityFramework.Guardian.Hooking
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Context_SavingChanges(object sender, EventArgs e)
         {
+
+            if (_kernel.EnableGuards == false)
+            {
+                return;
+            }
+
             ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
 
             var entries = context.GetModifiedEntries();
@@ -88,6 +94,12 @@ namespace EntityFramework.Guardian.Hooking
         /// <param name="e">The <see cref="ObjectMaterializedEventArgs"/> instance containing the event data.</param>
         private void Context_ObjectMaterialized(object sender, ObjectMaterializedEventArgs e)
         {
+
+            if (_kernel.EnableGuards == false)
+            {
+                return;
+            }
+
             ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
 
             IObjectAccessEntry objectAccessEntry;
