@@ -1,6 +1,6 @@
 ﻿using System;
 using EntityFramework.Guardian.Configuration;
-using EntityFramework.Guardian.UnitTests.Models;
+using EntityFramework.Guardian.Tests.Models;
 using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests

@@ -39,5 +39,15 @@ namespace EntityFramework.Guardian.Extensions
 
             return IsAssignableToGenericType(baseType, genericType);
         }
+
+        /// <summary>
+        /// Gets the default value of specified type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
+        public static object GetDefaultValue(this Type type)
+        {
+            return type.IsValueType ? Activator.CreateInstance(type) : null;
+        }
     }
 }

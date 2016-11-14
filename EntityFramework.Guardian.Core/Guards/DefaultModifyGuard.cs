@@ -39,7 +39,7 @@ namespace EntityFramework.Guardian.Guards
                 var policyContext = ModifyPolicyContext.For(
                         _kernel,
                         context.Entry,
-                        context.ModifiedProperties
+                        context.AffectedProperties
                     );
 
                 var result = policy.Check(policyContext);

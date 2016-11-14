@@ -1,8 +1,8 @@
 ﻿using EntityFramework.Guardian.Entities;
 
-namespace EntityFramework.Guardian.UnitTests.Models
+namespace EntityFramework.Guardian.Tests.Models
 {
-    class TestColumnRestriction : IColumnRestriction
+    public class TestColumnRestriction : IColumnRestriction
     {
         public string PropertyName { get; set; }
     }

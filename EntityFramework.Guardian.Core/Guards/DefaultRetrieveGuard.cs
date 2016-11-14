@@ -35,22 +35,26 @@ namespace EntityFramework.Guardian.Guards
         /// <param name="context">The protection context.</param>
         public void Protect(RetrieveGuardContext context)
         {
+            context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
+            context.Entry.Entity.ProtectedProperties = new List<string>();
+
             foreach (var policy in _kernel.Policies.RetrievePolicies)
             {
-                context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
-                context.Entry.Entity.ProtectedProperties = new List<string>();
-
                 var policyContext = RetrievePolicyContext.For(_kernel, context.Entry);
 
                 var result = policy.Check(policyContext);
+
                 if (result.IsSuccess == false)
                 {
                     context.Entry.Entity.ProtectionResult = ProtectionResults.Deny;
-                    context.Entry.Entity.ProtectedProperties = result.RestrictedProperties;
                     // If one of policies fail, we don't nned to apply other ones
                     break;
                 }
+
+                context.Entry.Entity.ProtectedProperties.AddRange(result.RestrictedProperties);
+
             }
+
         }
     }
 }

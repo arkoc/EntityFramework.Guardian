@@ -2,7 +2,7 @@
 using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.UnitTests.Dummy;
-using EntityFramework.Guardian.UnitTests.Models;
+using EntityFramework.Guardian.Tests.Models;
 using System.Collections.Generic;
 using Xunit;
 

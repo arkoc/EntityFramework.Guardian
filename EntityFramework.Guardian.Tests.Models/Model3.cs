@@ -1,4 +1,4 @@
-﻿namespace EntityFramework.Guardian.UnitTests.Models
+﻿namespace EntityFramework.Guardian.Tests.Models
 {
     public class Model3
     {

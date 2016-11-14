@@ -70,12 +70,6 @@
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
     <Compile Include="Dummy\DummyRetrievePolicy.cs" />
     <Compile Include="DbPrincipalTests.cs" />
-    <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\Model2.cs" />
-    <Compile Include="Models\Model3.cs" />
-    <Compile Include="Models\TestColumnRestriction.cs" />
-    <Compile Include="Models\TestPermission.cs" />
-    <Compile Include="Models\TestRowPermission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +80,10 @@
     <ProjectReference Include="..\EntityFramework.Guardian.Entities\EntityFramework.Guardian.Entities.csproj">
       <Project>{47d3d9d0-00a4-48e0-b3e6-526c28d0f5d6}</Project>
       <Name>EntityFramework.Guardian.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityFramework.Guardian.Tests.Models\EntityFramework.Guardian.Tests.Models.csproj">
+      <Project>{32ca2733-7b64-494a-aef4-b0f9587c5130}</Project>
+      <Name>EntityFramework.Guardian.Tests.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

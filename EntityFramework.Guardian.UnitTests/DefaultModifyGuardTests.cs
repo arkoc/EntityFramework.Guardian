@@ -1,5 +1,5 @@
 ﻿using EntityFramework.Guardian.Guards;
-using EntityFramework.Guardian.UnitTests.Models;
+using EntityFramework.Guardian.Tests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
 using Xunit;
@@ -39,7 +39,7 @@ namespace EntityFramework.Guardian.UnitTests
             _guard.Protect(new ModifyGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
-                ModifiedProperties = {"Property2"}
+                AffectedProperties = {"Property2"}
             });
         }
 
@@ -52,7 +52,7 @@ namespace EntityFramework.Guardian.UnitTests
                 _guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Delete),
-                    ModifiedProperties = { "Property1" }
+                    AffectedProperties = { "Property1" }
                 });
             });
         }
@@ -67,7 +67,7 @@ namespace EntityFramework.Guardian.UnitTests
                 _guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Update),
-                    ModifiedProperties = { "Property1" }
+                    AffectedProperties = { "Property1" }
                 });
             });
         }
@@ -93,7 +93,7 @@ namespace EntityFramework.Guardian.UnitTests
                 guard.Protect(new ModifyGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
-                    ModifiedProperties = { "Property1" }
+                    AffectedProperties = { "Property1" }
                 });
             });
         }

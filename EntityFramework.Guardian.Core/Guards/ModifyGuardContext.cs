@@ -16,11 +16,11 @@ namespace EntityFramework.Guardian.Guards
         public IObjectAccessEntry Entry { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified properties.
+        /// Gets or sets the affected properties.
         /// </summary>
         /// <value>
-        /// The modified properties.
+        /// The affected properties.
         /// </value>
-        public List<string> ModifiedProperties { get; set; } = new List<string>();
+        public List<string> AffectedProperties { get; set; } = new List<string>();
     }
 }

@@ -1,9 +1,9 @@
 ﻿using EntityFramework.Guardian.Entities;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.UnitTests.Models
+namespace EntityFramework.Guardian.Tests.Models
 {
-    class TestPermission : IPermission<TestColumnRestriction>
+    public class TestPermission : IPermission<TestColumnRestriction>
     {
         public AccessTypes AccessType { get; set; }
         public string EntityTypeName { get; set; }

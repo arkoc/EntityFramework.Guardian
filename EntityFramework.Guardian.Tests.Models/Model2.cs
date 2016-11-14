@@ -1,9 +1,9 @@
 ﻿using EntityFramework.Guardian.Entities;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian.UnitTests.Models
+namespace EntityFramework.Guardian.Tests.Models
 {
-    internal class Model2 : IProtectableObject
+    public class Model2 : IProtectableObject
     {
         public string Id { get; set; }
         public string Property1 { get; set; }

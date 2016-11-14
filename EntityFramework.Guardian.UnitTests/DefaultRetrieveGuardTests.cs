@@ -1,5 +1,5 @@
 ﻿using EntityFramework.Guardian.Guards;
-using EntityFramework.Guardian.UnitTests.Models;
+using EntityFramework.Guardian.Tests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
 using Xunit;

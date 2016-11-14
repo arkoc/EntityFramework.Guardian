@@ -45,5 +45,25 @@ namespace EntityFramework.Guardian.Extensions
 
             return kernel;
         }
+
+
+        /// <summary>
+        /// Uses the principal.
+        /// </summary>
+        /// <param name="kernel">The guardian kernel.</param>
+        /// <param name="principal">The principal to use in kernel.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">principal</exception>
+        public static GuardianKernel UsePrincipal(this GuardianKernel kernel, IDbPrincipal principal)
+        {
+            if (principal == null)
+            {
+                throw new ArgumentNullException(nameof(principal));
+            }
+
+            kernel.Principal = principal;
+
+            return kernel;
+        }
     }
 }

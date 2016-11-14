@@ -12,15 +12,22 @@ namespace EntityFramework.Guardian.Extensions
     internal static class ObjectContextExtensions
     {
         /// <summary>
-        /// Gets the modified properties.
+        /// Gets the affected properties.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="entity">The entity.</param>
-        /// <returns>Modified properties of entity</returns>
-        public static List<string> GetModifiedProperties(this ObjectContext context, object entity)
+        /// <returns>Affected properties of entity</returns>
+        public static List<string> GetAffectedProperties(this ObjectContext context, object entity)
         {
-            var myObjectState = context.ObjectStateManager.GetObjectStateEntry(entity);
-            var modifiedProperties = myObjectState.GetModifiedProperties().ToList();
+            var objectState = context.ObjectStateManager.GetObjectStateEntry(entity);
+            var modifiedProperties = objectState.GetModifiedProperties().ToList();
+
+            if(objectState.State.HasFlag(EntityState.Added))
+            {
+                modifiedProperties.AddRange(entity.GetInitializedProperties());
+            }
+
+            modifiedProperties = modifiedProperties.Distinct().ToList();
 
             return modifiedProperties;
         }
@@ -54,15 +61,20 @@ namespace EntityFramework.Guardian.Extensions
             bool success = false;
             entry = null;
 
+            if ((entity is IProtectableObject) == false)
+            {
+                return false;
+            }
+
             ObjectStateEntry objectStateEntry;
             if (context.ObjectStateManager.TryGetObjectStateEntry(entity, out objectStateEntry))
             {
-                if (entry == null)
+                if (objectStateEntry == null)
                 {
-                    return success;
+                    return false;
                 }
 
-                if ((entry is IProtectableObject) && objectStateEntry.State.HasFlag(EntityState.Unchanged))
+                if (objectStateEntry.State.HasFlag(EntityState.Unchanged))
                 {
                     success = true;
                     entry = new ObjectAccessEntry(objectStateEntry);

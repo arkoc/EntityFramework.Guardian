@@ -79,7 +79,7 @@ namespace EntityFramework.Guardian.Hooking
                 var protectionContext = new ModifyGuardContext()
                 {
                     Entry = entry,
-                    ModifiedProperties = context.GetModifiedProperties(entry.Entity)
+                    AffectedProperties = context.GetAffectedProperties(entry.Entity)
                 };
 
                 _kernel.Guards.ModifyGuard.Protect(protectionContext);

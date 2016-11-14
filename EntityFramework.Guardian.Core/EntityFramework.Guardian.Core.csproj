@@ -59,9 +59,11 @@
     <Compile Include="Configuration\IEntityKeyProvider.cs" />
     <Compile Include="DbPrincipal.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />
+    <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\EntityStateExtensions.cs" />
     <Compile Include="Extensions\GuardianKernelExtensions.cs" />
     <Compile Include="Extensions\ObjectContextExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtesions.cs" />
     <Compile Include="Extensions\PermissionsExtensions.cs" />
     <Compile Include="Extensions\ProtectionExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
