@@ -30,3 +30,24 @@ Customization
 Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Introduction
+
+   intro/big_picture
+   intro/installation
+   intro/configuration
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Architecture
+
+   architecture/guardian_kernel
+   architecture/hooking_system
+   architecture/permission_service
+   architecture/guards
+   architecture/policies
+   architecture/misc
+
