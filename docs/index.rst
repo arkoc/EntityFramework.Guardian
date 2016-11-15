@@ -15,3 +15,5 @@ If you need only Entities that are used in `EntityFrameowrk.Guardian` you can us
 ```
 PM> Install-Package EntityFramework.Guardian.Entities
 ```
+
+## How to use
