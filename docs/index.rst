@@ -35,7 +35,7 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
    :hidden:
    :caption: Introduction
 
-   intro/big_pciture
+   intro/big_picture
    intro/installation
    intro/configuration
 
@@ -46,5 +46,8 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
    architecture/guardian_kernel
    architecture/hooking_system
+   architecture/permission_service
    architecture/guards
    architecture/policies
+   architecture/misc
+
