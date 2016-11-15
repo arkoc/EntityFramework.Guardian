@@ -9,21 +9,21 @@ Build-in Interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Build-in interfaces for implementing database security
 
-EntityFramework Database Operations Hooking system
+Database Operations Hooking system
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Centralized mechanism for hooking modifying/retrieving events
 
 General Security
 ^^^^^^^^^^^^^^^^^^^^^^^
-Restrict/grant access by entity type
+Restrict/grant access by entity type and access type (get, add, update, delete)
 
 Row-Level Security
 ^^^^^^^^^^^^^^^^^^^^^^^
-Restrict/grant access by row identificator
+Restrict/grant access by row identificator and access type (get, add, update, delete)
 
 Column-Level Security
 ^^^^^^^^^^^^^^^^^^
-Restrict/grant access by column names
+Restrict/grant access by column names and access type (get, add, update, delete)
 
 Customization
 ^^^^^^^^^^^^^^^^^^^^^^
