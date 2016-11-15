@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -22,7 +25,7 @@ namespace EntityFramework.Guardian.Extensions
             var objectState = context.ObjectStateManager.GetObjectStateEntry(entity);
             var modifiedProperties = objectState.GetModifiedProperties().ToList();
 
-            if(objectState.State.HasFlag(EntityState.Added))
+            if (objectState.State.HasFlag(EntityState.Added))
             {
                 modifiedProperties.AddRange(entity.GetInitializedProperties());
             }

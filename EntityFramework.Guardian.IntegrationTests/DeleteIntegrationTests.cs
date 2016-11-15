@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Linq;
 using System.Collections.Generic;
 using Xunit;
 using EntityFramework.Guardian.Exceptions;
@@ -33,7 +36,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name
                 });
-                
+
                 DeleteModel1(dataContext);
 
                 dataContext.SaveChanges();
@@ -167,10 +170,11 @@ namespace EntityFramework.Guardian.IntegrationTests
         private void DeleteModel1(TestDbContext dataContext, int Model1Id = default(int))
         {
             Model1 Model1 = null;
-            if(Model1Id == default(int))
+            if (Model1Id == default(int))
             {
                 Model1 = dataContext.Model1s.FirstOrDefault();
-            } else
+            }
+            else
             {
                 Model1 = dataContext.Model1s.Find(Model1Id);
             }
@@ -187,7 +191,6 @@ namespace EntityFramework.Guardian.IntegrationTests
 
         protected override void SeedDatabase(TestDbContext dataContext)
         {
-
             foreach (var Model1 in Seed.Model1s)
             {
                 dataContext.Model1s.Add(Model1);

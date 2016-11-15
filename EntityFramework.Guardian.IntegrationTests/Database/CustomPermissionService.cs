@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Services;
 using EntityFramework.Guardian.Tests.Models;
 using System.Collections.Generic;
@@ -15,7 +18,7 @@ namespace EntityFramework.Guardian.IntegrationTests.Database
             var generalPermissions = base.GetGeneralPermissions(entityTypeName, accessType);
             var filteredPermissions = generalPermissions
                 .Where(x =>
-                (x is TestPermissionWithCustomField) == false || 
+                (x is TestPermissionWithCustomField) == false ||
                 ((x as TestPermissionWithCustomField).CustomField == CustomCheckData || (x as TestPermissionWithCustomField).CustomField == null))
                 .ToList();
 

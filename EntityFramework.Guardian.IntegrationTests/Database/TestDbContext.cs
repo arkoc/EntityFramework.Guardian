@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Tests.Models;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Tests.Models;
 using System.Data.Common;
 using System.Data.Entity;
 

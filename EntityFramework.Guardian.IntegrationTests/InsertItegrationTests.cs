@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Exceptions;
 using EntityFramework.Guardian.Extensions;
 using Xunit;
@@ -35,8 +38,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
                 AddModel1(dataContext);
 
-                dataContext.SaveChanges();;
-
+                dataContext.SaveChanges(); ;
             }
         }
 
@@ -62,7 +64,6 @@ namespace EntityFramework.Guardian.IntegrationTests
                 AddModel1(dataContext);
 
                 Assert.Throws<AccessDeniedException>(() => { dataContext.SaveChanges(); });
-
             }
         }
 
@@ -105,7 +106,6 @@ namespace EntityFramework.Guardian.IntegrationTests
                 AddModel1(dataContext);
 
                 dataContext.SaveChanges();
-
             }
         }
 
@@ -138,7 +138,6 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-
                 var permission = new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Add,
@@ -156,7 +155,6 @@ namespace EntityFramework.Guardian.IntegrationTests
                 AddModel1(dataContext);
 
                 Assert.Throws<AccessDeniedException>(() => { dataContext.SaveChanges(); });
-
             }
         }
 
@@ -178,13 +176,11 @@ namespace EntityFramework.Guardian.IntegrationTests
 
         protected override void SeedDatabase(TestDbContext dataContext)
         {
-
         }
 
         private static class Seed
         {
             public static string CustomData { get; set; } = "CustomData";
         }
-
     }
 }

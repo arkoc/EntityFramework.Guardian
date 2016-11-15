@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -9,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("EntityFramework.Guardian.IntegrationTests")]
-[assembly: AssemblyCopyright("Copyright © Aram Kocharyan 2016")]
+[assembly: AssemblyCopyright("Copyright \u00A9 Aram Kocharyan 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

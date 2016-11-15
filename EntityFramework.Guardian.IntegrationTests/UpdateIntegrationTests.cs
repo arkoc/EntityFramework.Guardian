@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Collections.Generic;
 using System.Linq;
 using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
@@ -18,7 +21,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             using (var dataContext = InitDataContext(kernel))
             {
                 UpdateModel1(dataContext);
-                Assert.Throws<AccessDeniedException>(() => 
+                Assert.Throws<AccessDeniedException>(() =>
                 {
                     dataContext.SaveChanges();
                 });
@@ -38,7 +41,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                 });
 
                 UpdateModel1(dataContext);
-                dataContext.SaveChanges();;
+                dataContext.SaveChanges(); ;
             }
         }
 
@@ -82,7 +85,6 @@ namespace EntityFramework.Guardian.IntegrationTests
             {
                 kernel.UsePermission(new TestPermissionWithCustomField()
                 {
-
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
                     CustomField = "Not_matching_state"
@@ -181,7 +183,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                 });
 
                 UpdateModel1(dataContext, 2);
-                dataContext.SaveChanges();;
+                dataContext.SaveChanges(); ;
             }
         }
 
@@ -257,7 +259,6 @@ namespace EntityFramework.Guardian.IntegrationTests
                 UpdateModel1(dataContext, 2);
 
                 Assert.Throws<AccessDeniedException>(() => { dataContext.SaveChanges(); });
-
             }
         }
 
@@ -321,14 +322,12 @@ namespace EntityFramework.Guardian.IntegrationTests
 
         protected override void SeedDatabase(TestDbContext dataContext)
         {
-
             foreach (var Model1 in Seed.Model1s)
             {
                 dataContext.Model1s.Add(Model1);
             }
 
             dataContext.SaveChanges();
-
         }
 
         private static class Seed

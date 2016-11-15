@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.UnitTests.Dummy;
@@ -7,7 +10,6 @@ using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-
     public class PermissionsExistsRetrievePolicyTests
     {
         private PermissionExistsRetrievePolicy _policy;
@@ -20,7 +22,6 @@ namespace EntityFramework.Guardian.UnitTests
         [Fact]
         public void Check_WithNoPermissions_ShouldReturnFalse()
         {
-            
             var model = new Model1()
             {
                 Id = 1,
@@ -59,7 +60,6 @@ namespace EntityFramework.Guardian.UnitTests
             var result = _policy.Check(policyContext);
 
             Assert.Equal(true, result.IsSuccess);
-
         }
 
         [Fact]

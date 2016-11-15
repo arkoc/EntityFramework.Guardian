@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Collections.Generic;
 using System.Linq;
 using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
@@ -296,7 +299,6 @@ namespace EntityFramework.Guardian.IntegrationTests
 
                 Assert.Equal(null, model1val.Property1);
                 Assert.Equal(null, model1val.Property1);
-
             }
         }
 
@@ -344,13 +346,12 @@ namespace EntityFramework.Guardian.IntegrationTests
 
         protected override void SeedDatabase(TestDbContext dataContext)
         {
-            foreach(var Model1 in Seed.Model1s)
+            foreach (var Model1 in Seed.Model1s)
             {
                 dataContext.Model1s.Add(Model1);
             }
 
             dataContext.SaveChanges();
-
         }
 
         private static class Seed
@@ -366,6 +367,4 @@ namespace EntityFramework.Guardian.IntegrationTests
             public static string CustomData { get; set; } = "CustomData";
         }
     }
-
-
 }

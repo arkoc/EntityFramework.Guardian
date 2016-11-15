@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Extensions;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.IntegrationTests.Database;
 
 namespace EntityFramework.Guardian.IntegrationTests
@@ -24,6 +27,5 @@ namespace EntityFramework.Guardian.IntegrationTests
         }
 
         protected abstract void SeedDatabase(TestDbContext dataContext);
-        
     }
 }

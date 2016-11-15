@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Policies;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.Guards;
 using System.Data.Entity;
 using EntityFramework.Guardian.Exceptions;

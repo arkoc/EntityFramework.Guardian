@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Extensions;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Guards;
 using System;
 using System.Data.Entity;
@@ -49,7 +52,6 @@ namespace EntityFramework.Guardian.Hooking
             // there will not be strong reference to DbContextHooker object
             context.ObjectMaterialized += Context_ObjectMaterialized;
             context.SavingChanges += Context_SavingChanges;
-
         }
 
         /// <summary>
@@ -59,7 +61,6 @@ namespace EntityFramework.Guardian.Hooking
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Context_SavingChanges(object sender, EventArgs e)
         {
-
             if (_kernel.EnableGuards == false)
             {
                 return;
@@ -84,7 +85,6 @@ namespace EntityFramework.Guardian.Hooking
 
                 _kernel.Guards.ModifyGuard.Protect(protectionContext);
             }
-
         }
 
         /// <summary>
@@ -94,7 +94,6 @@ namespace EntityFramework.Guardian.Hooking
         /// <param name="e">The <see cref="ObjectMaterializedEventArgs"/> instance containing the event data.</param>
         private void Context_ObjectMaterialized(object sender, ObjectMaterializedEventArgs e)
         {
-
             if (_kernel.EnableGuards == false)
             {
                 return;

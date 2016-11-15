@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Hooking;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Hooking;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 

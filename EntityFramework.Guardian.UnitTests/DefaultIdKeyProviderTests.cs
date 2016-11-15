@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System;
 using EntityFramework.Guardian.Tests.Models;
 using Xunit;
 using EntityFramework.Guardian.Services;
@@ -7,11 +10,11 @@ namespace EntityFramework.Guardian.UnitTests
 {
     public class DefaultIdKeyProviderTests
     {
-        private IEntityKeyProvider defaultIdKeyProvider;
+        private IEntityKeyProvider _defaultIdKeyProvider;
 
         public DefaultIdKeyProviderTests()
         {
-            defaultIdKeyProvider = new DefaultIdKeyProvider();
+            _defaultIdKeyProvider = new DefaultIdKeyProvider();
         }
 
         [Fact]
@@ -23,7 +26,7 @@ namespace EntityFramework.Guardian.UnitTests
                 Id = entityKey
             };
 
-            var key = defaultIdKeyProvider.GetKey(entity);
+            var key = _defaultIdKeyProvider.GetKey(entity);
 
             Assert.Equal(entityKey.ToString(), key);
         }
@@ -37,7 +40,7 @@ namespace EntityFramework.Guardian.UnitTests
                 Id = entityKey
             };
 
-            var key = defaultIdKeyProvider.GetKey(entity);
+            var key = _defaultIdKeyProvider.GetKey(entity);
 
             Assert.Equal(entityKey, key);
         }
@@ -47,8 +50,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void ModelWithNoIdProperty_ShouldFail()
         {
             var entity = new Model3();
-            Assert.Throws(typeof(InvalidOperationException), () => { defaultIdKeyProvider.GetKey(entity); });
+            Assert.Throws(typeof(InvalidOperationException), () => { _defaultIdKeyProvider.GetKey(entity); });
         }
-
     }
 }

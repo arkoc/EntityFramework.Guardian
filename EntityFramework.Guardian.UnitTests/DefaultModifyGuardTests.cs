@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Guards;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Guards;
 using EntityFramework.Guardian.Tests.Models;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Entities;
@@ -39,7 +42,7 @@ namespace EntityFramework.Guardian.UnitTests
             _guard.Protect(new ModifyGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
-                AffectedProperties = {"Property2"}
+                AffectedProperties = { "Property2" }
             });
         }
 

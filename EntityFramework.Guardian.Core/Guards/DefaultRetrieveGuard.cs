@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Policies;
 using System;
 using System.Collections.Generic;
@@ -26,7 +29,6 @@ namespace EntityFramework.Guardian.Guards
             }
 
             _kernel = kernel;
-
         }
 
         /// <summary>
@@ -52,9 +54,7 @@ namespace EntityFramework.Guardian.Guards
                 }
 
                 context.Entry.Entity.ProtectedProperties.AddRange(result.RestrictedProperties);
-
             }
-
         }
     }
 }

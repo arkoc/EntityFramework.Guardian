@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.UnitTests.Dummy;
@@ -48,7 +51,6 @@ namespace EntityFramework.Guardian.UnitTests
             var result = _policy.Check(policyContext);
 
             Assert.Equal(false, result.IsSuccess);
-
         }
 
 

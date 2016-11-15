@@ -1,4 +1,7 @@
-﻿using EntityFramework.Guardian.Entities;
+﻿// Copyright (c) Aram Kocharyan. All rights reserved.
+// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using EntityFramework.Guardian.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +38,6 @@ namespace EntityFramework.Guardian.Extensions
                 {
                     columnRestrictions.AddRange(columnRestrictionsInPermission);
                 }
-
             }
 
             return columnRestrictions;
