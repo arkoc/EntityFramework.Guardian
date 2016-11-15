@@ -54,11 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\DbContextExtensions.cs" />
-    <Compile Include="Configuration\DefaultIdKeyProvider.cs" />
-    <Compile Include="Configuration\IEntityKeyProvider.cs" />
-    <Compile Include="DbPrincipal.cs" />
+    <Compile Include="Services\DefaultIdKeyProvider.cs" />
+    <Compile Include="Services\DefaultPermissionService.cs" />
+    <Compile Include="Services\IEntityKeyProvider.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />
+    <Compile Include="Exceptions\BadConfigurationException.cs" />
     <Compile Include="Extensions\DbContextExtensions.cs" />
     <Compile Include="Extensions\EntityStateExtensions.cs" />
     <Compile Include="Extensions\GuardianKernelExtensions.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="GuardianKernel.cs" />
     <Compile Include="Hooking\DbContextHooker.cs" />
-    <Compile Include="IDbPrincipal.cs" />
+    <Compile Include="Services\IPermissionService.cs" />
     <Compile Include="IObjectAccessEntry.cs" />
     <Compile Include="KernelGuards.cs" />
     <Compile Include="KernelPolicies.cs" />

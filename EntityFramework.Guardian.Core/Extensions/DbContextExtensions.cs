@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using EntityFramework.Guardian.Hooking;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
 namespace EntityFramework.Guardian.Extensions
@@ -8,6 +9,23 @@ namespace EntityFramework.Guardian.Extensions
     /// </summary>
     public static class DbContextExtensions
     {
+        /// <summary>
+        /// Guards the <see cref="DbContext"/>  by <see cref="GuardianKernel"/> .
+        /// </summary>
+        /// <param name="dbContext">The database context.</param>
+        /// <param name="kernel">The guardian kernel.</param>
+        public static DbContext GuardBy(this DbContext dbContext, GuardianKernel kernel)
+        {
+            kernel.TryValidate();
+
+            kernel.DbContext = dbContext;
+
+            var contextHooker = new DbContextHooker(dbContext, kernel);
+            contextHooker.RegisterHooks();
+
+            return dbContext;
+        }
+
         /// <summary>
         /// Detaches all entries.
         /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System;
-using EntityFramework.Guardian.Configuration;
 using EntityFramework.Guardian.Tests.Models;
 using Xunit;
+using EntityFramework.Guardian.Services;
 
 namespace EntityFramework.Guardian.UnitTests
 {

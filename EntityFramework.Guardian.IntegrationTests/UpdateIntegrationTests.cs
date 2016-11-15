@@ -76,12 +76,13 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
                 kernel.UsePermission(new TestPermissionWithCustomField()
                 {
+
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
                     CustomField = "Not_matching_state"
@@ -97,7 +98,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -117,7 +118,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_Status_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -137,7 +138,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_Property_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -188,7 +189,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -211,7 +212,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_Status_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -264,7 +265,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityUpdate_CustomDataRole_Row_Property_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -311,11 +312,11 @@ namespace EntityFramework.Guardian.IntegrationTests
             Model1.Property2 = "222";
         }
 
-        private CustomDbPrincipal GetCustomPrincipal()
+        private CustomPermissionService GetCustomPermissionService()
         {
-            var customDataPrincipal = new CustomDbPrincipal();
-            customDataPrincipal.CustomCheckData = Seed.CustomData;
-            return customDataPrincipal;
+            var customPermissionService = new CustomPermissionService();
+            customPermissionService.CustomCheckData = Seed.CustomData;
+            return customPermissionService;
         }
 
         protected override void SeedDatabase(TestDbContext dataContext)

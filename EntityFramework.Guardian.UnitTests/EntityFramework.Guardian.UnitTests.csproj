@@ -69,7 +69,6 @@
     <Compile Include="Dummy\DummyModifyPolicy.cs" />
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
     <Compile Include="Dummy\DummyRetrievePolicy.cs" />
-    <Compile Include="DbPrincipalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

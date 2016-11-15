@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Services;
 using System;
 
 namespace EntityFramework.Guardian.Extensions
@@ -22,7 +23,7 @@ namespace EntityFramework.Guardian.Extensions
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            kernel.Principal.GeneralPermissions.Add(permission);
+            kernel.Services.PermissionService.AddGeneralPermission(permission);
 
             return kernel;
         }
@@ -41,27 +42,27 @@ namespace EntityFramework.Guardian.Extensions
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            kernel.Principal.RowLevelPermissions.Add(permission);
+            kernel.Services.PermissionService.AddRowLevelPermission(permission);
 
             return kernel;
         }
 
 
         /// <summary>
-        /// Uses the principal.
+        /// Uses the permission service.
         /// </summary>
         /// <param name="kernel">The guardian kernel.</param>
-        /// <param name="principal">The principal to use in kernel.</param>
+        /// <param name="service">The permission service.</param>
         /// <returns></returns>
         /// <exception cref="System.ArgumentNullException">principal</exception>
-        public static GuardianKernel UsePrincipal(this GuardianKernel kernel, IDbPrincipal principal)
+        public static GuardianKernel UsePermissionService(this GuardianKernel kernel, IPermissionService service)
         {
-            if (principal == null)
+            if (service == null)
             {
-                throw new ArgumentNullException(nameof(principal));
+                throw new ArgumentNullException(nameof(service));
             }
 
-            kernel.Principal = principal;
+            kernel.Services.PermissionService = service;
 
             return kernel;
         }

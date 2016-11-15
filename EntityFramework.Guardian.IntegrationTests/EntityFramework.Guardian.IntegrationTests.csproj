@@ -77,7 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\CustomDbPrincipal.cs" />
+    <Compile Include="Database\CustomPermissionService.cs" />
     <Compile Include="Database\TestDbContext.cs" />
     <Compile Include="DeleteIntegrationTests.cs" />
     <Compile Include="GetIntegrationTests.cs" />

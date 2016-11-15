@@ -45,7 +45,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityDelete_CustomDataRole_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -66,7 +66,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityDelete_CustomDataRole_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -86,7 +86,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityDelete_CustomDataRole_Status_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -126,7 +126,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityDelete_CustomDataRole_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -147,7 +147,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityDelete_CustomDataRole_Status_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -178,11 +178,11 @@ namespace EntityFramework.Guardian.IntegrationTests
             dataContext.Model1s.Remove(Model1);
         }
 
-        private CustomDbPrincipal GetCustomPrincipal()
+        private CustomPermissionService GetCustomPermissionService()
         {
-            var customDataPrincipal = new CustomDbPrincipal();
-            customDataPrincipal.CustomCheckData = Seed.CustomData;
-            return customDataPrincipal;
+            var customPermissionService = new CustomPermissionService();
+            customPermissionService.CustomCheckData = Seed.CustomData;
+            return customPermissionService;
         }
 
         protected override void SeedDatabase(TestDbContext dataContext)

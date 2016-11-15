@@ -3,7 +3,7 @@
 namespace EntityFramework.Guardian
 {
     /// <summary>
-    /// 
+    /// ObjectAccess Adapter
     /// </summary>
     public interface IObjectAccessEntry
     {

@@ -1,5 +1,4 @@
-﻿using EntityFramework.Guardian.Configuration;
-using EntityFramework.Guardian.Extensions;
+﻿using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.IntegrationTests.Database;
 
 namespace EntityFramework.Guardian.IntegrationTests

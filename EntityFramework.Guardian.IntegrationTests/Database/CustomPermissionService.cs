@@ -1,14 +1,12 @@
 ﻿using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Services;
 using EntityFramework.Guardian.Tests.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntityFramework.Guardian.IntegrationTests.Database
 {
-    public class CustomDbPrincipal : DbPrincipal
+    public class CustomPermissionService : DefaultPermissionService
     {
         public string CustomCheckData { get; set; }
 

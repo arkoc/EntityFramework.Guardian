@@ -1,5 +1,6 @@
 ﻿using EntityFramework.Guardian.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -16,20 +17,20 @@ namespace EntityFramework.Guardian.Extensions
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>Protected source.</returns>
-        public static IQueryable<TEntity> Protect<TEntity>(this IQueryable<TEntity> source) where TEntity : class, IProtectableObject
+        public static List<TEntity> Protect<TEntity>(this List<TEntity> source) where TEntity : class, IProtectableObject
         {
             if (source == null)
             {
                 return null;
             }
 
-            var protectedSource = source.ToList().Where(x => x.ProtectionResult == ProtectionResults.Allow).ToList();
+            var protectedSource = source.Where(x => x.ProtectionResult == ProtectionResults.Allow).ToList();
             foreach (var entry in protectedSource)
             {
                 ProtectProperties(entry);
             }
 
-            return protectedSource.AsQueryable();
+            return protectedSource;
         }
 
         /// <summary>

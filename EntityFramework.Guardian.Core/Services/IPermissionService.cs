@@ -1,28 +1,24 @@
 ﻿using EntityFramework.Guardian.Entities;
 using System.Collections.Generic;
 
-namespace EntityFramework.Guardian
+namespace EntityFramework.Guardian.Services
 {
     /// <summary>
-    /// 
+    /// Permission service to retrive information about current security context
     /// </summary>
-    public interface IDbPrincipal
+    public interface IPermissionService
     {
         /// <summary>
-        /// Gets the general permissions.
+        /// Adds the general permission.
         /// </summary>
-        /// <value>
-        /// The general permissions.
-        /// </value>
-        List<IPermission> GeneralPermissions { get; }
+        /// <param name="permission">The permission to add.</param>
+        void AddGeneralPermission(IPermission permission);
 
         /// <summary>
-        /// Gets the row level permissions.
+        /// Adds the row level permission.
         /// </summary>
-        /// <value>
-        /// The row level permissions.
-        /// </value>
-        List<IRowPermission> RowLevelPermissions { get; }
+        /// <param name="permission">The permission to add.</param>
+        void AddRowLevelPermission(IRowPermission permission);
 
         /// <summary>
         /// Gets the general permissions.
@@ -37,8 +33,8 @@ namespace EntityFramework.Guardian
         /// </summary>
         /// <param name="entityTypeName">Name of the entity type.</param>
         /// <param name="accessType">Type of the access.</param>
-        /// <param name="key">The db row key of entity.</param>
+        /// <param name="rowKey">The db row key of entity.</param>
         /// <returns></returns>
-        List<IRowPermission> GetRowLevelPermissions(string entityTypeName, AccessTypes accessType, string key);
+        List<IRowPermission> GetRowLevelPermissions(string entityTypeName, AccessTypes accessType, string rowKey);
     }
 }

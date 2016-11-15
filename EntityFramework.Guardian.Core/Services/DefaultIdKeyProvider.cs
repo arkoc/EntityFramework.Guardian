@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntityFramework.Guardian.Configuration
+namespace EntityFramework.Guardian.Services
 {
     /// <summary>
     /// Default key provider that gathers key from Id property of entity

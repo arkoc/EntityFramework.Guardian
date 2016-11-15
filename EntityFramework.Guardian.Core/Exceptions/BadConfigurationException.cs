@@ -1,45 +1,44 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Runtime.Serialization;
 
 namespace EntityFramework.Guardian.Exceptions
 {
     /// <summary>
-    /// Exception that is thrown in <see cref="DbContext.SaveChanges"/> when there is no permission
+    /// Bad Configuration Exception thrown in <see cref="GuardianKernel.TryValidate"/> function  
     /// </summary>
     /// <seealso cref="System.Exception" />
-    public class AccessDeniedException : Exception
+    public class BadConfigurationException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessDeniedException"/> class.
+        /// Initializes a new instance of the <see cref="BadConfigurationException"/> class.
         /// </summary>
-        public AccessDeniedException()
+        public BadConfigurationException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessDeniedException"/> class.
+        /// Initializes a new instance of the <see cref="BadConfigurationException"/> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
-        public AccessDeniedException(string message) : base(message)
+        public BadConfigurationException(string message) : base(message)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessDeniedException"/> class.
+        /// Initializes a new instance of the <see cref="BadConfigurationException"/> class.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
-        public AccessDeniedException(string message, Exception innerException) : base(message, innerException)
+        public BadConfigurationException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessDeniedException"/> class.
+        /// Initializes a new instance of the <see cref="BadConfigurationException"/> class.
         /// </summary>
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
-        protected AccessDeniedException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected BadConfigurationException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

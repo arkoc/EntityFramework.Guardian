@@ -16,10 +16,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                List<Model1> Model1s = dataContext.Model1s
-                    .AsQueryable()
-                    .Protect()
-                    .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -39,10 +36,8 @@ namespace EntityFramework.Guardian.IntegrationTests
                     EntityTypeName = typeof(Model1).Name
                 });
 
-                var Model1s = dataContext.Model1s
-                    .AsQueryable()
-                    .Protect()
-                    .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
+
                 var count = Model1s.Count;
 
                 Assert.Equal(Seed.Model1s.Count, count);
@@ -74,12 +69,9 @@ namespace EntityFramework.Guardian.IntegrationTests
 
                 kernel.UsePermission(permission);
 
-                var Model1s = dataContext.Model1s
-                    .AsQueryable()
-                    .Protect()
-                    .ToList();
-                
-                foreach(var Model1 in Model1s)
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
+
+                foreach (var Model1 in Model1s)
                 {
                     Assert.Equal(null, Model1.Property1);
                     Assert.Equal(null, Model1.Property2);
@@ -91,7 +83,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -102,10 +94,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     CustomField = "Not_matching_data"
                 });
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -117,7 +106,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -128,10 +117,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     CustomField = null
                 });
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -143,7 +129,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_Status_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -155,10 +141,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                 });
 
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -170,7 +153,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_Property_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -193,10 +176,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
                 kernel.UsePermission(permission);
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 foreach (var Model1 in Model1s)
                 {
@@ -219,10 +199,8 @@ namespace EntityFramework.Guardian.IntegrationTests
                     RowIdentifier = "1"
                 });
 
-                var Model1s = dataContext.Model1s
-                    .AsQueryable()
-                    .Protect()
-                    .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
+
                 var count = Model1s.Count;
 
                 Assert.Equal(1, count);
@@ -237,7 +215,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -249,10 +227,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     RowIdentifier = "1"
                 });
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -268,7 +243,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_Status_Row_HaveAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -280,10 +255,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     RowIdentifier = "1"
                 });
 
-                var Model1s = dataContext.Model1s
-                                  .AsQueryable()
-                                  .Protect()
-                                  .ToList();
+                List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
                 var count = Model1s.Count;
 
@@ -332,7 +304,7 @@ namespace EntityFramework.Guardian.IntegrationTests
         public void EntityGet_CustomDataRole_Row_Property_NoAccess()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePrincipal(GetCustomPrincipal());
+            kernel.UsePermissionService(GetCustomPermissionService());
 
             using (var dataContext = InitDataContext(kernel))
             {
@@ -363,11 +335,11 @@ namespace EntityFramework.Guardian.IntegrationTests
             }
         }
 
-        private CustomDbPrincipal GetCustomPrincipal()
+        private CustomPermissionService GetCustomPermissionService()
         {
-            var customDataPrincipal = new CustomDbPrincipal();
-            customDataPrincipal.CustomCheckData = Seed.CustomData;
-            return customDataPrincipal;
+            var customPermissionService = new CustomPermissionService();
+            customPermissionService.CustomCheckData = Seed.CustomData;
+            return customPermissionService;
         }
 
         protected override void SeedDatabase(TestDbContext dataContext)

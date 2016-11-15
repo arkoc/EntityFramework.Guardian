@@ -85,8 +85,8 @@ namespace EntityFramework.Guardian.Policies
             var entityRowKey = kernel.Services.EntityKeyProvider.GetKey(entry.Entity);
             var entityTypeName = entry.Entity.GetType().Name;
 
-            var generalPermissions = kernel.Principal.GetGeneralPermissions(entityTypeName, entry.AccessType);
-            var rowLevelPermissions = kernel.Principal.GetRowLevelPermissions(
+            var generalPermissions = kernel.Services.PermissionService.GetGeneralPermissions(entityTypeName, entry.AccessType);
+            var rowLevelPermissions = kernel.Services.PermissionService.GetRowLevelPermissions(
                 entityTypeName,
                 entry.AccessType,
                 entityRowKey);

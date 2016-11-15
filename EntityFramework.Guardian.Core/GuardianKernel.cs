@@ -1,7 +1,8 @@
-﻿using EntityFramework.Guardian.Configuration;
-using EntityFramework.Guardian.Policies;
+﻿using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.Guards;
 using System.Data.Entity;
+using EntityFramework.Guardian.Exceptions;
+using EntityFramework.Guardian.Services;
 
 namespace EntityFramework.Guardian
 {
@@ -43,14 +44,6 @@ namespace EntityFramework.Guardian
         public KernelPolicies Policies { get; } = new KernelPolicies();
 
         /// <summary>
-        /// Gets or sets the principal.
-        /// </summary>
-        /// <value>
-        /// The principal.
-        /// </value>
-        public IDbPrincipal Principal { get; set; }
-
-        /// <summary>
         /// Gets or sets the database context associated with this kernel.
         /// </summary>
         /// <value>
@@ -64,6 +57,7 @@ namespace EntityFramework.Guardian
         public GuardianKernel()
         {
             Services.EntityKeyProvider = new DefaultIdKeyProvider();
+            Services.PermissionService = new DefaultPermissionService();
 
             Guards.ModifyGuard = new DefaultModifyGuard(this);
             Guards.RetrieveGuard = new DefaultRetrieveGuard(this);
@@ -73,8 +67,39 @@ namespace EntityFramework.Guardian
 
             Policies.RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
             Policies.RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
+        }
 
-            Principal = new DbPrincipal();
+        /// <summary>
+        /// Tries to validate guardian kernel
+        /// </summary>
+        /// <exception cref="EntityFramework.Guardian.Exceptions.BadConfigurationException">
+        /// </exception>
+        public void TryValidate()
+        {
+            if (DbContext != null)
+            {
+                throw new BadConfigurationException("Specified GuardianKernel object already associcated with another DbContext.");
+            }
+
+            if (Services.PermissionService == null)
+            {
+                throw new BadConfigurationException("Services.PermissionService can't be null.");
+            }
+
+            if (Services.EntityKeyProvider == null)
+            {
+                throw new BadConfigurationException("Services.EntityKeyProvider can't be null.");
+            }
+
+            if (Guards.ModifyGuard == null)
+            {
+                throw new BadConfigurationException("Guards.ModifyGuard can't be null.");
+            }
+
+            if (Guards.RetrieveGuard == null)
+            {
+                throw new BadConfigurationException("Guards.RetrieveGuard can't be null.");
+            }
         }
     }
 }
