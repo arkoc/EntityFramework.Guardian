@@ -11,4 +11,5 @@ Install [NuGet package](https://www.nuget.org/packages/EntityFramework.Guardian/
 PM> Install-Package EntityFramework.Guardian
 ```
 
-Still in testing/fixing stage. Documentation will be available soon. Feel free to contact if there are any questions.
+Full documentation is available here [entityframeworkguardian.readthedocs.io](http://entityframeworkguardian.readthedocs.io)
+
