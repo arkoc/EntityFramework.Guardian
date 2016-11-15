@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// 
+    /// Permissions used in contexts
     /// </summary>
     public class Permissions
     {

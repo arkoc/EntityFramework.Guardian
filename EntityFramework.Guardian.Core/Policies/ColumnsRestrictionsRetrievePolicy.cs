@@ -4,7 +4,7 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// 
+    /// Policy for applying Column Restrictions when retrieving entities
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievePolicy" />
     public class ColumnsRestrictionsRetrievePolicy : IRetrievePolicy

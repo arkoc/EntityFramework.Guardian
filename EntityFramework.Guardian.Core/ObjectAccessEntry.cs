@@ -9,7 +9,7 @@ using System.Data.Entity.Core.Objects;
 namespace EntityFramework.Guardian
 {
     /// <summary>
-    /// 
+    /// ObjectAccess Adapter
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.IObjectAccessEntry" />
     internal class ObjectAccessEntry : IObjectAccessEntry

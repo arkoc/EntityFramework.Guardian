@@ -6,7 +6,7 @@ using System.Linq;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// 
+    /// Policy for checking permissions retrieved by permissionservice
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievePolicy" />
     public class PermissionExistsRetrievePolicy : IRetrievePolicy

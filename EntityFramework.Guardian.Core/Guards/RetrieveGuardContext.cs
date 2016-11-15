@@ -4,7 +4,7 @@
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// 
+    /// Context for Retrieve Guard
     /// </summary>
     public class RetrieveGuardContext
     {

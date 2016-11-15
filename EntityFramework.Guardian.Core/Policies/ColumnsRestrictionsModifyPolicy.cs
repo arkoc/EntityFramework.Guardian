@@ -6,7 +6,7 @@ using System.Linq;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// 
+    /// Policy for applying Column Restrictions when modifing entities
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Policies.IModifyPolicy" />
     public class ColumnsRestrictionsModifyPolicy : IModifyPolicy

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// 
+    /// Context for Modify Guard
     /// </summary>
     public class ModifyGuardContext
     {
