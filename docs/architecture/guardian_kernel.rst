@@ -1,2 +1,4 @@
+.. _refGuardianKernel:
+
 Guardian Kernel
 ===============
