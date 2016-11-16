@@ -1,5 +1,7 @@
 # EntityFramework.Guardian #
 
+[![Build status](https://ci.appveyor.com/api/projects/status/r6rt7t75lf9r9cih?svg=true)](https://ci.appveyor.com/project/arkoc/entityframework-guardian)
+
 ## Overview ##
 
 EntityFramework.Guardian is a extension point for Entity Framework DbContext in order to implement Database Security by hooking database operations.
