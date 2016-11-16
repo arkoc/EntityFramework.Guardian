@@ -15,21 +15,21 @@ Centralized mechanism for hooking database operations
 
 General Security
 ^^^^^^^^^^^^^^^^
-Restrict/grant access by entity type and access type**\***
+Restrict/grant access by entity type and access type\*
 
 Row-Level Security
 ^^^^^^^^^^^^^^^^^^
-Restrict/grant access by row identificator and access type**\***
+Restrict/grant access by row identificator and access type\*
 
 Column-Level Security
 ^^^^^^^^^^^^^^^^^^^^^
-Restrict/grant access by column names and access type**\***
+Restrict/grant access by column names and access type\*
 
 Customization
 ^^^^^^^^^^^^^
 Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
-* access types: get, add, update, delete *
+**access types** : *get, add, update, delete*
 
    :caption: Introduction
 
