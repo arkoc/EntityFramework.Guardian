@@ -31,6 +31,9 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
 **access types** : *get, add, update, delete*
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :caption: Introduction
 
    intro/big_picture
@@ -38,9 +41,6 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
    intro/configuration
 
 .. toctree::
-.. toctree::
-   :maxdepth: 2
-   :hidden:
    :maxdepth: 2
    :hidden:
    :caption: Architecture
