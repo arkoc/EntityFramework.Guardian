@@ -1,2 +1,3 @@
+.. _refGuards:
 Guards
 ======
