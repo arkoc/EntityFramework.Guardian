@@ -16,8 +16,9 @@ Guardian introduces set of interfaces for implementing entitites that are presen
 
 General part of guardian is `GuardianKernel`. This object holds following components:
 
-* Guards - There are 2 main guards ModifyGuard and RetrieveGuard, these guards invoke defined policies
+* Guards - ModifyGuard and RetrieveGuard, these guards invoke defined policies
 * Policies - Policies define set of rules to be applyed to entities and permissions
 * PermissionService - Service for retrieving general and row level permissions.
 * EntityKeyProvider - Service for returning string representation of passed entity identificator
 
+All these components are configurable.
