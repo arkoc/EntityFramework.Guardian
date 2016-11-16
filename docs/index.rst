@@ -7,32 +7,30 @@ It enables the following features in your applications:
 
 Build-in Interfaces
 ^^^^^^^^^^^^^^^^^^^
-Build-in interfaces for implementing database security
+Build-in entity interfaces for implementing database security
 
 Database Operations Hooking system
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Centralized mechanism for hooking modifying/retrieving events
+Centralized mechanism for hooking database operations
 
 General Security
 ^^^^^^^^^^^^^^^^
-Restrict/grant access by entity type and access type (get, add, update, delete)
+Restrict/grant access by entity type and access type**\***
 
 Row-Level Security
 ^^^^^^^^^^^^^^^^^^
-Restrict/grant access by row identificator and access type (get, add, update, delete)
+Restrict/grant access by row identificator and access type**\***
 
 Column-Level Security
 ^^^^^^^^^^^^^^^^^^^^^
-Restrict/grant access by column names and access type (get, add, update, delete)
+Restrict/grant access by column names and access type**\***
 
 Customization
 ^^^^^^^^^^^^^
 Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
+* access types: get, add, update, delete *
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
    :caption: Introduction
 
    intro/big_picture
@@ -40,6 +38,9 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
    intro/configuration
 
 .. toctree::
+.. toctree::
+   :maxdepth: 2
+   :hidden:
    :maxdepth: 2
    :hidden:
    :caption: Architecture
