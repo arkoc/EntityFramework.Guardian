@@ -2,6 +2,7 @@ Installation
 ============
 
 Guardian is separated in two packages: 
+
 * EntityFramework.Guardian
 * EntityFramework.Guardian.Entities
 
