@@ -3,8 +3,8 @@ Installation
 
 Guardian is separated in two packages: 
 
-* EntityFramework.Guardian
-* EntityFramework.Guardian.Entities
+* EntityFramework.Guardian - include everything needed for guardian (including dependecy to EntityFramework.Guardian.Entities)
+* EntityFramework.Guardian.Entities - includes all permission entity interfaces
 
 Install `NuGet package <https://www.nuget.org/packages/EntityFramework.Guardian/>`_ from Package Manager Console:
 
