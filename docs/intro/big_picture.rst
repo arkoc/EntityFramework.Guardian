@@ -16,8 +16,8 @@ Guardian introduces set of interfaces for implementing entitites that are presen
 
 Guardian set two guards for Modifing and Retrieving operations:
 
-* Retrieve guard is set in ObjectContext.ObjectMaterialized event.
-* Modify guard is set in ObjectContext.SavingChanges event.
+* Retrieve ( get ) guard is set in ObjectContext.ObjectMaterialized event.
+* Modify ( add, update, delete ) guard is set in ObjectContext.SavingChanges event.
 
 General part of guardian is `GuardianKernel`. This object holds following components:
 
