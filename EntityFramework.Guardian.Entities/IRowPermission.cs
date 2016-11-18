@@ -4,7 +4,7 @@
 namespace EntityFramework.Guardian.Entities
 {
     /// <summary>
-    /// 
+    /// Entity interfce presenting permission linked to entitytype and row identifier
     /// </summary>
     public interface IRowPermission
     {
