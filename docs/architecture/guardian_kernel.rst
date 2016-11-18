@@ -1,0 +1,3 @@
+.. _refGuardianKernel:
+Guardian Kernel
+===============

@@ -1,0 +1,3 @@
+.. _refPermissionsService:
+Permissions Service
+===================
