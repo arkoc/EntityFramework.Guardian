@@ -12,7 +12,59 @@ How we solve this?
 ^^^^^^^^^^^^^^^^^^
 
 We introduce EntityFramework.Guardian. This solution allows you to implement database security in easy and **right** way.
-Guardian introduces set of interfaces for implementing entitites that are presenting permissions that are linked to entity type, row and columns. 
+
+Guardian introduces access types:
+
+.. code-block:: c#
+    /// <summary>
+    /// Access Types
+    /// </summary>
+    public enum AccessTypes
+    {
+        /// <summary>
+        /// The get
+        /// </summary>
+        Get,
+        /// <summary>
+        /// The add
+        /// </summary>
+        Add,
+        /// <summary>
+        /// The update
+        /// </summary>
+        Update,
+        /// <summary>
+        /// The delete
+        /// </summary>
+        Delete
+    }
+
+Also Guardian introduces set of interfaces for implementing entitites that are presenting permissions that are linked to entity type, row and columns.
+
+Here is simple entity interface that presents permission that is linked to entity type.
+
+.. code-block:: c#
+    /// <summary>
+    /// Entity interfce presenting permission linked to entitytype
+    /// </summary>
+    public interface IPermission
+    {
+        /// <summary>
+        /// Gets the name of the entity type.
+        /// </summary>
+        /// <value>
+        /// The name of the entity type.
+        /// </value>
+        string EntityTypeName { get; }
+
+        /// <summary>
+        /// Gets the type of the access.
+        /// </summary>
+        /// <value>
+        /// The type of the access.
+        /// </value>
+        AccessTypes AccessType { get; }
+    }
 
 Guardian set two guards for Modifing and Retrieving operations:
 
