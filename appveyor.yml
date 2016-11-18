@@ -15,3 +15,10 @@ skip_commits:
   files:
     - docs/*
     - '**/*.md'
+artifacts:
+- path: NuGet/Release/EntityFramework.Guardian.Core.*.nupkg
+- path: NuGet/Release/EntityFramework.Guardian.Entities.*.nupkg
+deploy:
+- provider: NuGet
+  api_key:
+    secure: 5VFC2Dd+/TtE6KO8MeJyA8Oey2ACijjLFC71tGkkBg5P7/Con1yEPCCPrFbUpDPR
