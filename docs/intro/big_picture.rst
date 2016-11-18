@@ -14,6 +14,11 @@ How we solve this?
 We introduce EntityFramework.Guardian. This solution allows you to implement database security in easy and **right** way.
 Guardian introduces set of interfaces for implementing entitites that are presenting permissions that are linked to entity type, row and columns. 
 
+Guardian set two guards for Modifing and Retrieving operations:
+
+* Retrieve guard is set in ObjectContext.ObjectMaterialized event.
+* Modify guard is set in ObjectContext.SavingChanges event.
+
 General part of guardian is `GuardianKernel`. This object holds following components:
 
 * :ref:`Guards <refGuards>` - ModifyGuard and RetrieveGuard, these guards invoke defined policies
