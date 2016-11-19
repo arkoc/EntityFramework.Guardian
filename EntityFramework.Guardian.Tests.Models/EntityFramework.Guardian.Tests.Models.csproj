@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.Guardian.Entities, Version=1.5.44.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Guardian.Entities.1.5.44\lib\net461\EntityFramework.Guardian.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,10 +55,7 @@
     <Compile Include="TestRowPermissionWithCustomField.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFramework.Guardian.Entities\EntityFramework.Guardian.Entities.csproj">
-      <Project>{47d3d9d0-00a4-48e0-b3e6-526c28d0f5d6}</Project>
-      <Name>EntityFramework.Guardian.Entities</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

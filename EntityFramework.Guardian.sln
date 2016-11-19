@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Guardian.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Guardian.IntegrationTests", "EntityFramework.Guardian.IntegrationTests\EntityFramework.Guardian.IntegrationTests.csproj", "{11FEE887-94AB-4DBE-8E2E-3FC6C354C7C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Guardian.Entities", "EntityFramework.Guardian.Entities\EntityFramework.Guardian.Entities.csproj", "{47D3D9D0-00A4-48E0-B3E6-526C28D0F5D6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Guardian.Tests.Models", "EntityFramework.Guardian.Tests.Models\EntityFramework.Guardian.Tests.Models.csproj", "{32CA2733-7B64-494A-AEF4-B0F9587C5130}"
 EndProject
 Global
@@ -40,10 +38,6 @@ Global
 		{11FEE887-94AB-4DBE-8E2E-3FC6C354C7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11FEE887-94AB-4DBE-8E2E-3FC6C354C7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11FEE887-94AB-4DBE-8E2E-3FC6C354C7C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47D3D9D0-00A4-48E0-B3E6-526C28D0F5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47D3D9D0-00A4-48E0-B3E6-526C28D0F5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47D3D9D0-00A4-48E0-B3E6-526C28D0F5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47D3D9D0-00A4-48E0-B3E6-526C28D0F5D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32CA2733-7B64-494A-AEF4-B0F9587C5130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32CA2733-7B64-494A-AEF4-B0F9587C5130}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32CA2733-7B64-494A-AEF4-B0F9587C5130}.Release|Any CPU.ActiveCfg = Release|Any CPU
