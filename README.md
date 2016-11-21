@@ -25,4 +25,4 @@ guardianKernel.UseInMemoryPermission(...)
   
 ```
 
-After call of `GuardBy` DbContext will not allow do anything in database. After call of `UseInMemoryPermission` function, `DbContext` will allow only operation allowed by permission passed to it.
+After call of `GuardBy` `DbContext` will not allow to do anything in database. After call of `UseInMemoryPermission` function, `DbContext` will allow only operation allowed by permission passed to it.
