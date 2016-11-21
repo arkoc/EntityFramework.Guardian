@@ -49,7 +49,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var kernel = new GuardianKernel();
 
-            kernel.UsePermission(new TestPermission()
+            kernel.UseInMemoryPermission(new TestPermission()
             {
                 AccessType = AccessTypes.Get,
                 EntityTypeName = model.GetType().Name
@@ -74,7 +74,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var kernel = new GuardianKernel();
 
-            kernel.UsePermission(new TestRowPermission()
+            kernel.UseInMemoryPermission(new TestRowPermission()
             {
                 AccessType = AccessTypes.Get,
                 EntityTypeName = model.GetType().Name,

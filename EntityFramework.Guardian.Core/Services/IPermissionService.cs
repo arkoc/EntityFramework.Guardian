@@ -12,18 +12,6 @@ namespace EntityFramework.Guardian.Services
     public interface IPermissionService
     {
         /// <summary>
-        /// Adds the general permission.
-        /// </summary>
-        /// <param name="permission">The permission to add.</param>
-        void AddGeneralPermission(IPermission permission);
-
-        /// <summary>
-        /// Adds the row level permission.
-        /// </summary>
-        /// <param name="permission">The permission to add.</param>
-        void AddRowLevelPermission(IRowPermission permission);
-
-        /// <summary>
         /// Gets the general permissions.
         /// </summary>
         /// <param name="entityTypeName">Name of the entity type.</param>

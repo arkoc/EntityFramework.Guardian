@@ -11,7 +11,7 @@ namespace EntityFramework.Guardian.Services
     /// Default implementation of IPermissionService
     /// </summary>
     /// <seealso cref="EntityFramework.Guardian.Services.IPermissionService" />
-    public class DefaultPermissionService : IPermissionService
+    public class InMemoryPermissionService : IPermissionService
     {
         /// <summary>
         /// Gets or sets the general permissions.
@@ -29,23 +29,6 @@ namespace EntityFramework.Guardian.Services
         /// </value>
         public virtual List<IRowPermission> RowLevelPermissions { get; set; } = new List<IRowPermission>();
 
-        /// <summary>
-        /// Adds the general permission.
-        /// </summary>
-        /// <param name="permission">The permission to add.</param>
-        public virtual void AddGeneralPermission(IPermission permission)
-        {
-            GeneralPermissions.Add(permission);
-        }
-
-        /// <summary>
-        /// Adds the row level permission.
-        /// </summary>
-        /// <param name="permission">The permission to add.</param>
-        public virtual void AddRowLevelPermission(IRowPermission permission)
-        {
-            RowLevelPermissions.Add(permission);
-        }
 
         /// <summary>
         /// Gets the general permissions.

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace EntityFramework.Guardian.IntegrationTests.Database
 {
-    public class CustomPermissionService : DefaultPermissionService
+    public class CustomPermissionService : InMemoryPermissionService
     {
         public string CustomCheckData { get; set; }
 

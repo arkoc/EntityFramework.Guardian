@@ -31,7 +31,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermission()
+                kernel.UseInMemoryPermission(new TestPermission()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name
@@ -52,7 +52,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,
@@ -73,7 +73,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,
@@ -93,7 +93,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,
@@ -113,7 +113,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermission()
+                kernel.UseInMemoryPermission(new TestRowPermission()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,
@@ -133,7 +133,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestRowPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,
@@ -154,7 +154,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestRowPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Delete,
                     EntityTypeName = typeof(Model1).Name,

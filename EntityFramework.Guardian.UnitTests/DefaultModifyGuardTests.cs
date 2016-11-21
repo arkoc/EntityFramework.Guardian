@@ -30,7 +30,7 @@ namespace EntityFramework.Guardian.UnitTests
                 PropertyName = "Property1"
             });
 
-            kernel.UsePermission(permission);
+            kernel.UseInMemoryPermission(permission);
 
             _guard = new DefaultModifyGuard(kernel);
         }
@@ -80,7 +80,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldCallUserDefinedPolicy()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePermission(new TestPermission()
+            kernel.UseInMemoryPermission(new TestPermission()
             {
                 AccessType = AccessTypes.Add,
                 EntityTypeName = typeof(Model1).Name

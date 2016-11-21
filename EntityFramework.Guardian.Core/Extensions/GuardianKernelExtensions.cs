@@ -13,39 +13,49 @@ namespace EntityFramework.Guardian.Extensions
     public static class GuardianKernelExtensions
     {
         /// <summary>
-        /// Uses the permission.
+        /// Uses the permission in InMemmoryPermissionService.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <param name="permission">The permission to add in DbPrincipal.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">permission</exception>
-        public static GuardianKernel UsePermission(this GuardianKernel kernel, IPermission permission)
+        public static GuardianKernel UseInMemoryPermission(this GuardianKernel kernel, IPermission permission)
         {
+            if (kernel.Services.PermissionService is InMemoryPermissionService == false)
+            {
+                throw new InvalidOperationException("Permission service must be InMemmoryPermissionService to use this method");
+            }
+
             if (permission == null)
             {
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            kernel.Services.PermissionService.AddGeneralPermission(permission);
+            (kernel.Services.PermissionService as InMemoryPermissionService).GeneralPermissions.Add(permission);
 
             return kernel;
         }
 
         /// <summary>
-        /// Uses the permission.
+        /// Uses the permission in InMemmoryPermissionService.
         /// </summary>
         /// <param name="kernel">The guardian kernel.</param>
         /// <param name="permission">The permission to add in DbPrincipal.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">permission</exception>
-        public static GuardianKernel UsePermission(this GuardianKernel kernel, IRowPermission permission)
+        public static GuardianKernel UseInMemoryPermission(this GuardianKernel kernel, IRowPermission permission)
         {
+            if (kernel.Services.PermissionService is InMemoryPermissionService == false)
+            {
+                throw new InvalidOperationException("Permission service must be InMemmoryPermissionService to use this method");
+            }
+
             if (permission == null)
             {
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            kernel.Services.PermissionService.AddRowLevelPermission(permission);
+            (kernel.Services.PermissionService as InMemoryPermissionService).RowLevelPermissions.Add(permission);
 
             return kernel;
         }

@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\DefaultIdKeyProvider.cs" />
-    <Compile Include="Services\DefaultPermissionService.cs" />
+    <Compile Include="Services\InMemoryPermissionService.cs" />
     <Compile Include="Services\IEntityKeyProvider.cs" />
     <Compile Include="Exceptions\AccessDeniedException.cs" />
     <Compile Include="Exceptions\BadConfigurationException.cs" />

@@ -33,7 +33,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermission()
+                kernel.UseInMemoryPermission(new TestPermission()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name
@@ -70,7 +70,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
@@ -90,7 +90,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -113,7 +113,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -136,7 +136,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -177,7 +177,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 List<Model1> Model1s = dataContext.Model1s.ToList().Protect();
 
@@ -195,7 +195,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermission()
+                kernel.UseInMemoryPermission(new TestRowPermission()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -222,7 +222,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestRowPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -250,7 +250,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestRowPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Get,
                     EntityTypeName = typeof(Model1).Name,
@@ -293,7 +293,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 var model1val = dataContext.Model1s.FirstOrDefault().Protect();
 
@@ -328,7 +328,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 var model1val = dataContext.Model1s.FirstOrDefault().Protect();
 

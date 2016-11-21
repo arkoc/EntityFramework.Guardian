@@ -34,7 +34,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermission()
+                kernel.UseInMemoryPermission(new TestPermission()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name
@@ -67,7 +67,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 UpdateModel1(dataContext);
 
@@ -83,7 +83,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
@@ -104,7 +104,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
@@ -124,7 +124,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
@@ -161,7 +161,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 UpdateModel1(dataContext);
 
@@ -175,7 +175,7 @@ namespace EntityFramework.Guardian.IntegrationTests
             var kernel = new GuardianKernel();
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermission()
+                kernel.UseInMemoryPermission(new TestRowPermission()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
@@ -203,7 +203,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     RowIdentifier = "2"
                 };
 
-                kernel.UsePermission(permission);
+                kernel.UseInMemoryPermission(permission);
 
                 UpdateModel1(dataContext, 2);
                 dataContext.SaveChanges();
@@ -218,7 +218,7 @@ namespace EntityFramework.Guardian.IntegrationTests
 
             using (var dataContext = InitDataContext(kernel))
             {
-                kernel.UsePermission(new TestRowPermissionWithCustomField()
+                kernel.UseInMemoryPermission(new TestRowPermissionWithCustomField()
                 {
                     AccessType = AccessTypes.Update,
                     EntityTypeName = typeof(Model1).Name,
@@ -254,7 +254,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(sysRolePermission);
+                kernel.UseInMemoryPermission(sysRolePermission);
 
                 UpdateModel1(dataContext, 2);
 
@@ -288,7 +288,7 @@ namespace EntityFramework.Guardian.IntegrationTests
                     PropertyName = "Property2"
                 });
 
-                kernel.UsePermission(wfRolePermissions);
+                kernel.UseInMemoryPermission(wfRolePermissions);
 
                 UpdateModel1(dataContext, 2);
 

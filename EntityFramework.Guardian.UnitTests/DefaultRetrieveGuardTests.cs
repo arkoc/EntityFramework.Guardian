@@ -17,7 +17,7 @@ namespace EntityFramework.Guardian.UnitTests
         public DefaultRetrieveGuardTests()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePermission(new TestPermission()
+            kernel.UseInMemoryPermission(new TestPermission()
             {
                 AccessType = AccessTypes.Get,
                 EntityTypeName = typeof(Model1).Name
@@ -55,7 +55,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldCallUserDefinedPolicy()
         {
             var kernel = new GuardianKernel();
-            kernel.UsePermission(new TestPermission()
+            kernel.UseInMemoryPermission(new TestPermission()
             {
                 AccessType = AccessTypes.Get,
                 EntityTypeName = typeof(Model1).Name

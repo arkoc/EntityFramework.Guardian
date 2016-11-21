@@ -60,7 +60,7 @@ namespace EntityFramework.Guardian
         public GuardianKernel()
         {
             Services.EntityKeyProvider = new DefaultIdKeyProvider();
-            Services.PermissionService = new DefaultPermissionService();
+            Services.PermissionService = new InMemoryPermissionService();
 
             Guards.ModifyGuard = new DefaultModifyGuard(this);
             Guards.RetrieveGuard = new DefaultRetrieveGuard(this);

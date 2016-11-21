@@ -44,7 +44,7 @@ namespace EntityFramework.Guardian.UnitTests
 
             var kernel = new GuardianKernel();
 
-            kernel.UsePermission(rowPermission);
+            kernel.UseInMemoryPermission(rowPermission);
 
             var policyContext = GetPolicyContext(kernel, model, AccessTypes.Add, new List<string> { "Property1" });
 
