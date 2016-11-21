@@ -14,6 +14,8 @@ Install [NuGet package](https://www.nuget.org/packages/EntityFramework.Guardian/
 PM> Install-Package EntityFramework.Guardian
 ```
 
+In your application use this:
+
 ```c#
 var dbContext = new AppDbContext();
 var guardianKernel = new GuardianKernel();
