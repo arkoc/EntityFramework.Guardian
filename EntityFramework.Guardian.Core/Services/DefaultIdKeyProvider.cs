@@ -8,7 +8,7 @@ namespace EntityFramework.Guardian.Services
     /// <summary>
     /// Default key provider that gathers key from Id property of entity
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Configuration.IEntityKeyProvider" />
+    /// <seealso cref="IEntityKeyProvider" />
     public class DefaultIdKeyProvider : IEntityKeyProvider
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace EntityFramework.Guardian.Services
 
             if (idProperty == null)
             {
-                throw new InvalidOperationException($"DefaultIdKeyProvider cant get Id column {entity.GetType().Name}");
+                throw new InvalidOperationException($"DefaultIdKeyProvider can't get Id column {entity.GetType().Name}");
             }
 
             var value = idProperty.GetValue(entity).ToString();
