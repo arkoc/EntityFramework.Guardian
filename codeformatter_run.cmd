@@ -1,1 +1,0 @@
-codeformatter "C:\Users\aramk\Documents\Visual Studio 2015\Projects\EntityFramework.Guardian\EntityFramework.Guardian.sln" /copyright:"C:\Users\aramk\Documents\Visual Studio 2015\Projects\EntityFramework.Guardian\LICENSEHEADER.MD"
