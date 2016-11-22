@@ -37,7 +37,7 @@ namespace EntityFramework.Guardian.Guards
         /// <exception cref="EntityFramework.Guardian.Exceptions.AccessDeniedException"></exception>
         public void Protect(AlteringGuardContext context)
         {
-            foreach (var policy in _kernel.ModifyPolicies)
+            foreach (var policy in _kernel.AlteringPolicies)
             {
                 var policyContext = AlteringPolicyContext.For(
                         _kernel,

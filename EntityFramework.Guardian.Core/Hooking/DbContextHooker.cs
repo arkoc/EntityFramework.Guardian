@@ -83,7 +83,7 @@ namespace EntityFramework.Guardian.Hooking
                     AffectedProperties = context.GetAffectedProperties(entry.Entity)
                 };
 
-                _kernel.ModifyGuard.Protect(protectionContext);
+                _kernel.AlteringGuard.Protect(protectionContext);
             }
         }
 
@@ -109,7 +109,7 @@ namespace EntityFramework.Guardian.Hooking
                     Entry = objectAccessEntry
                 };
 
-                _kernel.RetrieveGuard.Protect(protectionContext);
+                _kernel.RetrievalGuard.Protect(protectionContext);
             }
         }
     }

@@ -61,7 +61,7 @@ namespace EntityFramework.Guardian.UnitTests
                 EntityTypeName = typeof(Model1).Name
             });
 
-            kernel.RetrievePolicies.Add(new DummyRetrievePolicy());
+            kernel.RetrievalPolicies.Add(new DummyRetrievePolicy());
 
             var guard = new DefaultRetrievalGuard(kernel);
 
