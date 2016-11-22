@@ -6,6 +6,7 @@ using EntityFramework.Guardian.Guards;
 using System.Data.Entity;
 using EntityFramework.Guardian.Exceptions;
 using EntityFramework.Guardian.Services;
+using System.Collections.Generic;
 
 namespace EntityFramework.Guardian
 {
@@ -23,28 +24,52 @@ namespace EntityFramework.Guardian
         public bool EnableGuards { get; set; } = true;
 
         /// <summary>
-        /// Gets or sets the services.
+        /// Gets or sets the permission service.
         /// </summary>
         /// <value>
-        /// The services.
+        /// The permission service.
         /// </value>
-        public KernelServices Services { get; } = new KernelServices();
+        public IPermissionService PermissionService { get; set; }
 
         /// <summary>
-        /// Gets or sets the guards.
+        /// Gets or sets the entity key provider.
         /// </summary>
         /// <value>
-        /// The guards.
+        /// The entity key provider.
         /// </value>
-        public KernelGuards Guards { get; } = new KernelGuards();
+        public IEntityKeyProvider EntityKeyProvider { get; set; }
 
         /// <summary>
-        /// Gets or sets the policies.
+        /// Gets the modify protector.
         /// </summary>
         /// <value>
-        /// The policies.
+        /// The modify protector.
         /// </value>
-        public KernelPolicies Policies { get; } = new KernelPolicies();
+        public IModifyGuard ModifyGuard { get; set; }
+
+        /// <summary>
+        /// Gets the retrieve protector.
+        /// </summary>
+        /// <value>
+        /// The retrieve protector.
+        /// </value>
+        public IRetrieveGuard RetrieveGuard { get; set; }
+
+        /// <summary>
+        /// Gets the modify protection policies.
+        /// </summary>
+        /// <value>
+        /// The modify protection policies.
+        /// </value>
+        public List<IModifyPolicy> ModifyPolicies { get; private set; } = new List<IModifyPolicy>();
+
+        /// <summary>
+        /// Gets the retrieve protection policies.
+        /// </summary>
+        /// <value>
+        /// The retrieve protection policies.
+        /// </value>
+        public List<IRetrievePolicy> RetrievePolicies { get; private set; } = new List<IRetrievePolicy>();
 
         /// <summary>
         /// Gets or sets the database context associated with this kernel.
@@ -59,17 +84,17 @@ namespace EntityFramework.Guardian
         /// </summary>
         public GuardianKernel()
         {
-            Services.EntityKeyProvider = new DefaultIdKeyProvider();
-            Services.PermissionService = new InMemoryPermissionService();
+            EntityKeyProvider = new DefaultIdKeyProvider();
+            PermissionService = new InMemoryPermissionService();
 
-            Guards.ModifyGuard = new DefaultModifyGuard(this);
-            Guards.RetrieveGuard = new DefaultRetrieveGuard(this);
+            ModifyGuard = new DefaultModifyGuard(this);
+            RetrieveGuard = new DefaultRetrieveGuard(this);
 
-            Policies.ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
-            Policies.ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
+            ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
+            ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
 
-            Policies.RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
-            Policies.RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
+            RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
+            RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
         }
 
         /// <summary>
@@ -84,22 +109,22 @@ namespace EntityFramework.Guardian
                 throw new BadConfigurationException("Specified GuardianKernel object already associcated with another DbContext.");
             }
 
-            if (Services.PermissionService == null)
+            if (PermissionService == null)
             {
-                throw new BadConfigurationException("Services.PermissionService can't be null.");
+                throw new BadConfigurationException("PermissionService can't be null.");
             }
 
-            if (Services.EntityKeyProvider == null)
+            if (EntityKeyProvider == null)
             {
                 throw new BadConfigurationException("Services.EntityKeyProvider can't be null.");
             }
 
-            if (Guards.ModifyGuard == null)
+            if (ModifyGuard == null)
             {
                 throw new BadConfigurationException("Guards.ModifyGuard can't be null.");
             }
 
-            if (Guards.RetrieveGuard == null)
+            if (RetrieveGuard == null)
             {
                 throw new BadConfigurationException("Guards.RetrieveGuard can't be null.");
             }

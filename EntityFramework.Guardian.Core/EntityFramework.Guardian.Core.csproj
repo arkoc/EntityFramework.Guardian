@@ -71,9 +71,6 @@
     <Compile Include="Hooking\DbContextHooker.cs" />
     <Compile Include="Services\IPermissionService.cs" />
     <Compile Include="IObjectAccessEntry.cs" />
-    <Compile Include="KernelGuards.cs" />
-    <Compile Include="KernelPolicies.cs" />
-    <Compile Include="KernelServices.cs" />
     <Compile Include="Policies\ColumnsRestrictionsModifyPolicy.cs" />
     <Compile Include="Policies\ColumnsRestrictionsRetrievePolicy.cs" />
     <Compile Include="Policies\Permissions.cs" />
