@@ -14,4 +14,15 @@ Install [NuGet package](https://www.nuget.org/packages/EntityFramework.Guardian/
 PM> Install-Package EntityFramework.Guardian
 ```
 
+In your application use this:
 
+```c#
+var dbContext = new AppDbContext();
+var guardianKernel = new GuardianKernel();
+dbContext.GuardBy(guardianKernel);
+
+guardianKernel.UseInMemoryPermission(...)
+  
+```
+
+After call of `GuardBy` `DbContext` will not allow to do anything in database. After call of `UseInMemoryPermission` function, `DbContext` will allow only operation allowed by permission passed to it.
