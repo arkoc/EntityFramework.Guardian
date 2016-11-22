@@ -21,7 +21,7 @@ namespace EntityFramework.Guardian.Extensions
         /// <exception cref="ArgumentNullException">permission</exception>
         public static GuardianKernel UseInMemoryPermission(this GuardianKernel kernel, IPermission permission)
         {
-            if (kernel.Services.PermissionService is InMemoryPermissionService == false)
+            if (kernel.PermissionService is InMemoryPermissionService == false)
             {
                 throw new InvalidOperationException("Permission service must be InMemmoryPermissionService to use this method");
             }
@@ -31,7 +31,7 @@ namespace EntityFramework.Guardian.Extensions
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            (kernel.Services.PermissionService as InMemoryPermissionService).GeneralPermissions.Add(permission);
+            (kernel.PermissionService as InMemoryPermissionService).GeneralPermissions.Add(permission);
 
             return kernel;
         }
@@ -45,7 +45,7 @@ namespace EntityFramework.Guardian.Extensions
         /// <exception cref="ArgumentNullException">permission</exception>
         public static GuardianKernel UseInMemoryPermission(this GuardianKernel kernel, IRowPermission permission)
         {
-            if (kernel.Services.PermissionService is InMemoryPermissionService == false)
+            if (kernel.PermissionService is InMemoryPermissionService == false)
             {
                 throw new InvalidOperationException("Permission service must be InMemmoryPermissionService to use this method");
             }
@@ -55,7 +55,7 @@ namespace EntityFramework.Guardian.Extensions
                 throw new ArgumentNullException(nameof(permission));
             }
 
-            (kernel.Services.PermissionService as InMemoryPermissionService).RowLevelPermissions.Add(permission);
+            (kernel.PermissionService as InMemoryPermissionService).RowLevelPermissions.Add(permission);
 
             return kernel;
         }
@@ -75,7 +75,7 @@ namespace EntityFramework.Guardian.Extensions
                 throw new ArgumentNullException(nameof(service));
             }
 
-            kernel.Services.PermissionService = service;
+            kernel.PermissionService = service;
 
             return kernel;
         }

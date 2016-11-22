@@ -40,7 +40,7 @@ namespace EntityFramework.Guardian.Guards
             context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
             context.Entry.Entity.ProtectedProperties = new List<string>();
 
-            foreach (var policy in _kernel.Policies.RetrievePolicies)
+            foreach (var policy in _kernel.RetrievePolicies)
             {
                 var policyContext = RetrievePolicyContext.For(_kernel, context.Entry);
 

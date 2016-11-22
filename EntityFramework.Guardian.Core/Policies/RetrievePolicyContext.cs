@@ -67,11 +67,11 @@ namespace EntityFramework.Guardian.Policies
         /// <returns></returns>
         public static RetrievePolicyContext For(GuardianKernel kernel, IObjectAccessEntry entry)
         {
-            var entityRowKey = kernel.Services.EntityKeyProvider.GetKey(entry.Entity);
+            var entityRowKey = kernel.EntityKeyProvider.GetKey(entry.Entity);
             var entityTypeName = entry.Entity.GetType().Name;
 
-            var generalPermissions = kernel.Services.PermissionService.GetGeneralPermissions(entityTypeName, entry.AccessType);
-            var rowLevelPermissions = kernel.Services.PermissionService.GetRowLevelPermissions(
+            var generalPermissions = kernel.PermissionService.GetGeneralPermissions(entityTypeName, entry.AccessType);
+            var rowLevelPermissions = kernel.PermissionService.GetRowLevelPermissions(
                 entityTypeName,
                 entry.AccessType,
                 entityRowKey);
