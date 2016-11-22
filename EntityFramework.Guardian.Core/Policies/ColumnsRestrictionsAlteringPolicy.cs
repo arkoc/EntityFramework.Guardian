@@ -8,19 +8,19 @@ namespace EntityFramework.Guardian.Policies
     /// <summary>
     /// Policy for applying Column Restrictions when modifing entities
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IModifyPolicy" />
-    public class ColumnsRestrictionsModifyPolicy : IModifyPolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IAlteringPolicy" />
+    public class ColumnsRestrictionsAlteringPolicy : IAlteringPolicy
     {
         /// <summary>
         /// Checks the policy by specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
-        ///   <see cref="ModifyPolicyResult" /> of policy checking.
+        ///   <see cref="AlteringPolicyResult" /> of policy checking.
         /// </returns>
-        public ModifyPolicyResult Check(ModifyPolicyContext context)
+        public AlteringPolicyResult Check(AlteringPolicyContext context)
         {
-            var result = new ModifyPolicyResult();
+            var result = new AlteringPolicyResult();
 
             var columnLevelRestrictions = context.Permissions.ColumnRestrictions;
 

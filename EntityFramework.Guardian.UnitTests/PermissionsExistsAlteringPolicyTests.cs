@@ -6,17 +6,18 @@ using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.UnitTests.Dummy;
 using EntityFramework.Guardian.Tests.Models;
+using System.Collections.Generic;
 using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class PermissionsExistsRetrievePolicyTests
+    public class PermissionsExistsAlteringPolicyTests
     {
-        private PermissionExistsRetrievePolicy _policy;
+        private PermissionsExistsAlteringPolicy _policy;
 
-        public PermissionsExistsRetrievePolicyTests()
+        public PermissionsExistsAlteringPolicyTests()
         {
-            _policy = new PermissionExistsRetrievePolicy();
+            _policy = new PermissionsExistsAlteringPolicy();
         }
 
         [Fact]
@@ -30,7 +31,8 @@ namespace EntityFramework.Guardian.UnitTests
             };
 
             var kernel = new GuardianKernel();
-            var policyContext = GetPolicyContext(kernel, model);
+
+            var policyContext = GetPolicyContext(kernel, model, AccessTypes.Update);
 
             var result = _policy.Check(policyContext);
 
@@ -51,11 +53,11 @@ namespace EntityFramework.Guardian.UnitTests
 
             kernel.UseInMemoryPermission(new TestPermission()
             {
-                AccessType = AccessTypes.Get,
+                AccessType = AccessTypes.Update,
                 EntityTypeName = model.GetType().Name
             });
 
-            var policyContext = GetPolicyContext(kernel, model);
+            var policyContext = GetPolicyContext(kernel, model, AccessTypes.Update);
 
             var result = _policy.Check(policyContext);
 
@@ -76,22 +78,25 @@ namespace EntityFramework.Guardian.UnitTests
 
             kernel.UseInMemoryPermission(new TestRowPermission()
             {
-                AccessType = AccessTypes.Get,
+                AccessType = AccessTypes.Add,
                 EntityTypeName = model.GetType().Name,
                 RowIdentifier = "1"
             });
 
-            var policyContext = GetPolicyContext(kernel, model);
+
+            var policyContext = GetPolicyContext(kernel, model, AccessTypes.Add);
 
             var result = _policy.Check(policyContext);
 
             Assert.Equal(true, result.IsSuccess);
         }
 
-        private RetrievePolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model)
+        private AlteringPolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model, AccessTypes accessType, List<string> modifiedProperties = null)
         {
-            var entry = new DummyObjectAccessEntry(model, AccessTypes.Get);
-            return RetrievePolicyContext.For(kernel, entry);
+            modifiedProperties = modifiedProperties ?? new List<string>();
+            var entry = new DummyObjectAccessEntry(model, accessType);
+
+            return AlteringPolicyContext.For(kernel, entry, modifiedProperties);
         }
     }
 }

@@ -5,11 +5,11 @@ using EntityFramework.Guardian.Policies;
 
 namespace EntityFramework.Guardian.UnitTests.Dummy
 {
-    public class DummyRetrievePolicy : IRetrievePolicy
+    public class DummyRetrievePolicy : IRetrievalPolicy
     {
-        public RetrievePolicyResult Check(RetrievePolicyContext context)
+        public RetrievalPolicyResult Check(RetrievalPolicyContext context)
         {
-            return new RetrievePolicyResult(isSuccess: false);
+            return new RetrievalPolicyResult(isSuccess: false);
         }
     }
 }

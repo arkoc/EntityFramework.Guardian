@@ -8,17 +8,17 @@ namespace EntityFramework.Guardian.Policies
     /// <summary>
     /// Policy for checking permissions retrieved by permissionservice
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievePolicy" />
-    public class PermissionExistsRetrievePolicy : IRetrievePolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievalPolicy" />
+    public class PermissionExistsRetrievalPolicy : IRetrievalPolicy
     {
         /// <summary>
         /// Checks the policy by specified context and kernel.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns><see cref="RetrievePolicyResult"/> of policy checking.</returns>
-        public RetrievePolicyResult Check(RetrievePolicyContext context)
+        /// <returns><see cref="RetrievalPolicyResult"/> of policy checking.</returns>
+        public RetrievalPolicyResult Check(RetrievalPolicyContext context)
         {
-            var resut = new RetrievePolicyResult();
+            var resut = new RetrievalPolicyResult();
 
             if (context.Permissions.GeneralPermissions.Any() == false
                 && context.Permissions.RowLevelPermissions.Any() == false)

@@ -4,14 +4,14 @@
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Retrieve Guard Interface
+    /// Retrieval Guard Interface
     /// </summary>
-    public interface IRetrieveGuard
+    public interface IRetrievalGuard
     {
         /// <summary>
         /// Protects by the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        void Protect(RetrieveGuardContext context);
+        void Protect(RetrievalGuardContext context);
     }
 }

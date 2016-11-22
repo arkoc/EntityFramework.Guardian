@@ -8,19 +8,19 @@ using System;
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IModifyGuard which calls all registered modify policies
+    /// Default implementation of IAlteringGuard which calls all registered altering policies
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Guards.IModifyGuard" />
-    public class DefaultModifyGuard : IModifyGuard
+    /// <seealso cref="EntityFramework.Guardian.Guards.IAlteringGuard" />
+    public class DefaultAlteringGuard : IAlteringGuard
     {
         private readonly GuardianKernel _kernel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultModifyGuard"/> class.
+        /// Initializes a new instance of the <see cref="DefaultAlteringGuard"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <exception cref="System.ArgumentNullException">kernel</exception>
-        public DefaultModifyGuard(GuardianKernel kernel)
+        public DefaultAlteringGuard(GuardianKernel kernel)
         {
             if (kernel == null)
             {
@@ -35,11 +35,11 @@ namespace EntityFramework.Guardian.Guards
         /// </summary>
         /// <param name="context">The protection context.</param>
         /// <exception cref="EntityFramework.Guardian.Exceptions.AccessDeniedException"></exception>
-        public void Protect(ModifyGuardContext context)
+        public void Protect(AlteringGuardContext context)
         {
             foreach (var policy in _kernel.ModifyPolicies)
             {
-                var policyContext = ModifyPolicyContext.For(
+                var policyContext = AlteringPolicyContext.For(
                         _kernel,
                         context.Entry,
                         context.AffectedProperties

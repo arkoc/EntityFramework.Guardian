@@ -9,19 +9,19 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Default implementation of IRetrieveGuard which calss registered retrieve policies.
+    /// Default implementation of IRetrieveGuard which calss registered retrieval policies.
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Guards.IRetrieveGuard" />
-    public class DefaultRetrieveGuard : IRetrieveGuard
+    /// <seealso cref="EntityFramework.Guardian.Guards.IRetrievalGuard" />
+    public class DefaultRetrievalGuard : IRetrievalGuard
     {
         private readonly GuardianKernel _kernel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultRetrieveGuard"/> class.
+        /// Initializes a new instance of the <see cref="DefaultRetrievalGuard"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <exception cref="System.ArgumentNullException">kernel</exception>
-        public DefaultRetrieveGuard(GuardianKernel kernel)
+        public DefaultRetrievalGuard(GuardianKernel kernel)
         {
             if (kernel == null)
             {
@@ -35,14 +35,14 @@ namespace EntityFramework.Guardian.Guards
         /// Protects by the specified context.
         /// </summary>
         /// <param name="context">The protection context.</param>
-        public void Protect(RetrieveGuardContext context)
+        public void Protect(RetrievalGuardContext context)
         {
             context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
             context.Entry.Entity.ProtectedProperties = new List<string>();
 
             foreach (var policy in _kernel.RetrievePolicies)
             {
-                var policyContext = RetrievePolicyContext.For(_kernel, context.Entry);
+                var policyContext = RetrievalPolicyContext.For(_kernel, context.Entry);
 
                 var result = policy.Check(policyContext);
 

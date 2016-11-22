@@ -4,15 +4,16 @@
 namespace EntityFramework.Guardian.Guards
 {
     /// <summary>
-    /// Modify Guard Interface
+    /// Context for Retrieve Guard
     /// </summary>
-    public interface IModifyGuard
+    public class RetrievalGuardContext
     {
         /// <summary>
-        /// Protects by the specified context.
+        /// Gets or sets the entry.
         /// </summary>
-        /// <param name="context">The context.</param>
-        void Protect(ModifyGuardContext context);
+        /// <value>
+        /// The entry.
+        /// </value>
+        public IObjectAccessEntry Entry { get; set; }
     }
 }
-

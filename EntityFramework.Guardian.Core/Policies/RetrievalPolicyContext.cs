@@ -3,20 +3,19 @@
 
 using EntityFramework.Guardian.Entities;
 using EntityFramework.Guardian.Extensions;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Context used in <see cref="IModifyPolicy.Check(ModifyPolicyContext)"/>
+    /// Context used in <see cref="IRetrievalPolicy.Check(RetrievalPolicyContext)"/>
     /// </summary>
-    public class ModifyPolicyContext
+    public class RetrievalPolicyContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModifyPolicyContext"/> class.
+        /// Prevents a default instance of the <see cref="RetrievalPolicyContext"/> class from being created.
         /// </summary>
-        private ModifyPolicyContext()
+        private RetrievalPolicyContext()
         {
         }
 
@@ -45,28 +44,12 @@ namespace EntityFramework.Guardian.Policies
         public string EntityRowKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the access.
-        /// </summary>
-        /// <value>
-        /// The type of the access.
-        /// </value>
-        public AccessTypes AccessType { get; set; }
-
-        /// <summary>
         /// Gets or sets the entity.
         /// </summary>
         /// <value>
         /// The entity.
         /// </value>
         public IProtectableObject Entity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified properties.
-        /// </summary>
-        /// <value>
-        /// The modified properties.
-        /// </value>
-        public List<string> ModifiedProperties { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the permissions.
@@ -77,13 +60,12 @@ namespace EntityFramework.Guardian.Policies
         public Permissions Permissions { get; set; }
 
         /// <summary>
-        /// Creates context for specified entity, accesstype and kernel
+        /// Creates context for specified entry and kernel
         /// </summary>
         /// <param name="entry">The entry.</param>
         /// <param name="kernel">The kernel.</param>
-        /// <param name="modifiedProperties">The modified properties.</param>
         /// <returns></returns>
-        public static ModifyPolicyContext For(GuardianKernel kernel, IObjectAccessEntry entry, List<string> modifiedProperties)
+        public static RetrievalPolicyContext For(GuardianKernel kernel, IObjectAccessEntry entry)
         {
             var entityRowKey = kernel.EntityKeyProvider.GetKey(entry.Entity);
             var entityTypeName = entry.Entity.GetType().Name;
@@ -105,14 +87,12 @@ namespace EntityFramework.Guardian.Policies
                 ColumnRestrictions = columnLevelRestrictions
             };
 
-            var policyContext = new ModifyPolicyContext()
+            var policyContext = new RetrievalPolicyContext()
             {
                 Kernel = kernel,
-                AccessType = entry.AccessType,
                 Entity = entry.Entity,
                 EntityRowKey = entityRowKey,
                 EntityTypeName = entityTypeName,
-                ModifiedProperties = modifiedProperties,
                 Permissions = permissions
             };
 

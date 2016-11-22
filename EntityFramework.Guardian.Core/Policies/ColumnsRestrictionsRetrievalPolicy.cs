@@ -6,19 +6,19 @@ namespace EntityFramework.Guardian.Policies
     /// <summary>
     /// Policy for applying Column Restrictions when retrieving entities
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievePolicy" />
-    public class ColumnsRestrictionsRetrievePolicy : IRetrievePolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IRetrievalPolicy" />
+    public class ColumnsRestrictionsRetrievalPolicy : IRetrievalPolicy
     {
         /// <summary>
         /// Checks the policy by specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>
-        ///   <see cref="RetrievePolicyResult" /> of policy checking.
+        ///   <see cref="RetrievalPolicyResult" /> of policy checking.
         /// </returns>
-        public RetrievePolicyResult Check(RetrievePolicyContext context)
+        public RetrievalPolicyResult Check(RetrievalPolicyContext context)
         {
-            var result = new RetrievePolicyResult();
+            var result = new RetrievalPolicyResult();
 
             var columnLevelRestrictions = context.Permissions.ColumnRestrictions;
 

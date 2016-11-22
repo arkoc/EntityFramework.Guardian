@@ -5,11 +5,11 @@ using EntityFramework.Guardian.Policies;
 
 namespace EntityFramework.Guardian.UnitTests.Dummy
 {
-    public class DummyModifyPolicy : IModifyPolicy
+    public class DummyModifyPolicy : IAlteringPolicy
     {
-        public ModifyPolicyResult Check(ModifyPolicyContext context)
+        public AlteringPolicyResult Check(AlteringPolicyContext context)
         {
-            return new ModifyPolicyResult(isSuccess: false);
+            return new AlteringPolicyResult(isSuccess: false);
         }
     }
 }

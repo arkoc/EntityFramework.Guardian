@@ -11,13 +11,13 @@ using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class ColumnsRestrictionsModifyPolicyTests
+    public class ColumnsRestrictionsAlteringPolicyTests
     {
-        private ColumnsRestrictionsModifyPolicy _policy;
+        private ColumnsRestrictionsAlteringPolicy _policy;
 
-        public ColumnsRestrictionsModifyPolicyTests()
+        public ColumnsRestrictionsAlteringPolicyTests()
         {
-            _policy = new ColumnsRestrictionsModifyPolicy();
+            _policy = new ColumnsRestrictionsAlteringPolicy();
         }
 
         [Fact]
@@ -54,12 +54,12 @@ namespace EntityFramework.Guardian.UnitTests
         }
 
 
-        private ModifyPolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model, AccessTypes accessType, List<string> modifiedProperties = null)
+        private AlteringPolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model, AccessTypes accessType, List<string> modifiedProperties = null)
         {
             modifiedProperties = modifiedProperties ?? new List<string>();
             var entry = new DummyObjectAccessEntry(model, accessType);
 
-            return ModifyPolicyContext.For(kernel, entry, modifiedProperties);
+            return AlteringPolicyContext.For(kernel, entry, modifiedProperties);
         }
     }
 }

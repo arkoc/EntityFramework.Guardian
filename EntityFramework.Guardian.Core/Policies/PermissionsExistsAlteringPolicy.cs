@@ -6,19 +6,19 @@ using System.Linq;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Default implementation of <see cref="IModifyPolicy"/> that checks for built-in permissions
+    /// Default implementation of <see cref="IAlteringPolicy"/> that checks for built-in permissions
     /// </summary>
-    /// <seealso cref="EntityFramework.Guardian.Policies.IModifyPolicy" />
-    public class PermissionsExistsModifyPolicy : IModifyPolicy
+    /// <seealso cref="EntityFramework.Guardian.Policies.IAlteringPolicy" />
+    public class PermissionsExistsAlteringPolicy : IAlteringPolicy
     {
         /// <summary>
         /// Checks the policy by specified context and kernel.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns><see cref="ModifyPolicyResult"/> of policy checking.</returns>
-        public ModifyPolicyResult Check(ModifyPolicyContext context)
+        /// <returns><see cref="AlteringPolicyResult"/> of policy checking.</returns>
+        public AlteringPolicyResult Check(AlteringPolicyContext context)
         {
-            var result = new ModifyPolicyResult();
+            var result = new AlteringPolicyResult();
 
             if (context.Permissions.GeneralPermissions.Any() == false
                 && context.Permissions.RowLevelPermissions.Any() == false)

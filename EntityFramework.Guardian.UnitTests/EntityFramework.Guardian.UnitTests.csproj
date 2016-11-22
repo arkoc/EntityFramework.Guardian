@@ -72,13 +72,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColumnsRestrictionsModifyPolicyTests.cs" />
-    <Compile Include="ColumnsRestrictionsRetrievePolicyTests.cs" />
+    <Compile Include="ColumnsRestrictionsAlteringPolicyTests.cs" />
+    <Compile Include="ColumnsRestrictionsRetrievalPolicyTests.cs" />
     <Compile Include="DefaultIdKeyProviderTests.cs" />
-    <Compile Include="PermissionsExistsModifyPolicyTests.cs" />
-    <Compile Include="DefaultModifyGuardTests.cs" />
-    <Compile Include="PermissionsExistsRetrievePolicyTests.cs" />
-    <Compile Include="DefaultRetrieveGuardTests.cs" />
+    <Compile Include="PermissionsExistsAlteringPolicyTests.cs" />
+    <Compile Include="DefaultAlteringGuardTests.cs" />
+    <Compile Include="PermissionsExistsRetrievalPolicyTests.cs" />
+    <Compile Include="DefaultRetrievalGuardTests.cs" />
     <Compile Include="Dummy\DummyModifyPolicy.cs" />
     <Compile Include="Dummy\DummyObjectAccessEntry.cs" />
     <Compile Include="Dummy\DummyRetrievePolicy.cs" />

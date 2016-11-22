@@ -6,23 +6,23 @@ using System.Collections.Generic;
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// RetrievePolicyResult that result from <see cref="IRetrievePolicy.Check(RetrievePolicyContext)"/> method"/> 
+    /// RetrievePolicyResult that result from <see cref="IRetrievalPolicy.Check(RetrievalPolicyContext)"/> method"/> 
     /// </summary>
-    public class RetrievePolicyResult
+    public class RetrievalPolicyResult
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RetrievePolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="RetrievalPolicyResult"/> class.
         /// </summary>
-        public RetrievePolicyResult()
+        public RetrievalPolicyResult()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RetrievePolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="RetrievalPolicyResult"/> class.
         /// </summary>
         /// <param name="isSuccess">if set to <c>true</c> [is success].</param>
         /// <param name="errorMessage">The error message.</param>
-        public RetrievePolicyResult(bool isSuccess, string errorMessage = null)
+        public RetrievalPolicyResult(bool isSuccess, string errorMessage = null)
         {
             IsSuccess = isSuccess;
             ErrorMessage = errorMessage;

@@ -10,11 +10,11 @@ using EntityFramework.Guardian.Extensions;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class DefaultRetrieveGuardTests
+    public class DefaultRetrievalGuardTests
     {
-        private DefaultRetrieveGuard _guard;
+        private DefaultRetrievalGuard _guard;
 
-        public DefaultRetrieveGuardTests()
+        public DefaultRetrievalGuardTests()
         {
             var kernel = new GuardianKernel();
             kernel.UseInMemoryPermission(new TestPermission()
@@ -23,14 +23,14 @@ namespace EntityFramework.Guardian.UnitTests
                 EntityTypeName = typeof(Model1).Name
             });
 
-            _guard = new DefaultRetrieveGuard(kernel);
+            _guard = new DefaultRetrievalGuard(kernel);
         }
 
         [Fact]
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _guard.Protect(new RetrieveGuardContext()
+            _guard.Protect(new RetrievalGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
@@ -42,7 +42,7 @@ namespace EntityFramework.Guardian.UnitTests
         public void Protect_ShouldDeny()
         {
             var model = new Model2() { Id = "1" };
-            _guard.Protect(new RetrieveGuardContext()
+            _guard.Protect(new RetrievalGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });
@@ -63,10 +63,10 @@ namespace EntityFramework.Guardian.UnitTests
 
             kernel.RetrievePolicies.Add(new DummyRetrievePolicy());
 
-            var guard = new DefaultRetrieveGuard(kernel);
+            var guard = new DefaultRetrievalGuard(kernel);
 
             var model = new Model1() { Id = 1 };
-            guard.Protect(new RetrieveGuardContext()
+            guard.Protect(new RetrievalGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Get)
             });

@@ -11,11 +11,11 @@ using EntityFramework.Guardian.Extensions;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class DefaultModifyGuardTests
+    public class DefaultAlteringGuardTests
     {
-        private DefaultModifyGuard _guard;
+        private DefaultAlteringGuard _guard;
 
-        public DefaultModifyGuardTests()
+        public DefaultAlteringGuardTests()
         {
             var kernel = new GuardianKernel();
 
@@ -32,14 +32,14 @@ namespace EntityFramework.Guardian.UnitTests
 
             kernel.UseInMemoryPermission(permission);
 
-            _guard = new DefaultModifyGuard(kernel);
+            _guard = new DefaultAlteringGuard(kernel);
         }
 
         [Fact]
         public void Protect_ShouldAllow()
         {
             var model = new Model1();
-            _guard.Protect(new ModifyGuardContext()
+            _guard.Protect(new AlteringGuardContext()
             {
                 Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
                 AffectedProperties = { "Property2" }
@@ -52,7 +52,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _guard.Protect(new ModifyGuardContext()
+                _guard.Protect(new AlteringGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Delete),
                     AffectedProperties = { "Property1" }
@@ -67,7 +67,7 @@ namespace EntityFramework.Guardian.UnitTests
             var model = new Model2() { Id = "1" };
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                _guard.Protect(new ModifyGuardContext()
+                _guard.Protect(new AlteringGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Update),
                     AffectedProperties = { "Property1" }
@@ -87,13 +87,13 @@ namespace EntityFramework.Guardian.UnitTests
             });
             kernel.ModifyPolicies.Add(new DummyModifyPolicy());
 
-            var guard = new DefaultModifyGuard(kernel);
+            var guard = new DefaultAlteringGuard(kernel);
 
             var model = new Model1() { Id = 1 };
 
             Assert.Throws(typeof(AccessDeniedException), () =>
             {
-                guard.Protect(new ModifyGuardContext()
+                guard.Protect(new AlteringGuardContext()
                 {
                     Entry = new DummyObjectAccessEntry(model, AccessTypes.Add),
                     AffectedProperties = { "Property1" }

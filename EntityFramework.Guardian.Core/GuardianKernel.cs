@@ -45,7 +45,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protector.
         /// </value>
-        public IModifyGuard ModifyGuard { get; set; }
+        public IAlteringGuard ModifyGuard { get; set; }
 
         /// <summary>
         /// Gets the retrieve protector.
@@ -53,7 +53,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protector.
         /// </value>
-        public IRetrieveGuard RetrieveGuard { get; set; }
+        public IRetrievalGuard RetrieveGuard { get; set; }
 
         /// <summary>
         /// Gets the modify protection policies.
@@ -61,7 +61,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The modify protection policies.
         /// </value>
-        public List<IModifyPolicy> ModifyPolicies { get; private set; } = new List<IModifyPolicy>();
+        public List<IAlteringPolicy> ModifyPolicies { get; private set; } = new List<IAlteringPolicy>();
 
         /// <summary>
         /// Gets the retrieve protection policies.
@@ -69,7 +69,7 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The retrieve protection policies.
         /// </value>
-        public List<IRetrievePolicy> RetrievePolicies { get; private set; } = new List<IRetrievePolicy>();
+        public List<IRetrievalPolicy> RetrievePolicies { get; private set; } = new List<IRetrievalPolicy>();
 
         /// <summary>
         /// Gets or sets the database context associated with this kernel.
@@ -87,14 +87,14 @@ namespace EntityFramework.Guardian
             EntityKeyProvider = new DefaultIdKeyProvider();
             PermissionService = new InMemoryPermissionService();
 
-            ModifyGuard = new DefaultModifyGuard(this);
-            RetrieveGuard = new DefaultRetrieveGuard(this);
+            ModifyGuard = new DefaultAlteringGuard(this);
+            RetrieveGuard = new DefaultRetrievalGuard(this);
 
-            ModifyPolicies.Add(new PermissionsExistsModifyPolicy());
-            ModifyPolicies.Add(new ColumnsRestrictionsModifyPolicy());
+            ModifyPolicies.Add(new PermissionsExistsAlteringPolicy());
+            ModifyPolicies.Add(new ColumnsRestrictionsAlteringPolicy());
 
-            RetrievePolicies.Add(new PermissionExistsRetrievePolicy());
-            RetrievePolicies.Add(new ColumnsRestrictionsRetrievePolicy());
+            RetrievePolicies.Add(new PermissionExistsRetrievalPolicy());
+            RetrievePolicies.Add(new ColumnsRestrictionsRetrievalPolicy());
         }
 
         /// <summary>

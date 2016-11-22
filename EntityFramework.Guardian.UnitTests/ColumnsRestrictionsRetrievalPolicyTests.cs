@@ -10,13 +10,13 @@ using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
 {
-    public class ColumnsRestrictionsRetrievePolicyTests
+    public class ColumnsRestrictionsRetrievalPolicyTests
     {
-        private ColumnsRestrictionsRetrievePolicy _policy;
+        private ColumnsRestrictionsRetrievalPolicy _policy;
 
-        public ColumnsRestrictionsRetrievePolicyTests()
+        public ColumnsRestrictionsRetrievalPolicyTests()
         {
-            _policy = new ColumnsRestrictionsRetrievePolicy();
+            _policy = new ColumnsRestrictionsRetrievalPolicy();
         }
 
         [Fact]
@@ -55,10 +55,10 @@ namespace EntityFramework.Guardian.UnitTests
         }
 
 
-        private RetrievePolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model)
+        private RetrievalPolicyContext GetPolicyContext(GuardianKernel kernel, IProtectableObject model)
         {
             var entry = new DummyObjectAccessEntry(model, AccessTypes.Get);
-            return RetrievePolicyContext.For(kernel, entry);
+            return RetrievalPolicyContext.For(kernel, entry);
         }
     }
 }

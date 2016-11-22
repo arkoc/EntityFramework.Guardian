@@ -77,7 +77,7 @@ namespace EntityFramework.Guardian.Hooking
                     continue;
                 }
 
-                var protectionContext = new ModifyGuardContext()
+                var protectionContext = new AlteringGuardContext()
                 {
                     Entry = entry,
                     AffectedProperties = context.GetAffectedProperties(entry.Entity)
@@ -104,10 +104,11 @@ namespace EntityFramework.Guardian.Hooking
             IObjectAccessEntry objectAccessEntry;
             if (context.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
             {
-                var protectionContext = new RetrieveGuardContext()
+                var protectionContext = new RetrievalGuardContext()
                 {
                     Entry = objectAccessEntry
                 };
+
                 _kernel.RetrieveGuard.Protect(protectionContext);
             }
         }

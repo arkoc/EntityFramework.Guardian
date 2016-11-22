@@ -4,23 +4,23 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// ModifyPolicyResult that result from <see cref="IModifyPolicy.Check(ModifyPolicyContext)"/> method"/> 
+    /// ModifyPolicyResult that result from <see cref="IAlteringPolicy.Check(AlteringPolicyContext)"/> method"/> 
     /// </summary>
-    public class ModifyPolicyResult
+    public class AlteringPolicyResult
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModifyPolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="AlteringPolicyResult"/> class.
         /// </summary>
-        public ModifyPolicyResult()
+        public AlteringPolicyResult()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModifyPolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="AlteringPolicyResult"/> class.
         /// </summary>
         /// <param name="isSuccess">if set to <c>true</c> [is success].</param>
         /// <param name="errorMessage">The error message.</param>
-        public ModifyPolicyResult(bool isSuccess, string errorMessage = null)
+        public AlteringPolicyResult(bool isSuccess, string errorMessage = null)
         {
             IsSuccess = isSuccess;
             ErrorMessage = errorMessage;
