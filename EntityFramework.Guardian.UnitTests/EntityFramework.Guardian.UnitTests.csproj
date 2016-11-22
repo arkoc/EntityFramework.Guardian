@@ -37,8 +37,8 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.Guardian.Entities, Version=1.3.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.Guardian.Entities.1.3.5\lib\net461\EntityFramework.Guardian.Entities.dll</HintPath>
+    <Reference Include="EntityFramework.Guardian.Entities, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Guardian.Entities.1.6.10\lib\net461\EntityFramework.Guardian.Entities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

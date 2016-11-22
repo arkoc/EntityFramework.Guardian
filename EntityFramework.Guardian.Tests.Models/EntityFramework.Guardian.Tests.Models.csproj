@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework.Guardian.Entities, Version=1.5.44.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.Guardian.Entities.1.5.44\lib\net461\EntityFramework.Guardian.Entities.dll</HintPath>
+    <Reference Include="EntityFramework.Guardian.Entities, Version=1.6.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Guardian.Entities.1.6.10\lib\net461\EntityFramework.Guardian.Entities.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
