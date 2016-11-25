@@ -66,9 +66,9 @@ namespace EntityFramework.Guardian.Extensions
         /// <param name="entity">The entity.</param>
         private static void ProtectProperties<TEntity>(TEntity entity) where TEntity : IProtectableObject
         {
-            if (entity.ProtectedProperties == null) { return; }
+            if (entity.RestrictedProperties == null) { return; }
 
-            foreach (var protectedProperty in entity.ProtectedProperties)
+            foreach (var protectedProperty in entity.RestrictedProperties)
             {
                 SetDefaultValue(entity, protectedProperty);
             }

@@ -19,7 +19,7 @@ namespace EntityFramework.Guardian.Guards
         public void Protect(QueryProtectionContext context)
         {
             context.Entry.Entity.ProtectionResult = ProtectionResults.Allow;
-            context.Entry.Entity.ProtectedProperties = new List<string>();
+            context.Entry.Entity.RestrictedProperties = new List<string>();
 
             foreach (var policy in context.Kernel.QueryPolicies)
             {
@@ -33,7 +33,7 @@ namespace EntityFramework.Guardian.Guards
                     break;
                 }
 
-                context.Entry.Entity.ProtectedProperties.AddRange(result.RestrictedProperties);
+                context.Entry.Entity.RestrictedProperties.AddRange(result.RestrictedProperties);
             }
         }
     }
