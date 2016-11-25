@@ -4,15 +4,15 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Altering Policy interface
+    /// Submit Policy interface
     /// </summary>
-    public interface IAlteringPolicy
+    public interface ISubmitPolicy
     {
         /// <summary>
         /// Checks the policy by specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns><see cref="AlteringPolicyResult"/> of policy checking.</returns>
-        AlteringPolicyResult Check(AlteringPolicyContext context);
+        /// <returns><see cref="SubmitPolicyResult"/> of policy checking.</returns>
+        SubmitPolicyResult Check(SubmitProtectionContext context);
     }
 }

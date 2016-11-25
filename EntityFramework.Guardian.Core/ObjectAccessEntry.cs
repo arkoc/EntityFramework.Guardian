@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Aram Kocharyan. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
-using EntityFramework.Guardian.Extensions;
 using EntityFramework.Guardian.Entities;
+using EntityFramework.Guardian.Extensions;
 using System;
 using System.Data.Entity.Core.Objects;
 
@@ -23,12 +23,12 @@ namespace EntityFramework.Guardian
         public IProtectableObject Entity { get; }
 
         /// <summary>
-        /// Gets the type of the access.
+        /// Gets the type of the action.
         /// </summary>
         /// <value>
         /// The type of the access.
         /// </value>
-        public AccessTypes AccessType { get; }
+        public ActionTypes ActionType { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ObjectAccessEntry"/> class.
@@ -38,10 +38,7 @@ namespace EntityFramework.Guardian
         /// <exception cref="System.InvalidOperationException">Entity for protection doesn't implement IProtectableObject interface.</exception>
         public ObjectAccessEntry(ObjectStateEntry entry)
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException(nameof(entry));
-            }
+            Ensure.NotNull(entry, nameof(entry));
 
             if ((entry.Entity is IProtectableObject) == false)
             {
@@ -49,7 +46,7 @@ namespace EntityFramework.Guardian
             }
 
             Entity = entry.Entity as IProtectableObject;
-            AccessType = entry.State.GetAccessType();
+            ActionType = entry.State.GetActionType();
         }
     }
 }

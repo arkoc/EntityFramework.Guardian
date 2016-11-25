@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Aram Kocharyan. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+
 using EntityFramework.Guardian.Entities;
 
 namespace EntityFramework.Guardian
@@ -24,6 +25,6 @@ namespace EntityFramework.Guardian
         /// <value>
         /// The type of the access.
         /// </value>
-        AccessTypes AccessType { get; }
+        ActionTypes ActionType { get; }
     }
 }

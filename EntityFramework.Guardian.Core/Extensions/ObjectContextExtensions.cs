@@ -6,40 +6,56 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Reflection;
 
 namespace EntityFramework.Guardian.Extensions
 {
-    /// <summary>
-    /// <see cref="ObjectContext"/> extensions
-    /// </summary>
     internal static class ObjectContextExtensions
     {
-        /// <summary>
-        /// Gets the affected properties.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="entity">The entity.</param>
-        /// <returns>Affected properties of entity</returns>
-        public static List<string> GetAffectedProperties(this ObjectContext context, object entity)
+        public static IReadOnlyDictionary<string, object> GetModifiedOriginalValues(this ObjectContext context, object entity)
         {
+            var originalValues = new Dictionary<string, object>();
             var objectState = context.ObjectStateManager.GetObjectStateEntry(entity);
-            var modifiedProperties = objectState.GetModifiedProperties().ToList();
 
             if (objectState.State.HasFlag(EntityState.Added))
             {
-                modifiedProperties.AddRange(entity.GetInitializedProperties());
+                return null;
             }
 
-            modifiedProperties = modifiedProperties.Distinct().ToList();
+            var modifiedProperties = objectState.GetModifiedProperties();
+            foreach (var propName in modifiedProperties)
+            {
+                originalValues.Add(propName, objectState.OriginalValues[propName]);
+            }
 
-            return modifiedProperties;
+            return originalValues;
+
         }
 
-        /// <summary>
-        /// Gets the modified entries.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <returns>Modified entries in the context.</returns>
+        public static IReadOnlyDictionary<string, object> GetModifiedLocalValues(this ObjectContext context, object entity)
+        {
+            var localValues = new Dictionary<string, object>();
+            var objectState = context.ObjectStateManager.GetObjectStateEntry(entity);
+
+            IEnumerable<string> modifiedProperties;
+
+            if (objectState.State.HasFlag(EntityState.Added))
+            {
+                modifiedProperties = GetInitializedProperties(entity);
+            }
+            else
+            {
+                modifiedProperties = objectState.GetModifiedProperties();
+            }
+           
+            foreach (var propName in modifiedProperties)
+            {
+                localValues.Add(propName, objectState.CurrentValues[propName]);
+            }
+
+            return localValues;
+        }
+
         public static IEnumerable<IObjectAccessEntry> GetModifiedEntries(this ObjectContext context)
         {
             var reasonableStates = EntityState.Modified | EntityState.Deleted | EntityState.Added;
@@ -52,13 +68,7 @@ namespace EntityFramework.Guardian.Extensions
             return entries;
         }
 
-        /// <summary>
-        /// Tries the get materialized entry.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        /// <param name="entity">The entity.</param>
-        /// <param name="entry">The entry.</param>
-        /// <returns>Entry that is currently being materialized.</returns>
+
         public static bool TryGetMaterializedEntry(this ObjectContext context, object entity, out IObjectAccessEntry entry)
         {
             bool success = false;
@@ -85,6 +95,26 @@ namespace EntityFramework.Guardian.Extensions
             }
 
             return success;
+        }
+
+        private static IEnumerable<string> GetInitializedProperties(object entity)
+        {
+            var initializedProperties = new List<string>();
+            var props = entity.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var prop in props)
+            {
+                var value = prop?.GetValue(entity);
+
+                if (value == null) { continue; }
+
+                if (!object.Equals(value, (value.GetType().GetDefaultValue())))
+                {
+                    initializedProperties.Add(prop.Name);
+                }
+            }
+
+            return initializedProperties;
         }
     }
 }

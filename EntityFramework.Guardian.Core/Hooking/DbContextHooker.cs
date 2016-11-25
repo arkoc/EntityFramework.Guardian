@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using EntityFramework.Guardian.Extensions;
-using EntityFramework.Guardian.Guards;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -10,40 +9,20 @@ using System.Data.Entity.Infrastructure;
 
 namespace EntityFramework.Guardian.Hooking
 {
-    /// <summary>
-    /// Class for hooking <see cref="DbContext"/>
-    /// </summary>
     internal class DbContextHooker
     {
         private readonly DbContext _context;
         private readonly GuardianKernel _kernel;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DbContextHooker"/> class.
-        /// </summary>
-        /// <param name="context">The database context.</param>
-        /// <param name="kernel">The guardian kernel.</param>
-        /// <exception cref="System.ArgumentNullException">
-        /// </exception>
         public DbContextHooker(DbContext context, GuardianKernel kernel)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (kernel == null)
-            {
-                throw new ArgumentNullException(nameof(kernel));
-            }
+            Ensure.NotNull(context, nameof(context));
+            Ensure.NotNull(kernel, nameof(kernel));
 
             _context = context;
             _kernel = kernel;
         }
 
-        /// <summary>
-        /// Registers the hooks.
-        /// </summary>
         public void RegisterHooks()
         {
             ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
@@ -54,11 +33,6 @@ namespace EntityFramework.Guardian.Hooking
             context.SavingChanges += Context_SavingChanges;
         }
 
-        /// <summary>
-        /// Handles the SavingChanges event of the Context control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void Context_SavingChanges(object sender, EventArgs e)
         {
             if (_kernel.EnableGuards == false)
@@ -66,9 +40,9 @@ namespace EntityFramework.Guardian.Hooking
                 return;
             }
 
-            ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
+            ObjectContext objectContext = ((IObjectContextAdapter)_context).ObjectContext;
 
-            var entries = context.GetModifiedEntries();
+            var entries = objectContext.GetModifiedEntries();
 
             foreach (var entry in entries)
             {
@@ -77,21 +51,19 @@ namespace EntityFramework.Guardian.Hooking
                     continue;
                 }
 
-                var protectionContext = new AlteringGuardContext()
+                var protectionContext = new SubmitProtectionContext()
                 {
+                    Kernel = _kernel,
+                    EntityType = entry.Entity.GetType(),
                     Entry = entry,
-                    AffectedProperties = context.GetAffectedProperties(entry.Entity)
+                    LocalValues = objectContext.GetModifiedLocalValues(entry.Entity),
+                    OriginalValues = objectContext.GetModifiedOriginalValues(entry.Entity)
                 };
 
-                _kernel.AlteringGuard.Protect(protectionContext);
+                _kernel.SubmitGuard.Protect(protectionContext);
             }
         }
 
-        /// <summary>
-        /// Handles the ObjectMaterialized event of the Context control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="ObjectMaterializedEventArgs"/> instance containing the event data.</param>
         private void Context_ObjectMaterialized(object sender, ObjectMaterializedEventArgs e)
         {
             if (_kernel.EnableGuards == false)
@@ -99,17 +71,19 @@ namespace EntityFramework.Guardian.Hooking
                 return;
             }
 
-            ObjectContext context = ((IObjectContextAdapter)_context).ObjectContext;
+            ObjectContext objectContext = ((IObjectContextAdapter)_context).ObjectContext;
 
             IObjectAccessEntry objectAccessEntry;
-            if (context.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
+            if (objectContext.TryGetMaterializedEntry(e.Entity, out objectAccessEntry))
             {
-                var protectionContext = new RetrievalGuardContext()
+                var protectionContext = new QueryProtectionContext()
                 {
-                    Entry = objectAccessEntry
+                    Kernel = _kernel,
+                    Entry = objectAccessEntry,
+                    EntityType = e.Entity.GetType()
                 };
 
-                _kernel.RetrievalGuard.Protect(protectionContext);
+                _kernel.QueryGuard.Protect(protectionContext);
             }
         }
     }

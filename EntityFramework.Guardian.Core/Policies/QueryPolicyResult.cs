@@ -1,26 +1,28 @@
 ﻿// Copyright (c) Aram Kocharyan. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System.Collections.Generic;
+
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// ModifyPolicyResult that result from <see cref="IAlteringPolicy.Check(AlteringPolicyContext)"/> method"/> 
+    /// QueryPolicyResult that result from <see cref="IQueryPolicy.Check(QueryProtectionContext)"/> method"/> 
     /// </summary>
-    public class AlteringPolicyResult
+    public class QueryPolicyResult
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlteringPolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="QueryPolicyResult"/> class.
         /// </summary>
-        public AlteringPolicyResult()
+        public QueryPolicyResult()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlteringPolicyResult"/> class.
+        /// Initializes a new instance of the <see cref="QueryPolicyResult"/> class.
         /// </summary>
         /// <param name="isSuccess">if set to <c>true</c> [is success].</param>
         /// <param name="errorMessage">The error message.</param>
-        public AlteringPolicyResult(bool isSuccess, string errorMessage = null)
+        public QueryPolicyResult(bool isSuccess, string errorMessage = null)
         {
             IsSuccess = isSuccess;
             ErrorMessage = errorMessage;
@@ -41,5 +43,13 @@ namespace EntityFramework.Guardian.Policies
         /// The error message.
         /// </value>
         public string ErrorMessage { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gets or sets the restricted properties.
+        /// </summary>
+        /// <value>
+        /// The restricted properties.
+        /// </value>
+        public List<string> RestrictedProperties { get; set; } = new List<string>();
     }
 }

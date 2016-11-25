@@ -6,33 +6,25 @@ using System.Data.Entity;
 
 namespace EntityFramework.Guardian.Extensions
 {
-    /// <summary>
-    /// <see cref="EntityState"/> Extensions
-    /// </summary>
     internal static class EntityStateExtensions
     {
-        /// <summary>
-        /// Gets the type of the access.
-        /// </summary>
-        /// <param name="state">The state.</param>
-        /// <returns>Mapped AccessType of EntityState</returns>
-        internal static AccessTypes GetAccessType(this EntityState state)
+        internal static ActionTypes GetActionType(this EntityState state)
         {
-            var accessType = AccessTypes.Get;
+            var accessType = ActionTypes.Get;
 
             if (state.HasFlag(EntityState.Deleted))
             {
-                accessType = AccessTypes.Delete;
+                accessType = ActionTypes.Delete;
             }
 
             if (state.HasFlag(EntityState.Modified))
             {
-                accessType = AccessTypes.Update;
+                accessType = ActionTypes.Update;
             }
 
             if (state.HasFlag(EntityState.Added))
             {
-                accessType = AccessTypes.Add;
+                accessType = ActionTypes.Add;
             }
 
             return accessType;

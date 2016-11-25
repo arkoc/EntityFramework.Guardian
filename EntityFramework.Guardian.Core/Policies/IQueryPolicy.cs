@@ -4,15 +4,15 @@
 namespace EntityFramework.Guardian.Policies
 {
     /// <summary>
-    /// Retrieveal Policy interface
+    /// Query Policy interface
     /// </summary>
-    public interface IRetrievalPolicy
+    public interface IQueryPolicy
     {
         /// <summary>
         /// Checks the policy by specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns><see cref="RetrievalPolicyResult"/> of policy checking.</returns>
-        RetrievalPolicyResult Check(RetrievalPolicyContext context);
+        /// <returns><see cref="QueryPolicyResult"/> of policy checking.</returns>
+        QueryPolicyResult Check(QueryProtectionContext context);
     }
 }

@@ -20,7 +20,7 @@ namespace EntityFramework.Guardian.Extensions
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <param name="source">The source.</param>
         /// <returns>Protected source.</returns>
-        public static List<TEntity> Protect<TEntity>(this List<TEntity> source) where TEntity : class, IProtectableObject
+        public static IEnumerable<TEntity> Protect<TEntity>(this IEnumerable<TEntity> source) where TEntity : class, IProtectableObject
         {
             if (source == null)
             {

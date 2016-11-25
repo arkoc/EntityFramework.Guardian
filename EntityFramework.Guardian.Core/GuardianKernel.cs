@@ -3,10 +3,8 @@
 
 using EntityFramework.Guardian.Policies;
 using EntityFramework.Guardian.Guards;
-using System.Data.Entity;
-using EntityFramework.Guardian.Exceptions;
-using EntityFramework.Guardian.Services;
 using System.Collections.Generic;
+using System;
 
 namespace EntityFramework.Guardian
 {
@@ -16,122 +14,79 @@ namespace EntityFramework.Guardian
     public class GuardianKernel
     {
         /// <summary>
+        /// Gets the service provider.
+        /// </summary>
+        /// <value>
+        /// The service provider.
+        /// </value>
+        public IServiceProvider ServiceProvider { get; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether [enable guards].
         /// </summary>
         /// <value>
-        ///   <c>true</c> if [enable guards]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [enable guards]; otherwise, <c>disable guards</c>.
         /// </value>
         public bool EnableGuards { get; set; }
 
         /// <summary>
-        /// Gets or sets the permission service.
-        /// </summary>
-        /// <value>
-        /// The permission service.
-        /// </value>
-        public IPermissionService PermissionService { get; set; }
-
-        /// <summary>
-        /// Gets or sets the entity key provider.
-        /// </summary>
-        /// <value>
-        /// The entity key provider.
-        /// </value>
-        public IEntityKeyProvider EntityKeyProvider { get; set; }
-
-        /// <summary>
-        /// Gets the altering guard.
-        /// </summary>
-        /// <value>
-        /// The altering guard.
-        /// </value>
-        public IAlteringGuard AlteringGuard { get; set; }
-
-        /// <summary>
-        /// Gets the retrieval guard.
+        /// Gets the query guard.
         /// </summary>
         /// <value>
         /// The retrieval guard.
         /// </value>
-        public IRetrievalGuard RetrievalGuard { get; set; }
+        public IQueryGuard QueryGuard { get; set; }
 
         /// <summary>
-        /// Gets the altering protection policies.
+        /// Gets the submit guard.
         /// </summary>
         /// <value>
-        /// The modify protection policies.
+        /// The altering guard.
         /// </value>
-        public List<IAlteringPolicy> AlteringPolicies { get; private set; }
+        public ISubmitGuard SubmitGuard { get; set; }
 
         /// <summary>
-        /// Gets the retrieval protection policies.
+        /// Gets the querying protection policies.
         /// </summary>
         /// <value>
         /// The retrieve protection policies.
         /// </value>
-        public List<IRetrievalPolicy> RetrievalPolicies { get; private set; }
+        public List<IQueryPolicy> QueryPolicies { get; }
 
         /// <summary>
-        /// Gets or sets the database context associated with this kernel.
+        /// Gets the submiting protection policies.
         /// </summary>
         /// <value>
-        /// The database context.
+        /// The modify protection policies.
         /// </value>
-        public DbContext DbContext { get; internal set; }
+        public List<ISubmitPolicy> SubmitPolicies { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GuardianKernel"/> class.
         /// </summary>
-        public GuardianKernel()
+        /// <param name="serviceProvider">The service provider.</param>
+        public GuardianKernel(IServiceProvider serviceProvider = null)
         {
+            ServiceProvider = serviceProvider;
+
             EnableGuards = true;
 
-            EntityKeyProvider = new DefaultIdKeyProvider();
-            PermissionService = new InMemoryPermissionService();
+            SubmitGuard = new DefaultSubmitGuard();
+            QueryGuard = new DefaultQueryGuard();
 
-            AlteringGuard = new DefaultAlteringGuard(this);
-            RetrievalGuard = new DefaultRetrievalGuard(this);
-
-            AlteringPolicies = new List<IAlteringPolicy>();
-            AlteringPolicies.Add(new PermissionsExistsAlteringPolicy());
-            AlteringPolicies.Add(new ColumnsRestrictionsAlteringPolicy());
-
-            RetrievalPolicies = new List<IRetrievalPolicy>();
-            RetrievalPolicies.Add(new PermissionExistsRetrievalPolicy());
-            RetrievalPolicies.Add(new ColumnsRestrictionsRetrievalPolicy());
+            SubmitPolicies = new List<ISubmitPolicy>();
+            QueryPolicies = new List<IQueryPolicy>();
         }
 
         /// <summary>
         /// Trys to validate guardian kernel
         /// </summary>
-        /// <exception cref="EntityFramework.Guardian.Exceptions.BadConfigurationException">
+        /// <exception cref="Exception">
         /// </exception>
         public void TryValidate()
         {
-            if (DbContext != null)
-            {
-                throw new BadConfigurationException("Specified GuardianKernel object already associcated with another DbContext.");
-            }
-
-            if (PermissionService == null)
-            {
-                throw new BadConfigurationException($"{nameof(PermissionService)} can't be null.");
-            }
-
-            if (EntityKeyProvider == null)
-            {
-                throw new BadConfigurationException($"{nameof(EntityKeyProvider)} can't be null.");
-            }
-
-            if (AlteringGuard == null)
-            {
-                throw new BadConfigurationException($"{nameof(AlteringGuard)} can't be null.");
-            }
-
-            if (RetrievalGuard == null)
-            {
-                throw new BadConfigurationException($"{nameof(RetrievalGuard)} can't be null.");
-            }
+            Ensure.NotNull(SubmitGuard, nameof(SubmitGuard));
+            Ensure.NotNull(QueryGuard, nameof(QueryGuard));
         }
     }
 }

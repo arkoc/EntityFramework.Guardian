@@ -3,7 +3,6 @@
 
 using EntityFramework.Guardian.Hooking;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 
 namespace EntityFramework.Guardian.Extensions
 {
@@ -15,33 +14,16 @@ namespace EntityFramework.Guardian.Extensions
         /// <summary>
         /// Guards the <see cref="DbContext"/>  by <see cref="GuardianKernel"/> .
         /// </summary>
-        /// <param name="dbContext">The database context.</param>
+        /// <param name="dbContext">The database context to Guard.</param>
         /// <param name="kernel">The guardian kernel.</param>
-        public static DbContext GuardBy(this DbContext dbContext, GuardianKernel kernel)
+        public static DbContext UseGuardian(this DbContext dbContext, GuardianKernel kernel)
         {
             kernel.TryValidate();
-
-            kernel.DbContext = dbContext;
 
             var contextHooker = new DbContextHooker(dbContext, kernel);
             contextHooker.RegisterHooks();
 
             return dbContext;
-        }
-
-        /// <summary>
-        /// Detaches all entries.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public static void DetachAllEntries(this DbContext context)
-        {
-            foreach (DbEntityEntry dbEntityEntry in (context as DbContext).ChangeTracker.Entries())
-            {
-                if (dbEntityEntry.Entity != null)
-                {
-                    dbEntityEntry.State = EntityState.Detached;
-                }
-            }
         }
     }
 }
