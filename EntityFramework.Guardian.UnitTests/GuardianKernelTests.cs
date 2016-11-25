@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace EntityFramework.Guardian.UnitTests
@@ -35,7 +31,6 @@ namespace EntityFramework.Guardian.UnitTests
         public void TryValidate_ShouldSuccess()
         {
             var kernel = new GuardianKernel();
-            kernel.SubmitGuard = null;
             kernel.TryValidate();
         }
 
