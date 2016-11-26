@@ -47,8 +47,6 @@ Many aspect of EntityFrameowrk.Guardian can be customized to fit **your** needs.
 
    architecture/guardian_kernel
    architecture/hooking_system
-   architecture/permission_service
-   architecture/entity_key_provider
    architecture/guards
    architecture/policies
    architecture/misc
